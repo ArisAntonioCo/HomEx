@@ -1,0 +1,251 @@
+.create-an-account,
+.enter-your-details {
+  position: relative;
+  font-family: Inter;
+  color: #011b16;
+}
+.create-an-account {
+  margin: 0;
+  align-self: stretch;
+  font-size: 40px;
+  font-weight: 700;
+  text-align: left;
+}
+.enter-your-details {
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  font-weight: 300;
+  text-align: center;
+}
+.h11 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+}
+.email {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  font-family: Inter;
+  font-size: 14px;
+  background-color: transparent;
+  height: 17px;
+  flex: 1;
+  position: relative;
+  color: #819b96;
+  text-align: left;
+  display: inline-block;
+  min-width: 250px;
+  max-width: 100%;
+  padding: 0;
+}
+.inputbox {
+  align-self: stretch;
+  border-radius: 8px;
+  border: 1px solid #011b16;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 8px 9px 35px;
+  max-width: 100%;
+}
+.username {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  font-family: Inter;
+  font-size: 14px;
+  background-color: transparent;
+  height: 17px;
+  flex: 1;
+  position: relative;
+  color: #819b96;
+  text-align: left;
+  display: inline-block;
+  min-width: 250px;
+  max-width: 100%;
+  padding: 0;
+}
+.inputbox1 {
+  align-self: stretch;
+  border-radius: 8px;
+  border: 1px solid #011b16;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 8px 9px 35px;
+  max-width: 100%;
+}
+.password {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  font-family: Inter;
+  font-size: 14px;
+  background-color: transparent;
+  height: 17px;
+  flex: 1;
+  position: relative;
+  color: #819b96;
+  text-align: left;
+  display: inline-block;
+  min-width: 250px;
+  max-width: 100%;
+  padding: 0;
+}
+.inputbox2,
+.inputs {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  max-width: 100%;
+}
+.inputbox2 {
+  border-radius: 8px;
+  border: 1px solid #011b16;
+  box-sizing: border-box;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 8px 9px 35px;
+}
+.inputs {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 19px;
+}
+.sign-up {
+  flex: 1;
+  position: relative;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: Inter;
+  color: #fff;
+  text-align: center;
+  display: inline-block;
+  white-space: nowrap;
+  max-width: 100%;
+}
+.button {
+  cursor: pointer;
+  border: 0;
+  padding: 24px;
+  background-color: #fb440a;
+  align-self: stretch;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.button:hover {
+  background-color: #ff5e24;
+}
+.already-have-an,
+.login {
+  position: relative;
+  font-size: 14px;
+  font-family: Inter;
+  text-align: center;
+}
+.already-have-an {
+  color: #011b16;
+  white-space: nowrap;
+}
+.login {
+  font-weight: 600;
+  color: #fb440a;
+  display: inline-block;
+  min-width: 38px;
+  cursor: pointer;
+}
+.link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 509px 0 0;
+  gap: 5px;
+}
+.form {
+  margin: 0;
+  width: 723px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  max-width: 100%;
+}
+.right-content,
+.signuppage {
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  box-sizing: border-box;
+}
+.right-content {
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 302.5px 100px;
+  min-width: 373px;
+  max-width: 100%;
+  margin-left: -2px;
+}
+.signuppage {
+  width: 100%;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 2px 0 0;
+  line-height: normal;
+  letter-spacing: normal;
+}
+@media screen and (max-width: 825px) {
+  .create-an-account {
+    font-size: 32px;
+  }
+  .link {
+    padding-right: 254px;
+    box-sizing: border-box;
+  }
+  .right-content {
+    padding-bottom: 197px;
+    box-sizing: border-box;
+    flex: unset;
+    align-self: stretch;
+  }
+  .signuppage {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 450px) {
+  .create-an-account {
+    font-size: 24px;
+  }
+  .link {
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+  .right-content {
+    padding-bottom: 128px;
+    box-sizing: border-box;
+  }
+}

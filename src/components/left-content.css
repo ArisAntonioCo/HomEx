@@ -1,0 +1,135 @@
+.logo-icon1 {
+  align-self: stretch;
+  height: 34px;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+  object-fit: contain;
+  cursor: pointer;
+}
+.logo-container,
+.logo1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.logo1 {
+  width: 149px;
+  overflow: hidden;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.logo-container {
+  align-self: stretch;
+}
+.expenses-with-us,
+.start-tracking {
+  margin: 0;
+}
+.effortlessly-stay-in1,
+.start-tracking-expenses-container {
+  width: 335px;
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+.start-tracking-expenses-container {
+  margin: 0;
+  font-size: inherit;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  font-family: inherit;
+}
+.effortlessly-stay-in1 {
+  font-size: 14px;
+  font-weight: 300;
+}
+.text2 {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 50px 20px 50px 51px;
+  box-sizing: border-box;
+  gap: 15px;
+  max-width: 100%;
+}
+.copyright2024-co-faburada {
+  flex: 1;
+  position: relative;
+  font-weight: 500;
+  white-space: pre-wrap;
+  display: inline-block;
+  max-width: 100%;
+}
+.copyright {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  box-sizing: border-box;
+  max-width: 100%;
+  font-size: 14px;
+}
+.container19,
+.left-content1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 100%;
+}
+.container19 {
+  align-self: stretch;
+  min-height: 924px;
+}
+.left-content1 {
+  flex: 1;
+  overflow: hidden;
+  padding: 50px 40px;
+  box-sizing: border-box;
+  background-image: url(/public/left-content@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  min-height: 1024px;
+  text-align: left;
+  font-size: 40px;
+  color: #fff;
+  font-family: Inter;
+}
+@media screen and (max-width: 825px) {
+  .start-tracking-expenses-container {
+    font-size: 32px;
+  }
+  .left-content1 {
+    align-self: stretch;
+    width: auto;
+    flex-direction: column;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    box-sizing: border-box;
+    flex: unset;
+  }
+}
+@media screen and (max-width: 450px) {
+  .start-tracking-expenses-container {
+    font-size: 24px;
+  }
+  .text2 {
+    padding-left: 20px;
+    box-sizing: border-box;
+  }
+  .left-content1 {
+    padding-top: 21px;
+    padding-bottom: 21px;
+    box-sizing: border-box;
+  }
+}

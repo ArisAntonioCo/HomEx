@@ -1,0 +1,251 @@
+.logo-icon {
+  width: 100%;
+  height: 34px;
+  position: relative;
+  object-fit: cover;
+}
+.logo {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px;
+}
+.vector-icon4 {
+  height: 18px;
+  width: 18px;
+  position: relative;
+  object-fit: cover;
+  min-height: 18px;
+}
+.vector-icon4:active {
+  border: 2px solid #fff;
+  box-sizing: border-box;
+}
+.home {
+  flex: 1;
+  position: relative;
+  font-weight: 600;
+}
+.navlinks {
+  align-self: stretch;
+  border-radius: 8px;
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 14px 15px;
+  gap: 15px;
+  top: 0;
+  z-index: 99;
+  position: sticky;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.navlinks:hover {
+  background-color: #f0f0f0; /* Change background color on hover */
+}
+
+.navlinks.active {
+  background-color: #f0f0f0; /* Change to desired active color */
+}
+
+.vector-icon5 {
+  height: 13.3px;
+  width: 13.3px;
+  position: relative;
+  object-fit: cover;
+}
+.dashboard1 {
+  flex: 1;
+  position: relative;
+  font-weight: 600;
+}
+
+.expenses5 {
+  flex: 1;
+  position: relative;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+.text {
+  align-self: stretch;
+  border-radius: 8px;
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 14px 15px;
+  color: rgba(51, 51, 51, 0.2);
+}
+.vector-icon6 {
+  height: 18px;
+  width: 16px;
+  position: relative;
+  object-fit: cover;
+  min-height: 18px;
+}
+.electricity5 {
+  flex: 1;
+  position: relative;
+  font-weight: 600;
+}
+
+.vector-icon7 {
+  height: 16.4px;
+  width: 18px;
+  position: relative;
+  object-fit: cover;
+}
+.water3 {
+  flex: 1;
+  position: relative;
+  font-weight: 600;
+}
+
+.vector-icon8 {
+  height: 18px;
+  width: 18px;
+  position: relative;
+  object-fit: cover;
+  min-height: 18px;
+}
+.food3 {
+  flex: 1;
+  position: relative;
+  font-weight: 600;
+}
+
+.vector-icon9 {
+  height: 16.3px;
+  width: 16.3px;
+  position: relative;
+}
+.maintenance3 {
+  flex: 1;
+  position: relative;
+  font-weight: 600;
+}
+
+.vector-icon10 {
+  height: 16px;
+  width: 16.7px;
+  position: relative;
+  object-fit: cover;
+}
+.miscellaneous1 {
+  flex: 1;
+  position: relative;
+  font-weight: 600;
+}
+
+.information {
+  flex: 1;
+  position: relative;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+.text1 {
+  align-self: stretch;
+  height: 46px;
+  border-radius: 8px;
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 14px 15px;
+  box-sizing: border-box;
+  min-width: 137px;
+  color: rgba(51, 51, 51, 0.2);
+}
+.vector-icon11 {
+  height: 10.7px;
+  width: 13.5px;
+  position: relative;
+  object-fit: cover;
+}
+.about {
+  flex: 1;
+  position: relative;
+  font-weight: 600;
+}
+
+.vector-icon12 {
+  height: 13.5px;
+  width: 13.5px;
+  position: relative;
+  object-fit: cover;
+}
+.contact-us {
+  flex: 1;
+  position: relative;
+  font-weight: 600;
+}
+
+.options {
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.vector-icon13 {
+  height: 16px;
+  width: 18px;
+  position: relative;
+  object-fit: cover;
+}
+.sign-out {
+  flex: 1;
+  position: relative;
+  font-weight: 600;
+}
+.container18 {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 17px;
+}
+.sidebar,
+.signout {
+  background-color: #fff;
+  display: flex;
+}
+.signout {
+  align-self: stretch;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 20px;
+}
+.sidebar {
+  height: 1024px;
+  width: 269px;
+  border-right: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px 19px;
+  text-align: left;
+  font-size: 15px;
+  color: #181818;
+  font-family: Inter;
+}
+@media screen and (max-width: 825px) {
+  .sidebar {
+    display: none;
+  }
+}

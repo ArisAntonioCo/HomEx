@@ -1,0 +1,209 @@
+.edit-expense,
+.expense-name {
+  font-family: var(--font-inter);
+}
+.edit-expense {
+  margin-block-start: 0;
+  margin-block-end: 6px;
+  font-size: var(--font-size-5xl);
+  font-weight: 800;
+}
+.expense-name {
+  margin: 0;
+  font-size: var(--font-size-mini);
+  font-weight: 300;
+}
+.edit-expense-container {
+  position: relative;
+  color: var(--color-darkslategray-100);
+  text-align: left;
+}
+.vector-icon1 {
+  height: 14px;
+  width: 18px;
+  position: relative;
+}
+.topframe {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  gap: var(--gap-xl);
+}
+.service-provider1 {
+  width: 103px;
+  border: 0;
+  outline: 0;
+  font-weight: 500;
+  font-family: var(--font-inter);
+  font-size: var(--font-size-2xs);
+  background-color: transparent;
+  height: 13px;
+  position: relative;
+  color: var(--color-darkslategray-200);
+  text-align: left;
+  display: inline-block;
+  padding: 0;
+}
+.amount2 {
+  align-self: stretch;
+  border-radius: var(--br-5xs);
+  border: 1px solid var(--color-darkslategray-300);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: var(--padding-mini) var(--padding-3xs);
+}
+.date3 {
+  width: 25px;
+  border: 0;
+  outline: 0;
+  font-weight: 500;
+  font-family: var(--font-inter);
+  font-size: var(--font-size-2xs);
+  background-color: transparent;
+  height: 13px;
+  position: relative;
+  color: var(--color-darkslategray-200);
+  text-align: left;
+  display: inline-block;
+  padding: 0;
+}
+.date2 {
+  align-self: stretch;
+  border-radius: var(--br-5xs);
+  border: 1px solid var(--color-darkslategray-300);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: var(--padding-mini) var(--padding-3xs);
+}
+.amount3 {
+  width: 42px;
+  border: 0;
+  outline: 0;
+  font-weight: 500;
+  font-family: var(--font-inter);
+  font-size: var(--font-size-2xs);
+  background-color: transparent;
+  height: 13px;
+  position: relative;
+  color: var(--color-darkslategray-200);
+  text-align: left;
+  display: inline-block;
+  padding: 0;
+}
+.content1,
+.input1,
+.name1 {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+}
+.name1 {
+  border-radius: var(--br-5xs);
+  border: 1px solid var(--color-darkslategray-300);
+  overflow: hidden;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: var(--padding-mini) var(--padding-3xs);
+}
+.content1,
+.input1 {
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--gap-6xl);
+}
+.content1 {
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-11xl);
+}
+.vector-icon2 {
+  height: 16px;
+  width: 16px;
+  position: relative;
+}
+.update-expense {
+  position: relative;
+  font-size: var(--font-size-mini);
+  font-weight: 500;
+  font-family: var(--font-inter);
+  color: var(--color-white);
+  text-align: left;
+  display: inline-block;
+  min-width: 118px;
+}
+.button1,
+.container3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.container3 {
+  padding: 0 80px;
+  gap: var(--gap-3xs);
+}
+.button1 {
+  cursor: pointer;
+  border: 0;
+  padding: 14.5px 16.5px;
+  background-color: var(--color-orangered);
+  border-radius: var(--br-5xs);
+  overflow: hidden;
+}
+.container2 {
+  margin: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-6xl);
+}
+.edit-modal,
+.editform {
+  max-width: 100%;
+  display: flex;
+  box-sizing: border-box;
+}
+.editform {
+  flex: 1;
+  border-radius: var(--br-base);
+  background-color: var(--color-white);
+  overflow: hidden;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-34xl) var(--padding-38xl);
+}
+.edit-modal {
+  width: 471px;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-3xs);
+  line-height: normal;
+  letter-spacing: normal;
+}
+@media screen and (max-width: 450px) {
+  .editform {
+    padding-top: var(--padding-15xl);
+    padding-bottom: var(--padding-15xl);
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 304px) {
+  .container3 {
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+    box-sizing: border-box;
+  }
+}

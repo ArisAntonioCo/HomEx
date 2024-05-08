@@ -1,0 +1,214 @@
+.logo-icon2 {
+  width: 129px;
+  height: 34px;
+  position: relative;
+}
+.modules-to-monitor1,
+.our-platforms-intuitive1 {
+  margin: 0;
+}
+.our-platforms-intuitive-container1 {
+  align-self: stretch;
+  position: relative;
+  letter-spacing: -0.01em;
+  font-weight: 300;
+}
+.logo2 {
+  height: 194px;
+  width: 316px;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 12px;
+}
+.navigation1 {
+  margin: 0;
+  position: relative;
+  font-size: inherit;
+  font-weight: 800;
+  font-family: inherit;
+}
+.about-us2,
+.contact1,
+.faq1 {
+  text-decoration: none;
+  color: white;
+  position: relative;
+  font-weight: 500;
+  display: inline-block;
+  min-width: 65px;
+}
+.contact1,
+.faq1 {
+  min-width: 58px;
+}
+.faq1 {
+  min-width: 29px;
+}
+.nav,
+.navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.nav {
+  flex: 1;
+  gap: 13px;
+  font-size: 15px;
+}
+.navigation {
+  height: 194px;
+  overflow: hidden;
+  padding: 10px;
+  box-sizing: border-box;
+  gap: 16px;
+}
+.contact-us1 {
+  margin: 0;
+  position: relative;
+  font-size: inherit;
+  font-weight: 700;
+  font-family: inherit;
+}
+.div,
+.div1,
+.div2,
+.emailgmailcom {
+  position: relative;
+  white-space: nowrap;
+}
+.emailgmailcom {
+  display: inline-block;
+  min-width: 124px;
+}
+.contact2,
+.contact3,
+.content {
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  align-items: flex-end;
+  justify-content: center;
+  gap: 10px;
+  font-size: 15px;
+}
+.contact2,
+.contact3 {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.contact3 {
+  padding: 0 0 27px;
+  gap: 16px;
+}
+.contact2 {
+  overflow: hidden;
+  padding: 10px;
+}
+.top-content4 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.copyright2024-co-faburada1 {
+  position: relative;
+  font-weight: 500;
+  white-space: pre-wrap;
+}
+.copyright1 {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 10px 10px 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.silliman-university1 {
+  position: relative;
+  font-weight: 500;
+}
+.silliman-university {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px 0;
+}
+.bottom-content4,
+.container25,
+.footer {
+  align-self: stretch;
+  display: flex;
+  max-width: 100%;
+}
+.bottom-content4 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+  gap: 0;
+  font-size: 16px;
+}
+.container25,
+.footer {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.container25 {
+  justify-content: flex-start;
+  gap: 10px;
+}
+.footer {
+  background-color: #01120f;
+  overflow: hidden;
+  justify-content: center;
+  padding: 40px 93px;
+  box-sizing: border-box;
+  text-align: left;
+  font-size: 24px;
+  color: #fff;
+  font-family: Inter;
+}
+@media screen and (max-width: 1275px) {
+  .bottom-content4 {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 750px) {
+  .top-content4 {
+    flex-wrap: wrap;
+  }
+  .footer {
+    padding-left: 46px;
+    padding-right: 46px;
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 450px) {
+  .contact-us1,
+  .navigation1 {
+    font-size: 19px;
+  }
+  .copyright1 {
+    flex: 1;
+  }
+  .footer {
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+}

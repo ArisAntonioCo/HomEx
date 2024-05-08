@@ -1,0 +1,76 @@
+.icon {
+  width: 41.6px;
+  height: 34.9px;
+  position: relative;
+}
+.its-the-key,
+.tracking-home-expenses {
+  font-weight: 500;
+}
+.tracking-home-expenses-container {
+  margin: 0;
+  width: 1168px;
+  position: relative;
+  font-size: inherit;
+  letter-spacing: -0.01em;
+  display: inline-block;
+  max-width: 100%;
+  font-family: inherit;
+}
+.textcontainer {
+  align-self: stretch;
+  justify-content: flex-end;
+  padding: 0 20px;
+  box-sizing: border-box;
+  gap: 50px;
+  max-width: 100%;
+}
+.aboutpage,
+.section,
+.textcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.section {
+  align-self: stretch;
+  background-color: #fb440a;
+  justify-content: center;
+  padding: 118px 0;
+  box-sizing: border-box;
+  max-width: 100%;
+  text-align: center;
+  font-size: 32px;
+  color: #fff;
+  font-family: Inter;
+}
+.aboutpage {
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  justify-content: flex-start;
+  line-height: normal;
+  letter-spacing: normal;
+}
+@media screen and (max-width: 750px) {
+  .tracking-home-expenses-container {
+    font-size: 26px;
+  }
+  .textcontainer {
+    gap: 25px;
+  }
+  .section {
+    gap: 36px;
+    padding-top: 77px;
+    padding-bottom: 77px;
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 450px) {
+  .tracking-home-expenses-container {
+    font-size: 19px;
+  }
+  .section {
+    gap: 18px;
+  }
+}

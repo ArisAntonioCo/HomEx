@@ -1,0 +1,814 @@
+.menu-icon2 {
+  height: 12px;
+  width: 16px;
+  position: relative;
+}
+.container6,
+.mobile-devices2 {
+  justify-content: flex-start;
+  padding: 10px;
+}
+.container6 {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.mobile-devices2 {
+  width: 1051px;
+  height: 52px;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.dashboard {
+  margin: 0;
+  flex: 1;
+  position: relative;
+  font-size: inherit;
+  font-weight: 700;
+  font-family: inherit;
+  display: inline-block;
+  max-width: 100%;
+}
+.h14 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.track-and-manage {
+  flex: 1;
+  position: relative;
+  font-weight: 500;
+  display: inline-block;
+  max-width: 100%;
+}
+.headingcontainer,
+.p {
+  align-self: stretch;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.p {
+  flex-direction: row;
+  font-size: 16px;
+  color: #676767;
+}
+.headingcontainer {
+  flex-direction: column;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.electricityicon1 {
+  height: 30px;
+  width: 25.7px;
+  position: relative;
+  object-fit: contain;
+}
+.electricity2,
+.total5 {
+  position: relative;
+  display: inline-block;
+}
+.electricity2 {
+  margin: 0;
+  flex: 1;
+  font-size: inherit;
+  font-weight: 600;
+  font-family: inherit;
+  min-width: 122px;
+}
+.total5 {
+  font-weight: 500;
+  min-width: 33px;
+}
+.label2,
+.total4 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.total4 {
+  width: 53px;
+  border-radius: 20px;
+  background-color: rgba(90, 255, 186, 0.25);
+  border: 1px solid #00804a;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-shrink: 0;
+  justify-content: center;
+  padding: 3px 9px;
+  white-space: nowrap;
+  font-size: 10px;
+  color: #00804a;
+}
+.label2 {
+  align-self: stretch;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.electricitytotal1 {
+  position: relative;
+  font-size: 40px;
+  font-weight: 800;
+  display: inline-block;
+  min-width: 108px;
+  white-space: nowrap;
+}
+.electricitycard1 {
+  flex: 1;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 24px;
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 30px;
+  box-sizing: border-box;
+  min-width: 320px;
+  min-height: 269px;
+  max-width: 100%;
+}
+.watericon1 {
+  height: 30px;
+  width: 30.7px;
+  position: relative;
+  object-fit: contain;
+}
+.total7,
+.water2 {
+  position: relative;
+  display: inline-block;
+}
+.water2 {
+  margin: 0;
+  flex: 1;
+  font-size: inherit;
+  font-weight: 600;
+  font-family: inherit;
+  min-width: 73px;
+}
+.total7 {
+  font-weight: 500;
+  min-width: 33px;
+}
+.label3,
+.total6 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.total6 {
+  width: 53px;
+  border-radius: 20px;
+  background-color: rgba(90, 255, 186, 0.25);
+  border: 1px solid #00804a;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-shrink: 0;
+  justify-content: center;
+  padding: 3px 9px;
+  white-space: nowrap;
+  font-size: 10px;
+  color: #00804a;
+}
+.total10:hover,
+.total12:hover,
+.total6:hover,
+.total8:hover {
+  background-color: rgba(38, 204, 135, 0.25);
+  border: 1px solid #26a670;
+  box-sizing: border-box;
+}
+.label3 {
+  align-self: stretch;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.watertotal1 {
+  position: relative;
+  font-size: 40px;
+  font-weight: 800;
+  display: inline-block;
+  min-width: 108px;
+  white-space: nowrap;
+}
+.watercard1 {
+  flex: 1;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 24px;
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 30px;
+  box-sizing: border-box;
+  min-width: 320px;
+  min-height: 269px;
+  max-width: 100%;
+}
+.foodicon {
+  height: 30px;
+  width: 27.7px;
+  position: relative;
+  object-fit: contain;
+}
+.food,
+.total9 {
+  position: relative;
+  display: inline-block;
+}
+.food {
+  margin: 0;
+  flex: 1;
+  font-size: inherit;
+  font-weight: 600;
+  font-family: inherit;
+  min-width: 58px;
+}
+.total9 {
+  font-weight: 500;
+  min-width: 33px;
+}
+.label4,
+.total8 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.total8 {
+  width: 53px;
+  border-radius: 20px;
+  background-color: rgba(90, 255, 186, 0.25);
+  border: 1px solid #00804a;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-shrink: 0;
+  justify-content: center;
+  padding: 3px 9px;
+  white-space: nowrap;
+  font-size: 10px;
+  color: #00804a;
+}
+.label4 {
+  align-self: stretch;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.foodtotal {
+  position: relative;
+  font-size: 40px;
+  font-weight: 800;
+  display: inline-block;
+  min-width: 108px;
+  white-space: nowrap;
+}
+.foodcard {
+  flex: 1;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 24px;
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 30px;
+  box-sizing: border-box;
+  min-width: 320px;
+  min-height: 269px;
+  max-width: 100%;
+}
+.topcardcontainer {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  max-width: 100%;
+}
+.union-icon {
+  height: 30px;
+  width: 30px;
+  position: relative;
+  object-fit: contain;
+}
+.maintenance,
+.total11 {
+  position: relative;
+  display: inline-block;
+}
+.maintenance {
+  margin: 0;
+  flex: 1;
+  font-size: inherit;
+  font-weight: 600;
+  font-family: inherit;
+  min-width: 158px;
+  max-width: 100%;
+}
+.total11 {
+  font-weight: 500;
+  min-width: 33px;
+}
+.label5,
+.total10 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.total10 {
+  width: 53px;
+  border-radius: 20px;
+  background-color: rgba(90, 255, 186, 0.25);
+  border: 1px solid #00804a;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-shrink: 0;
+  justify-content: center;
+  padding: 3px 9px;
+  white-space: nowrap;
+  font-size: 10px;
+  color: #00804a;
+}
+.label5 {
+  align-self: stretch;
+  justify-content: flex-start;
+  gap: 20px;
+  max-width: 100%;
+}
+.maintenancetotal {
+  position: relative;
+  font-size: 40px;
+  font-weight: 800;
+  display: inline-block;
+  min-width: 108px;
+  white-space: nowrap;
+}
+.maintenancecard {
+  flex: 1;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 24px;
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 30px;
+  box-sizing: border-box;
+  min-width: 422px;
+  min-height: 269px;
+  max-width: 100%;
+}
+.miscicon {
+  height: 30px;
+  width: 31.3px;
+  position: relative;
+  object-fit: contain;
+}
+.miscellaneous,
+.total13 {
+  position: relative;
+  display: inline-block;
+}
+.miscellaneous {
+  margin: 0;
+  flex: 1;
+  font-size: inherit;
+  font-weight: 600;
+  font-family: inherit;
+  min-width: 175px;
+  max-width: 100%;
+}
+.total13 {
+  font-weight: 500;
+  min-width: 33px;
+}
+.label6,
+.total12 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.total12 {
+  width: 53px;
+  border-radius: 20px;
+  background-color: rgba(90, 255, 186, 0.25);
+  border: 1px solid #00804a;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-shrink: 0;
+  justify-content: center;
+  padding: 3px 9px;
+  white-space: nowrap;
+  font-size: 10px;
+  color: #00804a;
+}
+.label6 {
+  align-self: stretch;
+  justify-content: flex-start;
+  gap: 20px;
+  max-width: 100%;
+}
+.misctotal {
+  position: relative;
+  font-size: 40px;
+  font-weight: 800;
+  display: inline-block;
+  min-width: 108px;
+  white-space: nowrap;
+}
+.misccard {
+  flex: 1;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 24px;
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 30px;
+  box-sizing: border-box;
+  min-width: 422px;
+  min-height: 269px;
+  max-width: 100%;
+}
+.middlecardcontainer {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 21px;
+  max-width: 100%;
+}
+.total-expenses {
+  margin: 0;
+  width: 961px;
+  position: relative;
+  font-size: inherit;
+  font-weight: 600;
+  font-family: inherit;
+  display: inline-block;
+  max-width: 100%;
+}
+.expensesicon {
+  height: 30px;
+  width: 30px;
+  position: relative;
+  object-fit: contain;
+}
+.label7 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  row-gap: 20px;
+  max-width: 100%;
+  gap: 0;
+}
+.expensestotal {
+  position: relative;
+  font-size: 40px;
+  font-weight: 800;
+  display: inline-block;
+  min-width: 108px;
+  white-space: nowrap;
+}
+.bottomcardcontainer,
+.totalexpensescard {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.totalexpensescard {
+  flex: 1;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 24px;
+  background-color: #fb440a;
+  overflow: hidden;
+  flex-direction: column;
+  padding: 30px;
+  box-sizing: border-box;
+  gap: 10px;
+}
+.bottomcardcontainer {
+  align-self: stretch;
+  flex-direction: row;
+  color: #fff6f6;
+}
+.cardcontainer,
+.dashboard-panel {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.cardcontainer {
+  padding: 0 0 0.1px;
+  gap: 20px;
+  flex-shrink: 0;
+  font-size: 32px;
+  color: #343434;
+}
+.dashboard-panel {
+  flex: 1;
+  background-color: #f7f7f7;
+  overflow-x: auto;
+  padding: 63.2px 60px 63.1px;
+  gap: 19px;
+  text-align: left;
+  font-size: 40px;
+  color: #000;
+  font-family: Inter;
+}
+.dashboardpage {
+  width: 100%;
+  height: 1024px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  line-height: normal;
+  letter-spacing: normal;
+  row-gap: 20px;
+}
+@media screen and (max-width: 1350px) {
+  .dashboard-panel {
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+  }
+  .dashboardpage {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 1275px) {
+  .electricitycard1,
+  .foodcard,
+  .watercard1 {
+    min-height: auto;
+  }
+  .topcardcontainer {
+    flex-wrap: wrap;
+  }
+  .maintenancecard,
+  .misccard {
+    min-height: auto;
+  }
+  .label7,
+  .middlecardcontainer {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 1125px) {
+  .mobile-devices2 {
+    display: flex;
+  }
+  .electricitycard1,
+  .foodcard,
+  .watercard1 {
+    min-height: auto;
+  }
+  .topcardcontainer {
+    flex-wrap: wrap;
+  }
+  .maintenancecard,
+  .misccard {
+    min-height: auto;
+  }
+  .label7,
+  .middlecardcontainer {
+    flex-wrap: wrap;
+  }
+  .dashboard-panel {
+    padding-top: 41px;
+    padding-bottom: 41px;
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .dashboard-panel {
+    padding-top: 41px;
+    padding-bottom: 41px;
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 800px) {
+  .dashboard {
+    font-size: 32px;
+  }
+  .electricity2 {
+    font-size: 26px;
+  }
+  .electricitytotal1 {
+    font-size: 32px;
+  }
+  .electricitycard1 {
+    flex: 1;
+  }
+  .water2 {
+    font-size: 26px;
+  }
+  .watertotal1 {
+    font-size: 32px;
+  }
+  .watercard1 {
+    flex: 1;
+  }
+  .food {
+    font-size: 26px;
+  }
+  .foodtotal {
+    font-size: 32px;
+  }
+  .foodcard {
+    flex: 1;
+  }
+  .maintenance {
+    font-size: 26px;
+  }
+  .label5,
+  .maintenancetotal {
+    align-self: stretch;
+    width: auto;
+  }
+  .label5 {
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .maintenancetotal {
+    font-size: 32px;
+    flex: 1;
+  }
+  .maintenancecard {
+    flex: 1;
+  }
+  .miscellaneous {
+    font-size: 26px;
+  }
+  .label6 {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .misctotal {
+    font-size: 32px;
+  }
+  .misccard {
+    flex: 1;
+  }
+  .middlecardcontainer {
+    align-self: stretch;
+    width: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 21px;
+  }
+  .total-expenses {
+    font-size: 26px;
+  }
+  .expensestotal {
+    font-size: 32px;
+  }
+  .dashboard-panel {
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 750px) {
+  .dashboard {
+    font-size: 32px;
+  }
+  .electricity2 {
+    font-size: 26px;
+  }
+  .electricitytotal1 {
+    font-size: 32px;
+  }
+  .water2 {
+    font-size: 26px;
+  }
+  .watertotal1 {
+    font-size: 32px;
+  }
+  .food {
+    font-size: 26px;
+  }
+  .foodtotal {
+    font-size: 32px;
+  }
+  .maintenance {
+    font-size: 26px;
+  }
+  .label5 {
+    flex-wrap: wrap;
+  }
+  .maintenancetotal {
+    font-size: 32px;
+  }
+  .maintenancecard {
+    min-width: 100%;
+  }
+  .miscellaneous {
+    font-size: 26px;
+  }
+  .label6 {
+    flex-wrap: wrap;
+  }
+  .misctotal {
+    font-size: 32px;
+  }
+  .misccard {
+    min-width: 100%;
+  }
+  .total-expenses {
+    font-size: 26px;
+  }
+  .expensestotal {
+    font-size: 32px;
+  }
+  .dashboard-panel {
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 450px) {
+  .dashboard {
+    font-size: 24px;
+  }
+  .electricity2 {
+    font-size: 19px;
+  }
+  .label2 {
+    flex-wrap: wrap;
+  }
+  .electricitytotal1 {
+    font-size: 24px;
+  }
+  .water2 {
+    font-size: 19px;
+  }
+  .label3 {
+    flex-wrap: wrap;
+  }
+  .watertotal1 {
+    font-size: 24px;
+  }
+  .food {
+    font-size: 19px;
+  }
+  .label4 {
+    flex-wrap: wrap;
+  }
+  .foodtotal {
+    font-size: 24px;
+  }
+  .maintenance {
+    font-size: 19px;
+  }
+  .maintenancetotal {
+    font-size: 24px;
+  }
+  .miscellaneous {
+    font-size: 19px;
+  }
+  .misctotal {
+    font-size: 24px;
+  }
+  .total-expenses {
+    font-size: 19px;
+  }
+  .expensestotal {
+    font-size: 24px;
+  }
+  .dashboard-panel {
+    padding-top: 27px;
+    padding-bottom: 27px;
+    box-sizing: border-box;
+  }
+}

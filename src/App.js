@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Provider } from 'react-redux';
 import { store } from './Redux/store';
-
 import {
   Routes,
   Route,
@@ -19,8 +18,6 @@ import FoodPage from "./pages/food-page";
 import MaintPage from "./pages/maint-page";
 import MiscPage from "./pages/misc-page";
 import ElectricityPage from "./pages/electricity-page";
-
-axios.defaults.baseURL = "https://asia-east2-homex-dd7bb.cloudfunctions.net/api";
 
 function App() {
   const action = useNavigationType();

@@ -42,6 +42,7 @@ const ElectricityPage = () => {
   };
 
   const handleDeleteClick = (expenseId) => {
+    console.log(expenseId)
     setSelectedExpenseId(expenseId);
     setShowDeleteConfirmation(true); // Show confirmation modal on first click
   };
@@ -169,7 +170,7 @@ const refreshTable = () => {
                 expenses.map((expense) => (
                   <div className="row9" key={expense.expenseId}>
                     <div className="table-cell16">{expense.billMonth}</div>
-                    <div className="table-cell17">{expense.datePaid}</div>
+                    <div className="table-cell">{new Date(expense.datePaid).toISOString().slice(0,10)}</div>
                     <div className="table-cell18">${expense.billAmount}</div>
                     <div className="table-cell19">
                       <button
@@ -181,7 +182,7 @@ const refreshTable = () => {
                       
                       <button
                         className="delete-button4"
-                        onClick={() => handleDeleteClick(expense.expenseId)}
+                        onClick={() => handleDeleteClick(expense.expensesId)}
                         >
                         Delete
                       </button>

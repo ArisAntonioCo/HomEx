@@ -1,6 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./userSlice";
 import electricityReducer from "./electricitySlice";
+import waterReducer from "./waterSlice";
+import foodReducer from "./foodSlice";
+import maintenanceReducer from "./maintSlice";
+import miscellaneousReducer from "./miscSlice";
+
 import {
   persistStore,
   persistReducer,
@@ -21,7 +26,10 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userReducer,
   electricity: electricityReducer,
-  // other reducers
+  water: waterReducer,
+  food: foodReducer,
+  maintenance: maintenanceReducer,
+  miscellaneous: miscellaneousReducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer); 
 

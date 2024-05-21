@@ -1,19 +1,71 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "../components/sidebar";
 import Drawer from "../components/drawer";
-import AddModalMaint from '../components/popups/add-modal-maint';  // Ensure this component exists
-import EditModalMaint from '../components/popups/edit-modal-maint';  // Ensure this component exists
+import AddModalMaint from "../components/popups/add-modal-maint";
+import EditModalMaint from "../components/popups/edit-modal-maint";
+import {
+  fetchMaintenanceExpenses,
+  updateMaintenanceExpense,
+  deleteMaintenanceExpense,
+  addMaintenanceExpense,
+} from "../Redux/maintSlice"; // Assuming you have a similar slice for maintenance
 import "./maint-page.css";
 
 const MaintPage = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
+  const [selectedExpenseId, setSelectedExpenseId] = useState(null);
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
-  const toggleDrawer = () => {
-    setIsDrawerOpen(!isDrawerOpen);
+  const dispatch = useDispatch();
+  const { expenses, totalBillAmount, loading, error } = useSelector(
+    (state) => state.maintenance // Access data from maintenance slice
+  );
+
+  useEffect(() => {
+    dispatch(fetchMaintenanceExpenses()); // Fetch maintenance expenses
+  }, [dispatch, refreshKey]);
+
+  const handleEditClick = (expense) => {
+    setSelectedExpenseId(expense);
+    toggleEditModal();
   };
 
+  const handleEditExpense = (updatedExpense) => {
+    dispatch(updateMaintenanceExpense(updatedExpense));
+    setSelectedExpenseId(null);
+    refreshTable();
+  };
+
+  const handleDeleteClick = (expenseId) => {
+    setSelectedExpenseId(expenseId);
+    setShowDeleteConfirmation(true);
+  };
+
+  const handleConfirmDelete = () => {
+    if (selectedExpenseId) {
+      dispatch(deleteMaintenanceExpense(selectedExpenseId));
+      setSelectedExpenseId(null);
+      refreshTable();
+    }
+    setShowDeleteConfirmation(false);
+  };
+
+  const handleCancelDelete = () => {
+    setShowDeleteConfirmation(false);
+  };
+
+  const handleAddExpense = (newExpense) => {
+    dispatch(addMaintenanceExpense(newExpense));
+    refreshTable();
+  };
+
+  const refreshTable = () => {
+    setRefreshKey((oldKey) => oldKey + 1);
+  };
   const toggleAddModal = () => {
     setShowAddModal(!showAddModal);
   };
@@ -22,35 +74,49 @@ const MaintPage = () => {
     setShowEditModal(!showEditModal);
   };
 
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768) { // Assuming 768px as a threshold for full screen
+      if (window.innerWidth > 768) {
         setIsDrawerOpen(false);
       }
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
-
   return (
     <div className="maintpage">
       <Sidebar />
       {isDrawerOpen && <Drawer />}
-
+      
       <main className="maint-panel">
-        <header className="mobile-devices4" onClick={toggleDrawer}>
-          <div className="container10">
-            <img className="menu-icon4" loading="lazy" alt="Menu Icon" src="/menu.svg" />
+        <header className="mobile-devices3" onClick={toggleDrawer}>
+          <div className="container7">
+            <img
+              className="menu-icon3"
+              loading="lazy"
+              alt="Menu Icon"
+              src="/menu.svg"
+            />
           </div>
         </header>
-
-        <section className="container11">
+        {showDeleteConfirmation && (
+          <div className="delete-confirmation-modal">
+            <p>Are you sure you want to delete this expense?</p>
+            <button onClick={handleConfirmDelete}>Yes</button>
+            <button onClick={handleCancelDelete}>No</button>
+          </div>
+        )}
+        <section className="container8">
           <div className="maintenancecard1">
-            <div className="label9">
+            <div className="label8">
               <img
                 className="union-icon1"
                 loading="lazy"
@@ -62,72 +128,95 @@ const MaintPage = () => {
                 <div className="total17">Total $</div>
               </div>
             </div>
-            <div className="maintenancetotal1">$999</div>
+            <div className="maintenancetotal1">${totalBillAmount}</div>
           </div>
 
-          <div className="container12">
-            <div className="heading3">
-              <div className="h16">
-                <h2 className="expenses3">Expenses/</h2>
+          <div className="container9">
+            <div className="heading2">
+              <div className="h15">
+                <h2 className="expenses2">Expenses/</h2>
                 <h2 className="maintenance2">Maintenance</h2>
               </div>
-              <button className="addexbtn3" onClick={toggleAddModal}>
-                <img className="vector-icon2" alt="" src="/vector-10.svg" />
-                <div className="add-expense6">Add Expense</div>
+              <button className="addexbtn2" onClick={toggleAddModal}>
+                <img className="vector-icon1" alt="" src="/vector-10.svg" />
+                <div className="add-expense4">Add Expense</div>
               </button>
             </div>
+            
+            <div className="table2">
+              <div className="row4">
+                <div className="header-cell">
+                  <div className="service-provider">Service Provider</div>
+                </div>
+                <div className="header-cell">
+                  <div className="date-paid">Date Paid</div>
+                </div>
+                <div className="header-cell">
+                  <div className="amount">Amount</div>
+                </div>
+                <div className="header-cell">
+                  <div className="action">Action</div>
+                </div>
+              </div>
+              {/* Conditional Rendering for Table Data */}
+              {loading ? (
+                <div className="loading-indicator">Loading expenses...</div>
+              ) : error ? (
+                <div className="error-message">Error: {error.message}</div>
+              ) : (
+                // Table Rows (dynamically generated)
+                expenses.map((expense) => (
+                  <div className="row" key={expense.expenseId}>
+                    <div className="table-cell">{expense.billMonth}</div>
+                    <div className="table-cell">{new Date(expense.datePaid).toISOString().slice(0,10)}</div>
+                    <div className="table-cell">${expense.billAmount}</div>
+                    <div className="table-cell">
+                      <button
+                        className="edit-button"
+                        onClick={() => handleEditClick(expense)}
+                      >
+                        Edit
+                      </button>
 
-            <div className="table3">
-              <div className="row6">
-                <div className="header-cell12">
-                  <div className="service-provider3">Description</div>
-                </div>
-                <div className="header-cell13">
-                  <div className="date-paid3">Date Paid</div>
-                </div>
-                <div className="header-cell14">
-                  <div className="amount3">Amount</div>
-                </div>
-                <div className="header-cell15">
-                  <div className="action3">Action</div>
-                </div>
-              </div>
-              <div className="row7">
-                <div className="table-cell12">
-                  <div className="noreco3">Noreco</div>
-                </div>
-                <div className="table-cell13">
-                  <div className="sample-date3">Sample Date</div>
-                </div>
-                <div className="table-cell14">
-                  <div className="p-100003">P 10,000</div>
-                </div>
-                <div className="table-cell15">
-                  <div className="buttons3">
-                    <button className="edit-button3" onClick={toggleEditModal}>
-                      <div className="edit3">Edit</div>
-                    </button>
-                    <button className="delete-button3">
-                      <div className="delete3">Delete</div>
-                    </button>
+                      <button
+                        className="delete-button"
+                        onClick={() => {handleDeleteClick(expense.expensesId)}}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                    <div style={{ display: "none" }}>{expense.expenseId}</div>
                   </div>
-                </div>
-              </div>
+                ))
+              )}
             </div>
           </div>
         </section>
-
-        {showAddModal && (
-          <div className="modal-backdrop">
-            <AddModalMaint close={toggleAddModal} />
-          </div>
-        )}
-        {showEditModal && (
-          <div className="modal-backdrop">
-            <EditModalMaint close={toggleEditModal} />
-          </div>
-        )}
       </main>
+
+      {showAddModal && (
+        <div className="modal-backdrop">
+          <AddModalMaint
+            close={() => {
+              toggleAddModal();
+              refreshTable();
+            }}
+            onAddExpense={handleAddExpense}
+          />
+        </div>
+      )}
+      {showEditModal && (
+        <div className="modal-backdrop">
+          <EditModalMaint
+            close={() => {
+              toggleEditModal();
+              refreshTable();
+            }}
+            expense={selectedExpenseId}
+            onSave={handleEditExpense}
+          />
+        </div>
+      )}
     </div>
   );
 };

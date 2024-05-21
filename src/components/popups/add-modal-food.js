@@ -1,25 +1,57 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addFoodExpense } from '../../Redux/foodSlice'; 
 import "./add-modal-food.css";
 
-const AddModalFood = ({ close }) => {
-  const [date, setDate] = useState('');
-  
-  const formatDate = (isoDateString) => {
-    if (!isoDateString) return '';
-    const dateObj = new Date(isoDateString);
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return dateObj.toLocaleDateString('en-US', options);
+const AddModalElec = ({ close }) => {
+  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    billMonth: '',
+    datePaid: '',
+    billAmount: '',
+  });
+  const [errors, setErrors] = useState({});
+
+  // Validation Function
+  const validateForm = () => {
+    const newErrors = {};
+    if (formData.billMonth.trim() === '') {
+      newErrors.billMonth = 'Billing month is required';
+    }
+    if (formData.datePaid.trim() === '') {
+      newErrors.datePaid = 'Date paid is required';
+    }
+    if (formData.billAmount.trim() === '') {
+      newErrors.billAmount = 'Amount is required';
+    } else if (isNaN(parseFloat(formData.billAmount)) || parseFloat(formData.billAmount) <= 0) {
+      newErrors.billAmount = 'Amount must be a positive number';
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Return true if form is valid
   };
 
-  const handleDateChange = (event) => {
-    const selectedDate = event.target.value;
-    const formattedDate = formatDate(selectedDate);
-    setDate(formattedDate);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (validateForm()) {
+      // Convert datePaid to ISO 8601 format before sending to backend
+      const isoDatePaid = new Date(formData.datePaid).toISOString();
+      dispatch(addFoodExpense({ ...formData, datePaid: isoDatePaid }));
+      close(); // Close the modal after submission
+    }
+  };
+
+  const handleInputChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
   };
 
   const handleExitClick = () => {
-    close(); // Calls the function passed as a prop to close the modal
+    close();
   };
+  
 
   return (
     <div className="add-modal">
@@ -35,14 +67,46 @@ const AddModalFood = ({ close }) => {
             </div>
           </div>
           <div className="input-container">
-            <input className="item" placeholder="Name" type="text" />
+          <div className="input-container">
+            <input
+              className="item"
+              placeholder="Billing Month"
+              type="text"
+              name="billMonth" // Add the name attribute for billMonth
+              value={formData.billMonth}
+              onChange={handleInputChange}
+            />
             <div className="date4">
-              <input type="date" onChange={handleDateChange} className="date-input" />
+              <input
+                type="date"
+                className="date-input"
+                name="datePaid"
+                value={formData.datePaid}
+                onChange={handleInputChange}
+                placeholder="Enter date paid"
+              />
             </div>
-            <input className="amount4" placeholder="Amount" type="text" />
+            <input
+              className="amount4"
+              placeholder="Amount"
+              type="number" // Input type should be "number" for billAmount
+              name="billAmount"
+              value={formData.billAmount}
+              onChange={handleInputChange}
+            />
+          </div>
+
+          {/* Error Display */}
+          {Object.keys(errors).length > 0 && (
+            <div className="error-message">
+              {Object.values(errors).map((err) => (
+                <p key={err}>{err}</p>
+              ))}
+            </div>
+          )}
           </div>
         </form>
-        <button className="button2">
+        <button className="button2" type="submit" onClick={handleSubmit}>
           <img className="add-icon" alt="" src="/addicon.svg" />
           <div className="add-expense3">Add Expense</div>
         </button>
@@ -51,4 +115,4 @@ const AddModalFood = ({ close }) => {
   );
 };
 
-export default AddModalFood;
+export default AddModalElec;

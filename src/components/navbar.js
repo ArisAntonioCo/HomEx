@@ -78,8 +78,7 @@ if (storedToken) {
         ) : isAuthenticated && handle ?(
           // Logged In: Display handle and logout button
           <>
-            <span className="username">{handle}</span> 
-            <b className="logout" onClick={handleLogout}>Logout</b>
+            <b className="signup" onClick={handleLogout}>Sign Out</b>
           </>
         ) : (
           // Not Logged In: Display login and signup buttons

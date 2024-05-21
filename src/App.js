@@ -1,4 +1,7 @@
 import { useEffect } from "react";
+import { Provider } from 'react-redux';
+import { store } from './Redux/store';
+
 import {
   Routes,
   Route,
@@ -94,6 +97,8 @@ function App() {
   }, [pathname]);
 
   return (
+    <Provider store={store}>
+
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/water-page" element={<WaterPage />} />
@@ -107,6 +112,8 @@ function App() {
       <Route path="/maint-page" element={<MaintPage />} />
       <Route path="/misc-page" element={<MiscPage />} />
     </Routes>
+    </Provider>
+
   );
 }
 export default App;

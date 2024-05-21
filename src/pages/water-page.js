@@ -1,62 +1,73 @@
+import React, { useState, useEffect } from 'react';
 import Sidebar from "../components/sidebar";
+import Drawer from "../components/drawer";
+import AddModalWater from '../components/popups/add-modal-water';  // Make sure this component exists
+import EditModalWater from '../components/popups/edit-modal-water';  // Make sure this component exists
 import "./water-page.css";
 
 const WaterPage = () => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+
+  const toggleAddModal = () => setShowAddModal(!showAddModal);
+  const toggleEditModal = () => setShowEditModal(!showEditModal);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) { // Assuming 768px as a threshold for full screen
+        setIsDrawerOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div className="waterpage">
-
       <Sidebar />
+      {isDrawerOpen && <Drawer />}
 
-      {/* WATER PANEL */}
       <main className="water-panel">
-
-        {/* DRAWER FOR MOBILE DEVICES */}
-        <header className="mobile-devices">
+        <header className="mobile-devices" onClick={toggleDrawer}>
           <div className="container">
             <img className="menu-icon" loading="lazy" alt="" src="/menu.svg" />
           </div>
         </header>
 
-         {/* FOOD TOTAL CARD */}
         <section className="container1">
           <div className="watercard">
             <div className="label">
-              <img
-                className="watericon"
-                loading="lazy"
-                alt=""
-                src="/watericon@2x.png"
-              />
+              <img className="watericon" loading="lazy" alt="" src="/watericon@2x.png" />
               <h1 className="water">Water</h1>
               <div className="total">
                 <div className="total1">Total $</div>
               </div>
             </div>
-            {/* PROPERTY */}
             <div className="watertotal">$999</div>
           </div>
+
           <div className="container2">
             <div className="heading">
               <div className="h1">
                 <h2 className="expenses">Expenses/</h2>
                 <h2 className="water1">Water</h2>
               </div>
-
-               {/* ADD POPUP BUTTON */}
-              <button className="addexbtn">
-                <img
-                  className="editing-cell-icon"
-                  alt=""
-                  src="/vector-10.svg"
-                />
+              <button className="addexbtn" onClick={toggleAddModal}>
+                <img className="editing-cell-icon" alt="" src="/vector-10.svg" />
                 <div className="add-expense">Add Expense</div>
               </button>
             </div>
 
-             {/* TABLE CONTAINER */}
             <div className="table">
-
-               {/* TABLE HEADER */}
               <div className="row">
                 <div className="header-cell">
                   <div className="service-provider">Service Provider</div>
@@ -72,10 +83,7 @@ const WaterPage = () => {
                 </div>
               </div>
 
-              {/* TABLE ROW 
-                  Sample Data lng ni
-                  Pwede ra i copy ag classes sa pag add para consistent ag UI
-              */}
+              {/* Example Row (static data) */}
               <div className="row1">
                 <div className="table-cell">
                   <div className="noreco">Noreco</div>
@@ -88,26 +96,30 @@ const WaterPage = () => {
                 </div>
                 <div className="table-cell3">
                   <div className="buttons">
-
-                     {/* EDIT POPUP BUTTON */}
-                    <button className="edit-button">
+                    <button className="edit-button" onClick={toggleEditModal}>
                       <div className="edit">Edit</div>
                     </button>
-
-                    {/* DELETE BUTTON */}
                     <button className="delete-button">
                       <div className="delete">Delete</div>
                     </button>
                   </div>
                 </div>
               </div>
-              {/* END TABLE ROW
-                            */}
-
             </div>
           </div>
         </section>
       </main>
+
+      {showAddModal && (
+        <div className="modal-backdrop">
+          <AddModalWater close={toggleAddModal} />
+        </div>
+      )}
+      {showEditModal && (
+        <div className="modal-backdrop">
+          <EditModalWater close={toggleEditModal} />
+        </div>
+      )}
     </div>
   );
 };

@@ -8,13 +8,16 @@
     opacity: 1;
   }
 }
-.logo-icon1 {
+
+.logo-icon {
   width: 86px;
   height: 23px;
   position: relative;
   object-fit: contain;
+  filter: brightness(0) invert(0); /* This will turn the image black */
 }
-.logo1 {
+
+.logo {
   align-self: stretch;
   overflow: hidden;
   display: flex;
@@ -23,333 +26,129 @@
   justify-content: flex-start;
   padding: 10px;
 }
-.dashboard-icon {
+
+.homeicon, .dashicon, .contacticon {
+  height: 13.3px;
+  width: 13.3px;
+}
+
+.elecicon {
+  height: 18px;
+  width: 16px;
+}
+
+.watericon {
+  height: 16.4px;
+  width: 18px;
+}
+
+.foodicon {
   height: 18px;
   width: 18px;
-  position: relative;
-  object-fit: contain;
-  min-height: 18px;
 }
-.dashboard-icon:active {
-  border: 2px solid #fff;
-  box-sizing: border-box;
+
+.miscicon {
+  height: 16px;
+  width: 16.7px;
 }
-.home2 {
-  flex: 1;
-  position: relative;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: Inter;
-  color: #181818;
-  text-align: left;
+
+.abouticon {
+  height: 10.7px;
+  width: 13.5px;
 }
-.navlinks9 {
-  cursor: pointer;
-  border: 0;
-  padding: 14px 15px;
-  background-color: #fff;
+
+.signouticon {
+  height: 16px;
+  width: 18px;
+  object-fit: cover;
+}
+
+.navlinks {
   align-self: stretch;
   border-radius: 8px;
+  background-color: #fff;
   overflow: hidden;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  padding: 14px 15px;
   gap: 15px;
   top: 0;
   z-index: 99;
   position: sticky;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
-.vector-icon23 {
-  height: 13.3px;
-  width: 13.3px;
-  position: relative;
-  object-fit: contain;
+
+.navlinks:hover {
+  background-color: #f0f0f0;
 }
-.dashboard4 {
+
+.navlinks:focus {
+  outline: none;
+}
+
+.dashboard,
+.electricity,
+.water,
+.food,
+.maintenance,
+.miscellaneous,
+.about,
+.contact-us,
+.sign-out,
+.home {
   flex: 1;
-  position: relative;
-  font-size: 15px;
+  font-size: 14px; 
   font-weight: 600;
-  font-family: Inter;
+  font-family: 'Inter', sans-serif; 
   color: #181818;
   text-align: left;
 }
-.navlinks10 {
-  cursor: pointer;
-  border: 0;
-  padding: 14px 15px;
-  background-color: #fff;
-  align-self: stretch;
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 15px;
-}
-.vector-icon24 {
-  height: 18px;
-  width: 16px;
-  position: relative;
-  object-fit: contain;
-  min-height: 18px;
-}
-.electricity8 {
-  flex: 1;
-  position: relative;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: Inter;
-  color: #181818;
+
+.drawer {
+  width: 219px;
+  opacity:1;
+  min-height: 1064px;
+  letter-spacing: normal;
+  line-height: normal;
+  height: 100%;
+  max-width: 90%;
+  overflow: auto;
   text-align: left;
+  font-size: 14px; 
+  color: #181818; 
+  font-family: 'Inter', sans-serif; 
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background-color: white;
 }
-.navlinks11 {
-  cursor: pointer;
-  border: 0;
-  padding: 14px 15px;
-  background-color: #fff;
-  align-self: stretch;
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 15px;
+
+.drawer.animate {
+  animation: 0.25s ease 0s 1 normal forwards slide-in-left;
 }
-.vector-icon25 {
-  height: 16.4px;
-  width: 18px;
-  position: relative;
-  object-fit: contain;
-}
-.water6 {
-  flex: 1;
-  position: relative;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: Inter;
-  color: #181818;
-  text-align: left;
-}
-.navlinks12 {
-  cursor: pointer;
-  border: 0;
-  padding: 14px 15px;
-  background-color: #fff;
-  align-self: stretch;
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 15px;
-}
-.vector-icon26 {
-  height: 18px;
-  width: 18px;
-  position: relative;
-  object-fit: contain;
-  min-height: 18px;
-}
-.food6 {
-  flex: 1;
-  position: relative;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: Inter;
-  color: #181818;
-  text-align: left;
-}
-.navlinks13 {
-  cursor: pointer;
-  border: 0;
-  padding: 14px 15px;
-  background-color: #fff;
-  align-self: stretch;
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 15px;
-}
-.vector-icon27 {
-  height: 16.3px;
-  width: 16.3px;
-  position: relative;
-}
-.maintenance6 {
-  flex: 1;
-  position: relative;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: Inter;
-  color: #181818;
-  text-align: left;
-}
-.navlinks14 {
-  cursor: pointer;
-  border: 0;
-  padding: 10px 14.9px 10px 15px;
-  background-color: #fff;
-  align-self: stretch;
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 15px;
-}
-.vector-icon28 {
-  height: 16px;
-  width: 16.7px;
-  position: relative;
-  object-fit: contain;
-}
-.miscellaneous4 {
-  flex: 1;
-  position: relative;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: Inter;
-  color: #181818;
-  text-align: left;
-}
-.navlinks15 {
-  cursor: pointer;
-  border: 0;
-  padding: 14px 15px;
-  background-color: #fff;
-  align-self: stretch;
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 15px;
-}
-.vector-icon29 {
-  height: 10.7px;
-  width: 13.5px;
-  position: relative;
-  object-fit: contain;
-}
-.about2 {
-  flex: 1;
-  position: relative;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: Inter;
-  color: #181818;
-  text-align: left;
-}
-.navlinks16 {
-  cursor: pointer;
-  border: 0;
-  padding: 14px 15px;
-  background-color: #fff;
-  align-self: stretch;
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 15px;
-}
-.vector-icon30 {
-  height: 13.5px;
-  width: 13.5px;
-  position: relative;
-  object-fit: contain;
-}
-.contact-us2 {
-  flex: 1;
-  position: relative;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: Inter;
-  color: #181818;
-  text-align: left;
-}
-.navlinks17 {
-  cursor: pointer;
-  border: 0;
-  padding: 14px 15px;
-  background-color: #fff;
-  align-self: stretch;
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 15px;
-  white-space: nowrap;
-}
-.maintenance-icon {
-  height: 16px;
-  width: 18px;
-  position: relative;
-  object-fit: contain;
-}
-.sign-out1 {
-  flex: 1;
-  position: relative;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: Inter;
-  color: #181818;
-  text-align: left;
-}
-.container20,
-.signout1 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-}
-.container20 {
-  flex: 1;
-  gap: 17px;
-}
-.signout1 {
-  cursor: pointer;
-  border: 0;
-  padding: 14px 15px;
-  background-color: #fff;
-  align-self: stretch;
-  border-radius: 8px;
-  overflow: hidden;
-}
-.container19,
-.options1 {
+
+.container,
+.options {
   align-self: stretch;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
 }
-.container19 {
-  gap: 20px;
+
+.container {
+  gap: 5px;
 }
-.drawer {
-  width: 269px;
-  opacity: 0;
-  min-height: 532px;
-  line-height: normal;
-  letter-spacing: normal;
-  height: 100%;
-  max-width: 90%;
-  overflow: auto;
-}
-.drawer.animate {
-  animation: 0.25s ease 0s 1 normal forwards slide-in-left;
+
+/* Ensuring no black borders on hover, focus, or active states */
+.navlinks, .navlinks * {
+  border: none;
+  outline: none;
+  box-shadow: none;
 }

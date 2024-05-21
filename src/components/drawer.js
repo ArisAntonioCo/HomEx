@@ -1,10 +1,9 @@
-import { useCallback, useEffect } from "react";
-import {} from "@mui/material";
+import { useEffect } from "react";
+import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "./drawer.css";
 
 const Drawer = ({ onClose }) => {
-  const navigate = useNavigate();
   useEffect(() => {
     const scrollAnimElements = document.querySelectorAll(
       "[data-animate-on-scroll]"
@@ -35,81 +34,105 @@ const Drawer = ({ onClose }) => {
     };
   }, []);
 
-  const onNavlinksClick = useCallback(() => {
+  const navigate = useNavigate();
+  
+  const onNavlinksContainerClick = useCallback(() => {
     navigate("/");
+  }, [navigate]);
+
+  const onNavlinksContainer1Click = useCallback(() => {
+    navigate("/dashboard-page");
+  }, [navigate]);
+
+  const onNavlinksContainer2Click = useCallback(() => {
+    navigate("/electricity-page");
+  }, [navigate]);
+
+  const onNavlinksContainer3Click = useCallback(() => {
+    navigate("/water-page");
+  }, [navigate]);
+
+  const onNavlinksContainer4Click = useCallback(() => {
+    navigate("/food-page");
+  }, [navigate]);
+
+  const onNavlinksContainer5Click = useCallback(() => {
+    navigate("/maint-page");
+  }, [navigate]);
+
+  const onNavlinksContainer6Click = useCallback(() => {
+    navigate("/misc-page");
+  }, [navigate]);
+
+  const onNavlinksContainer7Click = useCallback(() => {
+    navigate("/about-page");
   }, [navigate]);
 
   return (
     <div className="drawer" data-animate-on-scroll>
-      <section className="container19">
-        <div className="logo1">
-          <img
-            className="logo-icon1"
-            loading="lazy"
-            alt=""
-            src="/logo2@2x.png"
-          />
+      <div className="container">
+        <div className="logo">
+          <img className="logo-icon" alt="" src="/logo@2x.png" />
         </div>
-        <div className="options1">
-          <button className="navlinks9" onClick={onNavlinksClick}>
-            <img
-              className="dashboard-icon"
-              loading="lazy"
-              alt=""
-              src="/vector2@2x.png"
-            />
-            <div className="home2">Home</div>
+        <div className="options">
+
+          {/*HOME BUTTON*/}
+          <button className="navlinks" onClick={onNavlinksContainerClick}>
+            <img className="homeicon" alt="" src="/vector@2x.png" />
+            <div className="home">Home</div>
           </button>
-          <button className="navlinks10">
-            <img className="vector-icon23" alt="" src="/vector-11@2x.png" />
-            <div className="dashboard4">Dashboard</div>
+
+          {/*DASHBOARD BUTTON*/}
+          <button className="navlinks" onClick={onNavlinksContainer1Click}>
+            <img className="dashicon" alt="" src="/vector-1@2x.png" />
+            <div className="dashboard">Dashboard</div>
           </button>
-          <button className="navlinks11">
-            <img className="vector-icon24" alt="" src="/vector-21@2x.png" />
-            <div className="electricity8">Electricity</div>
+
+          {/*ELECTRICITY BUTTON*/}
+          <button className="navlinks" onClick={onNavlinksContainer2Click}>
+            <img className="elecicon" alt="" src="/vector-2@2x.png" />
+            <div className="electricity">Electricity</div>
           </button>
-          <button className="navlinks12">
-            <img className="vector-icon25" alt="" src="/vector-32@2x.png" />
-            <div className="water6">Water</div>
+
+          {/*WATER BUTTON*/}
+          <button className="navlinks" onClick={onNavlinksContainer3Click}>
+            <img className="watericon" alt="" src="/vector-3@2x.png" />
+            <div className="water">Water</div>
           </button>
-          <button className="navlinks13">
-            <img className="vector-icon26" alt="" src="/vector-41@2x.png" />
-            <div className="food6">Food</div>
+
+          {/*FOOD BUTTON*/}
+          <button className="navlinks" onClick={onNavlinksContainer4Click}>
+            <img className="foodicon" alt="" src="/vector-4@2x.png" />
+            <div className="food">Food</div>
           </button>
-          <button className="navlinks14">
-            <img className="vector-icon27" loading="lazy" alt="" />
-            <div className="maintenance6">Maintenance</div>
+
+          {/*MAINTENANCE BUTTON*/}
+          <button className="navlinks" onClick={onNavlinksContainer5Click}>
+            <img className="mainticon" alt="" src="/vector-5.svg" />
+            <div className="maintenance">Maintenance</div>
           </button>
-          <button className="navlinks15">
-            <img
-              className="vector-icon28"
-              loading="lazy"
-              alt=""
-              src="/vector-61@2x.png"
-            />
-            <div className="miscellaneous4">Miscellaneous</div>
+
+          {/*MISC BUTTON*/}
+          <button className="navlinks" onClick={onNavlinksContainer6Click}>
+            <img className="miscicon" alt="" src="/vector-6@2x.png" />
+            <div className="miscellaneous">Miscellaneous</div>
           </button>
-          <button className="navlinks16">
-            <img className="vector-icon29" alt="" src="/vector-71@2x.png" />
-            <div className="about2">About</div>
+
+          {/*ABOUT BUTTON*/}
+          <button className="navlinks" onClick={onNavlinksContainer7Click}>
+            <img className="abouticon" alt="" src="/vector-7@2x.png" />
+            <div className="about">About</div>
           </button>
-          <button className="navlinks17">
-            <img className="vector-icon30" alt="" src="/vector-81@2x.png" />
-            <div className="contact-us2">Contact us</div>
+
+
+          {/*SIGN OUT BUTTON*/}
+          <button className="navlinks">
+            <img className="signouticon" alt="" src="/vector-9@2x.png" />
+            <div className="sign-out">Sign out</div>
           </button>
-          <button className="signout1">
-            <div className="container20">
-              <img
-                className="maintenance-icon"
-                loading="lazy"
-                alt=""
-                src="/vector-91@2x.png"
-              />
-              <div className="sign-out1">Sign out</div>
-            </div>
-          </button>
+
         </div>
-      </section>
+      </div>
     </div>
   );
 };

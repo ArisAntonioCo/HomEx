@@ -1,16 +1,19 @@
-import { useMemo } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCallback } from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutUser, getUserData } from "../Redux/userSlice";
 import "./navbar.css";
 
-const Navbar = () => {
-  const navigate = useNavigate();
+const Navbar = ({ scrollToContact }) => {
+  const { loading, isAuthenticated } = useSelector((state) => state.user);
+  const handle = useSelector((state) => state.user.credentials?.handle);
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const onLogoClick = useCallback(() => {
     navigate("/");
   }, [navigate]);
-
 
   const onLoginTextClick = useCallback(() => {
     navigate("/login-page");
@@ -20,11 +23,24 @@ const Navbar = () => {
     navigate("/signup-page");
   }, [navigate]);
 
+  // Check authentication status on initial render
+  useEffect(() => {
+    console.log("useEffect triggered"); // This log should appear in the console
+    const storedToken = localStorage.getItem("token");
+    console.log("Stored token:", storedToken); // Log the stored token
+if (storedToken) {
+  dispatch(getUserData(storedToken));
+}
+  }, [dispatch]); 
+
+  const handleLogout = useCallback(() => {
+    dispatch(logoutUser());
+    navigate("/login-page");
+  }, [dispatch, navigate]);
+
   return (
     <header className="navbar">
-      
-      {/* LOGO */}
-      <div className="container20" >
+      <div className="container20">
         <div className="left-frame" onClick={onLogoClick}>
           <img
             className="vector-icon14"
@@ -34,40 +50,49 @@ const Navbar = () => {
           />
         </div>
 
-
         <nav className="links">
-
           {/* ABOUT US LINK */}
-          <Link
-            className="about-us1"
-            to="/about-page"
-          >
+          <Link className="about-us1" to="/about-page">
             About us
           </Link>
 
-          {/* Pwede ni sya mu auto scroll padulong
-          sa footer kay naa didto ato contacts */}
-          <a className="contact">
+          {/* CONTACT LINK - Updated to a div for scroll functionality */}
+          <div
+            className="contact"
+            onClick={scrollToContact}
+            style={{ cursor: "pointer" }}
+          >
             Contact
-          </a>
+          </div>
 
-         {/* FAQ LINK */}
-          <Link 
-            className="faq"
-            to="/faq-page">
+          {/* FAQ LINK */}
+          <Link className="faq" to="/faq-page">
             FAQ
           </Link>
-          
         </nav>
 
         <div className="right-frame">
-          <b className="login2" onClick={onLoginTextClick}>
-            Login
-          </b>
-          <button className="button3" onClick={onButtonClick}>
-            <div className="sign-up2">Sign up</div>
-          </button>
-        </div>
+        {loading ? (
+          // Loading Indicator
+          <div>Loading...</div> 
+        ) : isAuthenticated && handle ?(
+          // Logged In: Display handle and logout button
+          <>
+            <span className="username">{handle}</span> 
+            <b className="logout" onClick={handleLogout}>Logout</b>
+          </>
+        ) : (
+          // Not Logged In: Display login and signup buttons
+          <>
+            <b className="login2" onClick={onLoginTextClick}>
+                Login
+              </b>
+              <button className="signup" onClick={onButtonClick}>
+                <div className="sign-up2">Sign up</div>
+              </button>
+          </>
+        )}
+      </div>
       </div>
     </header>
   );

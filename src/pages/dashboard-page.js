@@ -1,14 +1,37 @@
+import React, { useState, useEffect } from "react";
 import Sidebar from "../components/sidebar";
+import Drawer from "../components/drawer";
 import "./dashboard-page.css";
 
 const DashboardPage = () => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) { // Assuming 768px as a threshold for full screen
+        setIsDrawerOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div className="dashboardpage">
       <Sidebar />
+      {isDrawerOpen && <Drawer />}
       <main className="dashboard-panel">
-        <div className="mobile-devices2">
+        <div className="mobile-devices2" onClick={toggleDrawer}>
           <div className="container6">
-            <img className="menu-icon2" loading="lazy" alt="" src="/menu.svg" />
+            <img className="menu-icon2" loading="lazy" alt="Menu Icon" src="/menu.svg" />
           </div>
         </div>
         <div className="headingcontainer">
@@ -25,12 +48,7 @@ const DashboardPage = () => {
           <div className="topcardcontainer">
             <div className="electricitycard1">
               <div className="label2">
-                <img
-                  className="electricityicon1"
-                  loading="lazy"
-                  alt=""
-                  src="/electricityicon1@2x.png"
-                />
+                <img className="electricityicon1" loading="lazy" alt="" src="/electricityicon1@2x.png" />
                 <h1 className="electricity2">Electricity</h1>
                 <div className="total4">
                   <div className="total5">Total $</div>
@@ -40,12 +58,7 @@ const DashboardPage = () => {
             </div>
             <div className="watercard1">
               <div className="label3">
-                <img
-                  className="watericon1"
-                  loading="lazy"
-                  alt=""
-                  src="/watericon1@2x.png"
-                />
+                <img className="watericon1" loading="lazy" alt="" src="/watericon1@2x.png" />
                 <h1 className="water2">Water</h1>
                 <div className="total6">
                   <div className="total7">Total $</div>
@@ -55,12 +68,7 @@ const DashboardPage = () => {
             </div>
             <div className="foodcard">
               <div className="label4">
-                <img
-                  className="foodicon"
-                  loading="lazy"
-                  alt=""
-                  src="/foodicon@2x.png"
-                />
+                <img className="foodicon" loading="lazy" alt="" src="/foodicon@2x.png" />
                 <h1 className="food">Food</h1>
                 <div className="total8">
                   <div className="total9">Total $</div>
@@ -72,12 +80,7 @@ const DashboardPage = () => {
           <div className="middlecardcontainer">
             <div className="maintenancecard">
               <div className="label5">
-                <img
-                  className="union-icon"
-                  loading="lazy"
-                  alt=""
-                  src="/union@2x.png"
-                />
+                <img className="union-icon" loading="lazy" alt="" src="/union@2x.png" />
                 <h1 className="maintenance">Maintenance</h1>
                 <div className="total10">
                   <div className="total11">Total $</div>
@@ -87,12 +90,7 @@ const DashboardPage = () => {
             </div>
             <div className="misccard">
               <div className="label6">
-                <img
-                  className="miscicon"
-                  loading="lazy"
-                  alt=""
-                  src="/miscicon@2x.png"
-                />
+                <img className="miscicon" loading="lazy" alt="" src="/miscicon@2x.png" />
                 <h1 className="miscellaneous">Miscellaneous</h1>
                 <div className="total12">
                   <div className="total13">Total $</div>
@@ -105,12 +103,7 @@ const DashboardPage = () => {
             <div className="totalexpensescard">
               <div className="label7">
                 <h1 className="total-expenses">Total Expenses</h1>
-                <img
-                  className="expensesicon"
-                  loading="lazy"
-                  alt=""
-                  src="/expensesicon@2x.png"
-                />
+                <img className="expensesicon" loading="lazy" alt="" src="/expensesicon@2x.png" />
               </div>
               <div className="expensestotal">$999</div>
             </div>

@@ -64,6 +64,7 @@ const AddModalElec = ({ close }) => {
               <div className="add-expense2">Add Expense</div>
               <div className="expense">Electricity</div>
             </div>
+
             <div
               className="icon"
               style={{ cursor: "pointer" }}
@@ -75,7 +76,9 @@ const AddModalElec = ({ close }) => {
               <img className="exit-icon" alt="Close modal" src="/exit1.svg" />
             </div>
           </div>
+
           <div className="input-container">
+            
             <input
               className="item"
               placeholder="Billing Month"
@@ -84,6 +87,7 @@ const AddModalElec = ({ close }) => {
               value={formData.billMonth}
               onChange={handleInputChange}
             />
+
             <div className="date4">
               <input
                 type="date"
@@ -94,6 +98,7 @@ const AddModalElec = ({ close }) => {
                 placeholder="Enter date paid"
               />
             </div>
+
             <input
               className="amount4"
               placeholder="Amount"
@@ -103,6 +108,7 @@ const AddModalElec = ({ close }) => {
               onChange={handleInputChange}
             />
           </div>
+
 
           {/* Error Display */}
           {Object.keys(errors).length > 0 && (

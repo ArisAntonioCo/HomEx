@@ -134,6 +134,13 @@ const Sidebar = () => {
           <img className="vector-icon11" alt="" src="/vector-7@2x.png" />
           <div className="about">About</div>
         </div>
+
+        {/* CONTACT BUTTON */}
+        <div className="navlinks">
+          <img className="vector-icon12" alt="" src="/vector-8@2x.png" />
+          <div className="contact-us">Contact us</div>
+        </div>
+        
       </div>
 
       {/* SIGN OUT BUTTON */}

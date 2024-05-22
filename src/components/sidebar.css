@@ -1,3 +1,5 @@
+
+
 .logo-icon {
   width: 100%;
   height: 34px;
@@ -234,6 +236,8 @@
   padding: 14px 20px;
 }
 .sidebar {
+  position: sticky;
+  top: 0;
   height: 100vh;
   width: 269px;
   box-sizing: border-box;

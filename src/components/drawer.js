@@ -88,6 +88,10 @@ const Drawer = ({ onClose }) => {
             <div className="dashboard">Dashboard</div>
           </button>
 
+          <div className="text">
+            <div className="expenses5">EXPENSES</div>
+          </div>
+        
           {/*ELECTRICITY BUTTON*/}
           <button className="navlinks" onClick={onNavlinksContainer2Click}>
             <img className="elecicon" alt="" src="/vector-2@2x.png" />
@@ -117,6 +121,10 @@ const Drawer = ({ onClose }) => {
             <img className="miscicon" alt="" src="/vector-6@2x.png" />
             <div className="miscellaneous">Miscellaneous</div>
           </button>
+
+          <div className="text1">
+          <div className="information">INFORMATION</div>
+          </div>
 
           {/*ABOUT BUTTON*/}
           <button className="navlinks" onClick={onNavlinksContainer7Click}>

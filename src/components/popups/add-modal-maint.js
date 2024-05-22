@@ -62,7 +62,7 @@ const AddModalElec = ({ close }) => {
           <div className="top-frame">
             <div className="h1">
               <div className="add-expense2">Add Expense</div>
-              <div className="expense">Expense</div>
+              <div className="expense">Maintenance</div>
             </div>
             <div
               className="icon"

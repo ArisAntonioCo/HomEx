@@ -103,7 +103,7 @@
 .sign-out,
 .home {
   flex: 1;
-  font-size: 14px; 
+  font-size: 14px !important; /* Add !important to ensure this rule has higher specificity */
   font-weight: 600;
   font-family: 'Inter', sans-serif; 
   color: #181818;
@@ -127,8 +127,11 @@
   outline: none;
   box-shadow: none;
   background-color: white;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  box-sizing: border-box; /* Add this line */
 }
-
 .drawer.animate {
   animation: 0.25s ease 0s 1 normal forwards slide-in-left;
 }
@@ -152,3 +155,4 @@
   outline: none;
   box-shadow: none;
 }
+

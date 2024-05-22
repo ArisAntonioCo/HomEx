@@ -93,7 +93,7 @@ const EditModalMaint = ({ close, expense }) => {
           <div className="top-frame">
             <div className="h1">
               <div className="add-expense2">Edit Expense</div>
-              <div className="expense">Expense</div>
+              <div className="expense">Maintenance</div>
             </div>
             <div
               className="icon"

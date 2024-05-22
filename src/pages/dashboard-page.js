@@ -86,6 +86,7 @@ const DashboardPage = () => {
   return (
     <div className="dashboardpage">
       <Sidebar />
+      
       {isDrawerOpen && <Drawer />}
       <main className="dashboard-panel">
         <div className="mobile-devices2" onClick={toggleDrawer}>
@@ -162,7 +163,7 @@ const DashboardPage = () => {
                   alt=""
                   src="/foodicon@2x.png"
                 />
-                <h1 className="food">Food</h1>
+                <h1 className="electricity2">Food</h1>
                 <div className="total8">
                   <div className="total9">Total $</div>
                 </div>
@@ -185,7 +186,7 @@ const DashboardPage = () => {
                   alt=""
                   src="/union@2x.png"
                 />
-                <h1 className="maintenance">Maintenance</h1>
+                <h1 className="electricity2">Maintenance</h1>
                 <div className="total10">
                   <div className="total11">Total $</div>
                 </div>
@@ -208,7 +209,7 @@ const DashboardPage = () => {
                   alt=""
                   src="/miscicon@2x.png"
                 />
-                <h1 className="miscellaneous">Miscellaneous</h1>
+                <h1 className="electricity2">Miscellaneous</h1>
                 <div className="total12">
                   <div className="total13">Total $</div>
                 </div>

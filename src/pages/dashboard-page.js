@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "../components/sidebar";
 import Drawer from "../components/drawer";
@@ -8,8 +8,32 @@ import { fetchWaterExpenses } from "../Redux/waterSlice";
 import { fetchMaintenanceExpenses } from "../Redux/maintSlice";
 import { fetchFoodExpenses } from "../Redux/foodSlice";
 import { fetchMiscellaneousExpenses } from "../Redux/miscSlice";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const DashboardPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const successMessage = location.state?.successMessage;
+  const [open, setOpen] = useState(false);
+  const [hasShown, setHasShown] = useState(false);
+
+  // Modify this useEffect
+  useEffect(() => {
+    if (successMessage && !hasShown) {
+      setOpen(true);
+      setHasShown(true);
+    }
+  }, [successMessage, hasShown]);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const dispatch = useDispatch();
 
@@ -51,7 +75,7 @@ const DashboardPage = () => {
 
   const calculateTotalExpenses = () => {
     let total = 0;
-    
+
     // Convert totals to numbers, using 0 as the default if not a number
     const elecTotal = parseFloat(electricityTotal) || 0;
     const watTotal = parseFloat(waterTotal) || 0; // Changed variable name
@@ -62,18 +86,15 @@ const DashboardPage = () => {
     total = elecTotal + watTotal + fdTotal + maintTotal + miscTotal;
 
     return total.toFixed(2); // Now total is guaranteed to be a number
-};
+  };
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
-
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768) {
-        // Assuming 768px as a threshold for full screen
-        setIsDrawerOpen(false);
-      }
+      setWindowWidth(window.innerWidth);
     };
 
     window.addEventListener("resize", handleResize);
@@ -83,11 +104,44 @@ const DashboardPage = () => {
     };
   }, []);
 
+  const onNavlinksContainer2Click = useCallback(() => {
+    navigate("/electricity-page");
+  }, [navigate]);
+
+  const onNavlinksContainer3Click = useCallback(() => {
+    navigate("/water-page");
+  }, [navigate]);
+
+  const onNavlinksContainer4Click = useCallback(() => {
+    navigate("/food-page");
+  }, [navigate]);
+
+  const onNavlinksContainer5Click = useCallback(() => {
+    navigate("/maint-page");
+  }, [navigate]);
+
+  const onNavlinksContainer6Click = useCallback(() => {
+    navigate("/misc-page");
+  }, [navigate]);
+
   return (
     <div className="dashboardpage">
-      <Sidebar />
-      
-      {isDrawerOpen && <Drawer />}
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      >
+        <MuiAlert
+          onClose={handleClose}
+          severity="success"
+          elevation={6}
+          variant="filled"
+        >
+          {successMessage}
+        </MuiAlert>
+      </Snackbar>
+      {windowWidth > 768 ? <Sidebar /> : isDrawerOpen && <Drawer />}
       <main className="dashboard-panel">
         <div className="mobile-devices2" onClick={toggleDrawer}>
           <div className="container6">
@@ -119,7 +173,13 @@ const DashboardPage = () => {
                   alt=""
                   src="/electricityicon1@2x.png"
                 />
-                <h1 className="electricity2">Electricity</h1>
+                <h1
+                  className="electricity2"
+                  onClick={onNavlinksContainer2Click}
+                  style={{ cursor: "pointer" }}
+                >
+                  Electricity
+                </h1>{" "}
                 <div className="total8">
                   <div className="total9">Total $</div>
                 </div>
@@ -142,7 +202,13 @@ const DashboardPage = () => {
                   alt=""
                   src="/watericon1@2x.png"
                 />
-                <h1 className="water2">Water</h1>
+                <h1
+                  className="electricity2"
+                  onClick={onNavlinksContainer3Click}
+                  style={{ cursor: "pointer" }}
+                >
+                  Water
+                </h1>{" "}
                 <div className="total6">
                   <div className="total7">Total $</div>
                 </div>
@@ -163,7 +229,13 @@ const DashboardPage = () => {
                   alt=""
                   src="/foodicon@2x.png"
                 />
-                <h1 className="electricity2">Food</h1>
+                <h1
+                  className="electricity2"
+                  onClick={onNavlinksContainer4Click}
+                  style={{ cursor: "pointer" }}
+                >
+                  Food
+                </h1>{" "}
                 <div className="total8">
                   <div className="total9">Total $</div>
                 </div>
@@ -186,7 +258,13 @@ const DashboardPage = () => {
                   alt=""
                   src="/union@2x.png"
                 />
-                <h1 className="electricity2">Maintenance</h1>
+                <h1
+                  className="electricity2"
+                  onClick={onNavlinksContainer5Click}
+                  style={{ cursor: "pointer" }}
+                >
+                  Maintenance
+                </h1>{" "}
                 <div className="total10">
                   <div className="total11">Total $</div>
                 </div>
@@ -209,7 +287,13 @@ const DashboardPage = () => {
                   alt=""
                   src="/miscicon@2x.png"
                 />
-                <h1 className="electricity2">Miscellaneous</h1>
+                <h1
+                  className="electricity2"
+                  onClick={onNavlinksContainer6Click}
+                  style={{ cursor: "pointer" }}
+                >
+                  Miscellaneous
+                </h1>{" "}
                 <div className="total12">
                   <div className="total13">Total $</div>
                 </div>
@@ -217,7 +301,9 @@ const DashboardPage = () => {
               {miscellaneousLoading ? (
                 <div className="misctotal">Loading...</div>
               ) : miscellaneousError ? (
-                <div className="misctotal">Error: {miscellaneousError.message}</div>
+                <div className="misctotal">
+                  Error: {miscellaneousError.message}
+                </div>
               ) : (
                 <div className="misctotal">${miscellaneousTotal}</div>
               )}

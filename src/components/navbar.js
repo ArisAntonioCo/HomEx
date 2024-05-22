@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logoutUser, getUserData } from "../Redux/userSlice";
+import { getUserData } from "../Redux/userSlice";
 import "./navbar.css";
 
 const Navbar = ({ scrollToContact }) => {

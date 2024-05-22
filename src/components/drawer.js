@@ -1,9 +1,15 @@
-import { useEffect } from "react";
-import { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./drawer.css";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutUser, getUserData } from "../Redux/userSlice";
 
 const Drawer = ({ onClose }) => {
+  const handle = useSelector((state) => state.user.credentials?.handle);
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const scrollAnimElements = document.querySelectorAll(
       "[data-animate-on-scroll]"
@@ -34,7 +40,20 @@ const Drawer = ({ onClose }) => {
     };
   }, []);
 
-  const navigate = useNavigate();
+  // Authentication Check (useEffect for initial rendering)
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      dispatch(getUserData(storedToken));
+    }
+  }, [dispatch]);
+
+  const handleLogout = useCallback(() => {
+    dispatch(logoutUser());
+    navigate("/login-page");
+  }, [dispatch, navigate]);
+
+  
   
   const onNavlinksContainerClick = useCallback(() => {
     navigate("/");
@@ -69,79 +88,93 @@ const Drawer = ({ onClose }) => {
   }, [navigate]);
 
   return (
-    <div className="drawer" data-animate-on-scroll>
-      <div className="container">
-        <div className="logo">
-          <img className="logo-icon" alt="" src="/logo@2x.png" />
-        </div>
-        <div className="options">
+    <div className="sidebar" data-animate-on-scroll>
+    <div className="logo"  onClick={onNavlinksContainerClick} style={{ cursor: "pointer" }}>
+    <img
+          className="vector-icon14"
+          loading="lazy"
+          alt=""
+          src="/vector.svg"
+        />
+    </div>
+    <div className="options">
 
-          {/*HOME BUTTON*/}
-          <button className="navlinks" onClick={onNavlinksContainerClick}>
-            <img className="homeicon" alt="" src="/vector@2x.png" />
-            <div className="home">Home</div>
-          </button>
+      {/* HOME BUTTON */}
+      <div className="navlinks" onClick={onNavlinksContainerClick}>
+        <img className="vector-icon4" alt="" src="/vector@2x.png" />
+        <div className="home">Home</div>
+      </div>
 
-          {/*DASHBOARD BUTTON*/}
-          <button className="navlinks" onClick={onNavlinksContainer1Click}>
-            <img className="dashicon" alt="" src="/vector-1@2x.png" />
-            <div className="dashboard">Dashboard</div>
-          </button>
+      {/* DASHBOARD BUTTON */}
+      <div className="navlinks" onClick={onNavlinksContainer1Click}>
+        <img className="vector-icon5" alt="" src="/vector-1@2x.png" />
+        <div className="dashboard1">Dashboard</div>
+      </div>
 
-          <div className="text">
-            <div className="expenses5">EXPENSES</div>
-          </div>
-        
-          {/*ELECTRICITY BUTTON*/}
-          <button className="navlinks" onClick={onNavlinksContainer2Click}>
-            <img className="elecicon" alt="" src="/vector-2@2x.png" />
-            <div className="electricity">Electricity</div>
-          </button>
+      <div className="text">
+        <div className="expenses5">EXPENSES</div>
+      </div>
 
-          {/*WATER BUTTON*/}
-          <button className="navlinks" onClick={onNavlinksContainer3Click}>
-            <img className="watericon" alt="" src="/vector-3@2x.png" />
-            <div className="water">Water</div>
-          </button>
+      {/* ELECTRICITY BUTTON */}
+      <div className="navlinks" onClick={onNavlinksContainer2Click}>
+        <img className="vector-icon6" alt="" src="/vector-2@2x.png" />
+        <div className="electricity5">Electricity</div>
+      </div>
 
-          {/*FOOD BUTTON*/}
-          <button className="navlinks" onClick={onNavlinksContainer4Click}>
-            <img className="foodicon" alt="" src="/vector-4@2x.png" />
-            <div className="food">Food</div>
-          </button>
+      {/* WATER BUTTON */}
+      <div className="navlinks" onClick={onNavlinksContainer3Click}>
+        <img className="vector-icon7" alt="" src="/vector-3@2x.png" />
+        <div className="water3">Water</div>
+      </div>
 
-          {/*MAINTENANCE BUTTON*/}
-          <button className="navlinks" onClick={onNavlinksContainer5Click}>
-            <img className="mainticon" alt="" src="/vector-5.svg" />
-            <div className="maintenance">Maintenance</div>
-          </button>
+      {/* FOOD BUTTON */}
+      <div className="navlinks" onClick={onNavlinksContainer4Click}>
+        <img className="vector-icon8" alt="" src="/vector-4@2x.png" />
+        <div className="food3">Food</div>
+      </div>
 
-          {/*MISC BUTTON*/}
-          <button className="navlinks" onClick={onNavlinksContainer6Click}>
-            <img className="miscicon" alt="" src="/vector-6@2x.png" />
-            <div className="miscellaneous">Miscellaneous</div>
-          </button>
+      {/* MAINTENANCE BUTTON*/}
+      <div className="navlinks" onClick={onNavlinksContainer5Click}>
+        <img
+          className="vector-icon9"
+          loading="lazy"
+          alt=""
+          src="/vector-5.svg"
+        />
+        <div className="maintenance3">Maintenance</div>
+      </div>
 
-          <div className="text1">
-          <div className="information">INFORMATION</div>
-          </div>
+      {/* MISC BUTTON */}
+      <div className="navlinks" onClick={onNavlinksContainer6Click}>
+        <img
+          className="vector-icon10"
+          loading="lazy"
+          alt=""
+          src="/vector-6@2x.png"
+        />
+        <div className="miscellaneous1">Miscellaneous</div>
+      </div>
 
-          {/*ABOUT BUTTON*/}
-          <button className="navlinks" onClick={onNavlinksContainer7Click}>
-            <img className="abouticon" alt="" src="/vector-7@2x.png" />
-            <div className="about">About</div>
-          </button>
+      <div className="text1">
+        <div className="information">INFORMATION</div>
+      </div>
 
+      {/* ABOUT BUTTON*/}
+      <div className="navlinks" onClick={onNavlinksContainer7Click}>
+        <img className="vector-icon11" alt="" src="/vector-7@2x.png" />
+        <div className="about">About</div>
+      </div>
 
-          {/*SIGN OUT BUTTON*/}
-          <button className="navlinks">
-            <img className="signouticon" alt="" src="/vector-9@2x.png" />
-            <div className="sign-out">Sign out</div>
-          </button>
+    </div>
 
-        </div>
+    {/* SIGN OUT BUTTON */}
+    <div className="navlinks" onClick={handleLogout}>
+      <div className="container18">
+        <img className="vector-icon13" alt="" src="/vector-9@2x.png" />
+        <div className="sign-out">Sign out</div>
       </div>
     </div>
+  </div>
   );
 };
 

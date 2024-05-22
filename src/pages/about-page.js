@@ -23,7 +23,7 @@ const AboutPage = () => {
       
       <section className="section">
         <div className="textcontainer">
-          <img className="icon" loading="lazy" alt="" src="/Quot.svg" />
+          <img className="icon" loading="lazy" alt="" src="/quot.png" />
           <h1 className="tracking-home-expenses-container">
             <span className="tracking-home-expenses">"Tracking home expenses isn't just about numbers; it's about </span>
             <b>understanding the heartbeat of your household</b>

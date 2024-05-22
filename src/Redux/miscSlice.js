@@ -1,36 +1,43 @@
 // miscellaneousSlice.js
 
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-import config from '../config'; 
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+import config from "../config";
 
 // Async Thunks
 
 // Fetch all miscellaneous expenses
 export const fetchMiscellaneousExpenses = createAsyncThunk(
-  'miscellaneous/fetchMiscellaneousExpenses', 
+  "miscellaneous/fetchMiscellaneousExpenses",
   async (_, thunkAPI) => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.get(`${config.apiUrl}/miscellaneous-expenses`, {
-        headers: { Authorization: `Bearer ${token}` } 
-      });
-      return response.data; 
+      const token = localStorage.getItem("token");
+      const response = await axios.get(
+        `${config.apiUrl}/miscellaneous-expenses`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data); 
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   }
 );
 
 // Add a new miscellaneous expense
 export const addMiscellaneousExpense = createAsyncThunk(
-  'miscellaneous/addMiscellaneousExpense',
+  "miscellaneous/addMiscellaneousExpense",
   async (expenseData, thunkAPI) => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.post(`${config.apiUrl}/miscellaneous`, expenseData, {
-        headers: { Authorization: `Bearer ${token}` } 
-      });
+      const token = localStorage.getItem("token");
+      const response = await axios.post(
+        `${config.apiUrl}/miscellaneous`,
+        expenseData,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -40,13 +47,17 @@ export const addMiscellaneousExpense = createAsyncThunk(
 
 // Update an existing miscellaneous expense
 export const updateMiscellaneousExpense = createAsyncThunk(
-  'miscellaneous/updateMiscellaneousExpense',
+  "miscellaneous/updateMiscellaneousExpense",
   async ({ expenseId, updatedData }, thunkAPI) => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.put(`${config.apiUrl}/miscellaneous/${expenseId}`, updatedData, {
-        headers: { Authorization: `Bearer ${token}` } 
-      });
+      const token = localStorage.getItem("token");
+      const response = await axios.put(
+        `${config.apiUrl}/miscellaneous/${expenseId}`,
+        updatedData,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -56,12 +67,12 @@ export const updateMiscellaneousExpense = createAsyncThunk(
 
 // Delete an miscellaneous expense
 export const deleteMiscellaneousExpense = createAsyncThunk(
-  'miscellaneous/deleteMiscellaneousExpense',
+  "miscellaneous/deleteMiscellaneousExpense",
   async (expenseId, thunkAPI) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       await axios.delete(`${config.apiUrl}/miscellaneous/${expenseId}`, {
-        headers: { Authorization: `Bearer ${token}` } 
+        headers: { Authorization: `Bearer ${token}` },
       });
       return expenseId; // Return the expenseId to update the state
     } catch (error) {
@@ -72,7 +83,7 @@ export const deleteMiscellaneousExpense = createAsyncThunk(
 
 // Slice Definition
 const miscellaneousSlice = createSlice({
-  name: 'miscellaneous',
+  name: "miscellaneous",
   initialState: {
     expenses: [],
     totalBillAmount: 0,
@@ -101,22 +112,28 @@ const miscellaneousSlice = createSlice({
 
       // Add a new miscellaneous expense
       .addCase(addMiscellaneousExpense.fulfilled, (state, action) => {
-        state.expenses.push(action.payload.miscellaneousExpenseId);
+        state.expenses.push(action.payload);
       })
 
       // Update an existing miscellaneous expense
       .addCase(updateMiscellaneousExpense.fulfilled, (state, action) => {
         const index = state.expenses.findIndex(
-          (expense) => expense.expensesId === action.meta.arg.expenseId
+          (expense) =>
+            expense.miscellaneousExpenseId === action.meta.arg.expenseId
         );
         if (index !== -1) {
-          state.expenses[index] = action.meta.arg.updatedData;
+          state.expenses[index] = {
+            ...state.expenses[index],
+            ...action.meta.arg.updatedData,
+          };
         }
       })
 
-      // Delete an miscellaneous expense
+      // Delete a miscellaneous expense
       .addCase(deleteMiscellaneousExpense.fulfilled, (state, action) => {
-        state.expenses = state.expenses.filter((expense) => expense.expensesId !== action.payload);
+        state.expenses = state.expenses.filter(
+          (expense) => expense.miscellaneousExpenseId !== action.payload
+        );
       });
   },
 });

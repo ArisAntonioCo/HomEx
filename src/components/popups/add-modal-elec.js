@@ -1,11 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addElectricityExpense } from "../../Redux/electricitySlice";
 import "./add-modal-elec.css";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
+const AddModalElec = ({ close, onSuccess }) => {
+  const [message, setMessage] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [hasShown, setHasShown] = useState(false);
 
-const AddModalElec = ({ close }) => {
-  // Validation Function
+  useEffect(() => {
+    if (message && !hasShown) {
+      setOpen(true);
+      setHasShown(true);
+    }
+  }, [message, hasShown]);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   const validateForm = () => {
     const newErrors = {};
     if (formData.billMonth.trim() === "") {
@@ -24,23 +43,38 @@ const AddModalElec = ({ close }) => {
     }
 
     return Object.keys(newErrors).length === 0;
-;
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    if (validateForm()) {
-      try {
-        const isoDatePaid = new Date(formData.datePaid).toISOString();
-        dispatch(addElectricityExpense({ ...formData, datePaid: isoDatePaid }));
-     
-      } catch (error) {
-      }
+  if (!validateForm()) {
+    setMessage("Please fill in all fields correctly");
+    return;
+  }
+
+  try {
+    const isoDatePaid = new Date(formData.datePaid).toISOString();
+    const resultAction = await dispatch(
+      addElectricityExpense({ ...formData, datePaid: isoDatePaid })
+    );
+
+    // Check if adding the expense was successful
+    if (addElectricityExpense.fulfilled.match(resultAction)) {
+      const successMessage = "Electricity expense added successfully!";
+      setMessage(successMessage);
+      setMessage("Electricity expense added successfully!");
+      onSuccess(successMessage); // Call the onSuccess callback
+      close();
+    } else {
+      // Adding the expense failed, handle the error (e.g., display an error message)
+      console.error("Adding expense failed:", resultAction.error.message);
+      setMessage("Failed to add electricity expense");
     }
-    close();
-  };
-
+  } catch (error) {
+    setMessage("An error occurred while adding the expense");
+  }
+};
 
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -62,7 +96,21 @@ const AddModalElec = ({ close }) => {
 
   return (
     <div className="add-modal">
-
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      >
+        <MuiAlert
+          onClose={handleClose}
+          severity="error"
+          elevation={6}
+          variant="filled"
+        >
+          {message}
+        </MuiAlert>
+      </Snackbar>
       <div className="container4">
         <form className="form">
           <div className="top-frame">

@@ -11,6 +11,11 @@ import {
   addFoodExpense,
 } from "../Redux/foodSlice";
 import "./food-page.css";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+import Box from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
+import DeleteConfirmationDialog from '../components/popups/deleteConfirmationDialogue';
 
 const FoodPage = () => {
   const [showAddModal, setShowAddModal] = useState(false);
@@ -19,7 +24,24 @@ const FoodPage = () => {
   const [refreshKey, setRefreshKey] = useState(0);
   const [selectedExpenseId, setSelectedExpenseId] = useState(null);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [hasShown, setHasShown] = useState(false);
 
+  useEffect(() => {
+    if (successMessage && !hasShown) {
+      setOpen(true);
+      setHasShown(true);
+    }
+  }, [successMessage, hasShown]);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
   const dispatch = useDispatch();
   const { expenses, totalBillAmount, loading, error } = useSelector(
     (state) => state.food
@@ -95,7 +117,23 @@ const FoodPage = () => {
   return (
     <div className="foodpage">
       {windowWidth > 768 ? <Sidebar /> : isDrawerOpen && <Drawer />}
-
+      {successMessage && (
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        >
+          <MuiAlert
+            onClose={handleClose}
+            severity="success"
+            elevation={6}
+            variant="filled"
+          >
+            {successMessage}
+          </MuiAlert>
+        </Snackbar>
+      )}
       <main className="food-panel">
         <header className="mobile-devices3" onClick={toggleDrawer}>
           <div className="container7">
@@ -108,11 +146,11 @@ const FoodPage = () => {
           </div>
         </header>
         {showDeleteConfirmation && (
-          <div className="delete-confirmation-modal">
-            <p>Are you sure you want to delete this expense?</p>
-            <button onClick={handleConfirmDelete}>Yes</button>
-            <button onClick={handleCancelDelete}>No</button>
-          </div>
+          <DeleteConfirmationDialog
+          open={showDeleteConfirmation}
+          handleCancelDelete={handleCancelDelete}
+          handleConfirmDelete={handleConfirmDelete}
+        />
         )}
         <section className="container8">
           <div className="foodcard1">
@@ -160,7 +198,9 @@ const FoodPage = () => {
               </div>
               {/* Conditional Rendering for Table Data */}
               {loading ? (
-                <div className="loading-indicator">Loading expenses...</div>
+                <Box sx={{ width: "100%" }}>
+                <LinearProgress />
+              </Box>
               ) : error ? (
                 <div className="error-message">Error: {error.message}</div>
               ) : (
@@ -204,6 +244,7 @@ const FoodPage = () => {
               refreshTable();
             }}
             onAddExpense={handleAddExpense}
+            onSuccess={setSuccessMessage}
           />
         </div>
       )}

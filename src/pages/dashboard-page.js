@@ -11,6 +11,8 @@ import { fetchMiscellaneousExpenses } from "../Redux/miscSlice";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { useLocation, useNavigate } from "react-router-dom";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 const DashboardPage = () => {
   const navigate = useNavigate();
@@ -91,6 +93,18 @@ const DashboardPage = () => {
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const onNavlinksContainer2Click = useCallback(() => {
     navigate("/electricity-page");
@@ -112,20 +126,23 @@ const DashboardPage = () => {
     navigate("/misc-page");
   }, [navigate]);
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
   return (
     <div className="dashboardpage">
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      >
+        <MuiAlert
+          onClose={handleClose}
+          severity="success"
+          elevation={6}
+          variant="filled"
+        >
+          {successMessage}
+        </MuiAlert>
+      </Snackbar>
       {windowWidth > 768 ? <Sidebar /> : isDrawerOpen && <Drawer />}
       <main className="dashboard-panel">
         <div className="mobile-devices2" onClick={toggleDrawer}>
@@ -170,7 +187,11 @@ const DashboardPage = () => {
                 </div>
               </div>
               {electricityLoading ? (
-                <div className="electricitytotal1">Loading...</div>
+                <div className="electricitytotal1">
+                  <Box sx={{ display: "flex" }}>
+                    <CircularProgress />
+                  </Box>
+                </div>
               ) : electricityError ? (
                 <div className="electricitytotal1">
                   Error: {electricityError.message}
@@ -199,7 +220,11 @@ const DashboardPage = () => {
                 </div>
               </div>
               {waterLoading ? (
-                <div className="watertotal1">Loading...</div>
+                <div className="watertotal1">
+                  <Box sx={{ display: "flex" }}>
+                    <CircularProgress />
+                  </Box>
+                </div>
               ) : waterError ? (
                 <div className="watertotal1">Error: {waterError.message}</div>
               ) : (
@@ -226,7 +251,11 @@ const DashboardPage = () => {
                 </div>
               </div>
               {foodLoading ? (
-                <div className="foodtotal">Loading...</div>
+                <div className="foodtotal">
+                  <Box sx={{ display: "flex" }}>
+                    <CircularProgress />
+                  </Box>
+                </div>
               ) : foodError ? (
                 <div className="foodtotal">Error: {foodError.message}</div>
               ) : (
@@ -255,7 +284,11 @@ const DashboardPage = () => {
                 </div>
               </div>
               {maintenanceLoading ? (
-                <div className="maintenancetotal">Loading...</div>
+                <div className="maintenancetotal">
+                  <Box sx={{ display: "flex" }}>
+                    <CircularProgress />
+                  </Box>
+                </div>
               ) : maintenanceError ? (
                 <div className="maintenancetotal">
                   Error: {maintenanceError.message}
@@ -284,7 +317,11 @@ const DashboardPage = () => {
                 </div>
               </div>
               {miscellaneousLoading ? (
-                <div className="misctotal">Loading...</div>
+                <div className="misctotal">
+                  <Box sx={{ display: "flex" }}>
+                    <CircularProgress />
+                  </Box>
+                </div>
               ) : miscellaneousError ? (
                 <div className="misctotal">
                   Error: {miscellaneousError.message}

@@ -7,14 +7,12 @@ import "./about-page.css";
 
 const AboutPage = () => {
   const navigate = useNavigate();
-  const footerRef = useRef(null); // Reference to the footer for scrolling
+  const footerRef = useRef(null);
 
-  // Function to handle click on navbar logo or anywhere you need to go to home
   const onLeftFrameContainerClick = useCallback(() => {
     navigate("/");
   }, [navigate]);
 
-  // Function to scroll to the footer
   const scrollToContact = useCallback(() => {
     footerRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, []);
@@ -38,13 +36,10 @@ const AboutPage = () => {
         </div>
       </section>
       
-      {/* New section for the YouTube video */}
       <section className="video-section">
-        <div className="video-container">
+        <div className="video-wrapper">
           <iframe
-            width="860"
-            height="485"
-            src="https://www.youtube.com/embed/vHlsSp4blVw"
+            src="https://www.youtube.com/embed/Q9kwCjWYmWY"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

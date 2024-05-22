@@ -100,24 +100,24 @@ const maintenanceSlice = createSlice({
       })
 
       // Add a new maintenance expense
-      .addCase(addMaintenanceExpense.fulfilled, (state, action) => {
-        state.expenses.push(action.payload.maintenanceExpenseId);
-      })
+.addCase(addMaintenanceExpense.fulfilled, (state, action) => {
+  state.expenses.push(action.payload);
+})
 
-      // Update an existing maintenance expense
-      .addCase(updateMaintenanceExpense.fulfilled, (state, action) => {
-        const index = state.expenses.findIndex(
-          (expense) => expense.expensesId === action.meta.arg.expenseId
-        );
-        if (index !== -1) {
-          state.expenses[index] = action.meta.arg.updatedData;
-        }
-      })
+// Update an existing maintenance expense
+.addCase(updateMaintenanceExpense.fulfilled, (state, action) => {
+  const index = state.expenses.findIndex(
+    (expense) => expense.maintenanceExpenseId === action.meta.arg.expenseId
+  );
+  if (index !== -1) {
+    state.expenses[index] = { ...state.expenses[index], ...action.meta.arg.updatedData };
+  }
+})
 
-      // Delete an maintenance expense
-      .addCase(deleteMaintenanceExpense.fulfilled, (state, action) => {
-        state.expenses = state.expenses.filter((expense) => expense.expensesId !== action.payload);
-      });
+// Delete a maintenance expense
+.addCase(deleteMaintenanceExpense.fulfilled, (state, action) => {
+  state.expenses = state.expenses.filter((expense) => expense.maintenanceExpenseId !== action.payload);
+});
   },
 });
 

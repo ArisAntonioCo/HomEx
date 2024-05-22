@@ -11,6 +11,11 @@ import {
   addElectricityExpense,
 } from "../Redux/electricitySlice";
 import "./electricity-page.css";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+import Box from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
+import DeleteConfirmationDialog from '../components/popups/deleteConfirmationDialogue';
 
 const ElectricityPage = () => {
   const [showAddModal, setShowAddModal] = useState(false);
@@ -20,6 +25,24 @@ const ElectricityPage = () => {
   const [selectedExpenseId, setSelectedExpenseId] = useState(null);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
+  const [successMessage, setSuccessMessage] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [hasShown, setHasShown] = useState(false);
+
+  useEffect(() => {
+    if (successMessage && !hasShown) {
+      setOpen(true);
+      setHasShown(true);
+    }
+  }, [successMessage, hasShown]);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
   const dispatch = useDispatch();
   const { expenses, totalBillAmount, loading, error } = useSelector(
     (state) => state.electricity
@@ -94,8 +117,24 @@ const ElectricityPage = () => {
 
   return (
     <div className="electricitypage1">
-            {windowWidth > 768 ? <Sidebar /> : isDrawerOpen && <Drawer />}
-
+      {windowWidth > 768 ? <Sidebar /> : isDrawerOpen && <Drawer />}
+      {successMessage && (
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        >
+          <MuiAlert
+            onClose={handleClose}
+            severity="success"
+            elevation={6}
+            variant="filled"
+          >
+            {successMessage}
+          </MuiAlert>
+        </Snackbar>
+      )}
       <main className="electricity-panel1">
         <header className="mobile-devices6" onClick={toggleDrawer}>
           <div className="container15">
@@ -108,11 +147,11 @@ const ElectricityPage = () => {
           </div>
         </header>
         {showDeleteConfirmation && (
-          <div className="delete-confirmation-modal">
-            <p>Are you sure you want to delete this expense?</p>
-            <button onClick={handleConfirmDelete}>Yes</button>
-            <button onClick={handleCancelDelete}>No</button>
-          </div>
+          <DeleteConfirmationDialog
+            open={showDeleteConfirmation}
+            handleCancelDelete={handleCancelDelete}
+            handleConfirmDelete={handleConfirmDelete}
+          />
         )}
         <section className="container16">
           <div className="electricitycard2">
@@ -160,7 +199,9 @@ const ElectricityPage = () => {
               </div>
               {/* Conditional Rendering for Table Data */}
               {loading ? (
-                <div className="loading-indicator">Loading expenses...</div>
+                <Box sx={{ width: "100%" }}>
+                  <LinearProgress />
+                </Box>
               ) : error ? (
                 <div className="error-message">Error: {error.message}</div>
               ) : (
@@ -168,9 +209,7 @@ const ElectricityPage = () => {
                 expenses.map((expense) => (
                   <div className="row9" key={expense.expenseId}>
                     <div className="table-cell16">{expense.billMonth}</div>
-                    <div className="table-cell17">
-                      {new Date(expense.datePaid).toISOString().slice(0, 10)}
-                    </div>
+                    <div className="table-cell17">{expense.datePaid}</div>
                     <div className="table-cell18">${expense.billAmount}</div>
                     <div className="table-cell19">
                       <div className="buttons4">
@@ -206,6 +245,7 @@ const ElectricityPage = () => {
               refreshTable();
             }}
             onAddExpense={handleAddExpense}
+            onSuccess={setSuccessMessage}
           />
         </div>
       )}

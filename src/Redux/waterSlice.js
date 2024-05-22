@@ -1,35 +1,35 @@
 // waterSlice.js
 
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-import config from '../config'; 
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+import config from "../config";
 
 // Async Thunks
 
 // Fetch all water expenses
 export const fetchWaterExpenses = createAsyncThunk(
-  'water/fetchWaterExpenses', 
+  "water/fetchWaterExpenses",
   async (_, thunkAPI) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       const response = await axios.get(`${config.apiUrl}/water-expenses`, {
-        headers: { Authorization: `Bearer ${token}` } 
+        headers: { Authorization: `Bearer ${token}` },
       });
-      return response.data; 
+      return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data); 
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   }
 );
 
 // Add a new water expense
 export const addWaterExpense = createAsyncThunk(
-  'water/addWaterExpense',
+  "water/addWaterExpense",
   async (expenseData, thunkAPI) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       const response = await axios.post(`${config.apiUrl}/water`, expenseData, {
-        headers: { Authorization: `Bearer ${token}` } 
+        headers: { Authorization: `Bearer ${token}` },
       });
       return response.data;
     } catch (error) {
@@ -40,13 +40,17 @@ export const addWaterExpense = createAsyncThunk(
 
 // Update an existing water expense
 export const updateWaterExpense = createAsyncThunk(
-  'water/updateWaterExpense',
+  "water/updateWaterExpense",
   async ({ expenseId, updatedData }, thunkAPI) => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.put(`${config.apiUrl}/water/${expenseId}`, updatedData, {
-        headers: { Authorization: `Bearer ${token}` } 
-      });
+      const token = localStorage.getItem("token");
+      const response = await axios.put(
+        `${config.apiUrl}/water/${expenseId}`,
+        updatedData,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -56,12 +60,12 @@ export const updateWaterExpense = createAsyncThunk(
 
 // Delete an water expense
 export const deleteWaterExpense = createAsyncThunk(
-  'water/deleteWaterExpense',
+  "water/deleteWaterExpense",
   async (expenseId, thunkAPI) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       await axios.delete(`${config.apiUrl}/water/${expenseId}`, {
-        headers: { Authorization: `Bearer ${token}` } 
+        headers: { Authorization: `Bearer ${token}` },
       });
       return expenseId; // Return the expenseId to update the state
     } catch (error) {
@@ -72,7 +76,7 @@ export const deleteWaterExpense = createAsyncThunk(
 
 // Slice Definition
 const waterSlice = createSlice({
-  name: 'water',
+  name: "water",
   initialState: {
     expenses: [],
     totalBillAmount: 0,
@@ -101,22 +105,27 @@ const waterSlice = createSlice({
 
       // Add a new water expense
       .addCase(addWaterExpense.fulfilled, (state, action) => {
-        state.expenses.push(action.payload.waterExpenseId);
+        state.expenses.push(action.payload);
       })
 
       // Update an existing water expense
       .addCase(updateWaterExpense.fulfilled, (state, action) => {
         const index = state.expenses.findIndex(
-          (expense) => expense.expensesId === action.meta.arg.expenseId
+          (expense) => expense.waterExpenseId === action.meta.arg.expenseId
         );
         if (index !== -1) {
-          state.expenses[index] = action.meta.arg.updatedData;
+          state.expenses[index] = {
+            ...state.expenses[index],
+            ...action.meta.arg.updatedData,
+          };
         }
       })
 
       // Delete an water expense
       .addCase(deleteWaterExpense.fulfilled, (state, action) => {
-        state.expenses = state.expenses.filter((expense) => expense.expensesId !== action.payload);
+        state.expenses = state.expenses.filter(
+          (expense) => expense.waterExpenseId !== action.payload
+        );
       });
   },
 });

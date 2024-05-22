@@ -100,24 +100,24 @@ const foodSlice = createSlice({
       })
 
       // Add a new food expense
-      .addCase(addFoodExpense.fulfilled, (state, action) => {
-        state.expenses.push(action.payload.foodExpenseId);
-      })
+.addCase(addFoodExpense.fulfilled, (state, action) => {
+  state.expenses.push(action.payload);
+})
 
-      // Update an existing food expense
-      .addCase(updateFoodExpense.fulfilled, (state, action) => {
-        const index = state.expenses.findIndex(
-          (expense) => expense.expensesId === action.meta.arg.expenseId
-        );
-        if (index !== -1) {
-          state.expenses[index] = action.meta.arg.updatedData;
-        }
-      })
+// Update an existing food expense
+.addCase(updateFoodExpense.fulfilled, (state, action) => {
+  const index = state.expenses.findIndex(
+    (expense) => expense.foodExpenseId === action.meta.arg.expenseId
+  );
+  if (index !== -1) {
+    state.expenses[index] = { ...state.expenses[index], ...action.meta.arg.updatedData };
+  }
+})
 
-      // Delete an food expense
-      .addCase(deleteFoodExpense.fulfilled, (state, action) => {
-        state.expenses = state.expenses.filter((expense) => expense.expensesId !== action.payload);
-      });
+// Delete a food expense
+.addCase(deleteFoodExpense.fulfilled, (state, action) => {
+  state.expenses = state.expenses.filter((expense) => expense.foodExpenseId !== action.payload);
+});
   },
 });
 

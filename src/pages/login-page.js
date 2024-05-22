@@ -6,7 +6,9 @@ import "./login-page.css";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../Redux/userSlice";
 
-import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
+
 import Alert from "@mui/material/Alert";
 
 const LoginPage = () => {
@@ -20,7 +22,8 @@ const LoginPage = () => {
 
   // Get the loading and error states from the Redux store
   const { loading, error } = useSelector((state) => state.user);
-const [successMessage, setSuccessMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
+
   const onSignUpTextClick = useCallback(() => {
     navigate("/signup-page");
   }, [navigate]);
@@ -30,14 +33,15 @@ const [successMessage, setSuccessMessage] = useState(null);
 
     // Dispatch the loginUser action when the form is submitted
     if (!formData.email || !formData.password) {
-      setFormError("All fields are required.");
       return;
     }
     const resultAction = await dispatch(loginUser(formData));
 
     // Check if login was successful
     if (loginUser.fulfilled.match(resultAction)) {
-      navigate("/dashboard-page", { state: { successMessage: 'Login successful!' } });
+      navigate("/dashboard-page", {
+        state: { successMessage: "Login successful!" },
+      });
     } else {
       // Login failed, handle the error (e.g., display an error message)
       console.error("Login failed:", resultAction.error.message);
@@ -45,19 +49,18 @@ const [successMessage, setSuccessMessage] = useState(null);
   };
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem("user"));
     if (user && user.email && user.password) {
       dispatch(loginUser(user));
     }
   }, [dispatch]);
-  
+
   const handleChange = (event) => {
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
     });
     setFormError(null);
-
   };
 
   return (
@@ -93,12 +96,17 @@ const [successMessage, setSuccessMessage] = useState(null);
                 onChange={handleChange}
               />
             </div>
-            {loading && <CircularProgress />}
-
+            {loading && (
+              <Box sx={{ width: "100%" }}>
+                <LinearProgress />
+              </Box>
+            )}
           </div>
-          
+
           {(error || formError) && (
-            <Alert severity="error">{error ? "Invalid Credentials" : formError}</Alert>
+            <Alert severity="error">
+              {error ? "Invalid Credentials" : formError}
+            </Alert>
           )}
           {successMessage && <Alert severity="success">{successMessage}</Alert>}
           {/* BUTTON */}

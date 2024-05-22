@@ -79,11 +79,10 @@ const FoodPage = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768) {
-        setIsDrawerOpen(false);
-      }
+      setWindowWidth(window.innerWidth);
     };
 
     window.addEventListener("resize", handleResize);
@@ -95,8 +94,8 @@ const FoodPage = () => {
 
   return (
     <div className="foodpage">
-      <Sidebar />
-      {isDrawerOpen && <Drawer />}
+            {windowWidth > 768 ? <Sidebar /> : isDrawerOpen && <Drawer />}
+
       <main className="food-panel">
         <header className="mobile-devices3" onClick={toggleDrawer}>
           <div className="container7">

@@ -79,11 +79,10 @@ const ElectricityPage = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768) {
-        setIsDrawerOpen(false);
-      }
+      setWindowWidth(window.innerWidth);
     };
 
     window.addEventListener("resize", handleResize);
@@ -95,8 +94,8 @@ const ElectricityPage = () => {
 
   return (
     <div className="electricitypage1">
-      <Sidebar />
-      {isDrawerOpen && <Drawer />}
+            {windowWidth > 768 ? <Sidebar /> : isDrawerOpen && <Drawer />}
+
       <main className="electricity-panel1">
         <header className="mobile-devices6" onClick={toggleDrawer}>
           <div className="container15">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback} from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "../components/sidebar";
 import Drawer from "../components/drawer";
@@ -91,18 +91,6 @@ const DashboardPage = () => {
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const onNavlinksContainer2Click = useCallback(() => {
     navigate("/electricity-page");
@@ -124,23 +112,20 @@ const DashboardPage = () => {
     navigate("/misc-page");
   }, [navigate]);
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <div className="dashboardpage">
-      <Snackbar
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-      >
-        <MuiAlert
-          onClose={handleClose}
-          severity="success"
-          elevation={6}
-          variant="filled"
-        >
-          {successMessage}
-        </MuiAlert>
-      </Snackbar>
       {windowWidth > 768 ? <Sidebar /> : isDrawerOpen && <Drawer />}
       <main className="dashboard-panel">
         <div className="mobile-devices2" onClick={toggleDrawer}>

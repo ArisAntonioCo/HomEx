@@ -78,11 +78,10 @@ const MiscPage = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768) {
-        setIsDrawerOpen(false);
-      }
+      setWindowWidth(window.innerWidth);
     };
 
     window.addEventListener("resize", handleResize);
@@ -93,8 +92,7 @@ const MiscPage = () => {
   }, []);
   return (
     <div className="miscpage">
-      <Sidebar />
-      {isDrawerOpen && <Drawer />}
+            {windowWidth > 768 ? <Sidebar /> : isDrawerOpen && <Drawer />}
 
       <main className="misc-panel">
         <header className="mobile-devices5" onClick={toggleDrawer}>

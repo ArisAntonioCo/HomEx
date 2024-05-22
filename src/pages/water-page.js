@@ -79,11 +79,11 @@ const WaterPage = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
+  
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768) {
-        setIsDrawerOpen(false);
-      }
+      setWindowWidth(window.innerWidth);
     };
 
     window.addEventListener("resize", handleResize);
@@ -92,11 +92,10 @@ const WaterPage = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
   return (
     <div className="waterpage">
-      <Sidebar />
-      {isDrawerOpen && <Drawer />}
+            {windowWidth > 768 ? <Sidebar /> : isDrawerOpen && <Drawer />}
+
       <main className="water-panel">
         <header className="mobile-devices" onClick={toggleDrawer}>
           <div className="container">

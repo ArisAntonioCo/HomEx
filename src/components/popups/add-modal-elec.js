@@ -3,15 +3,8 @@ import { useDispatch } from "react-redux";
 import { addElectricityExpense } from "../../Redux/electricitySlice";
 import "./add-modal-elec.css";
 
-const AddModalElec = ({ close }) => {
-  const dispatch = useDispatch();
-  const [formData, setFormData] = useState({
-    billMonth: "",
-    datePaid: "",
-    billAmount: "",
-  });
-  const [errors, setErrors] = useState({});
 
+const AddModalElec = ({ close }) => {
   // Validation Function
   const validateForm = () => {
     const newErrors = {};
@@ -29,20 +22,32 @@ const AddModalElec = ({ close }) => {
     ) {
       newErrors.billAmount = "Amount must be a positive number";
     }
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // Return true if form is valid
+
+    return Object.keys(newErrors).length === 0;
+;
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (validateForm()) {
-      // Convert datePaid to ISO 8601 format before sending to backend
-      const isoDatePaid = new Date(formData.datePaid).toISOString();
-      dispatch(addElectricityExpense({ ...formData, datePaid: isoDatePaid }));
-      close(); // Close the modal after submission
+      try {
+        const isoDatePaid = new Date(formData.datePaid).toISOString();
+        dispatch(addElectricityExpense({ ...formData, datePaid: isoDatePaid }));
+     
+      } catch (error) {
+      }
     }
+    close();
   };
+
+
+  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    billMonth: "",
+    datePaid: "",
+    billAmount: "",
+  });
 
   const handleInputChange = (event) => {
     setFormData({
@@ -57,6 +62,7 @@ const AddModalElec = ({ close }) => {
 
   return (
     <div className="add-modal">
+
       <div className="container4">
         <form className="form">
           <div className="top-frame">
@@ -78,7 +84,6 @@ const AddModalElec = ({ close }) => {
           </div>
 
           <div className="input-container">
-            
             <input
               className="item"
               placeholder="Billing Month"
@@ -108,16 +113,6 @@ const AddModalElec = ({ close }) => {
               onChange={handleInputChange}
             />
           </div>
-
-
-          {/* Error Display */}
-          {Object.keys(errors).length > 0 && (
-            <div className="error-message">
-              {Object.values(errors).map((err) => (
-                <p key={err}>{err}</p>
-              ))}
-            </div>
-          )}
         </form>
         <button className="button2" type="submit" onClick={handleSubmit}>
           <img className="add-icon" alt="" src="/addicon.svg" />

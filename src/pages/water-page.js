@@ -79,7 +79,6 @@ const WaterPage = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
-  
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
     const handleResize = () => {
@@ -94,7 +93,7 @@ const WaterPage = () => {
   }, []);
   return (
     <div className="waterpage">
-            {windowWidth > 768 ? <Sidebar /> : isDrawerOpen && <Drawer />}
+      {windowWidth > 768 ? <Sidebar /> : isDrawerOpen && <Drawer />}
 
       <main className="water-panel">
         <header className="mobile-devices" onClick={toggleDrawer}>
@@ -170,9 +169,7 @@ const WaterPage = () => {
                 expenses.map((expense) => (
                   <div className="row1" key={expense.expenseId}>
                     <div className="table-cell">{expense.billMonth}</div>
-                    <div className="table-cell1">
-                      {new Date(expense.datePaid).toISOString().slice(0, 10)}
-                    </div>
+                    <div className="table-cell1">{expense.datePaid} </div>
                     <div className="table-cell2">${expense.billAmount}</div>
                     <div className="table-cell3">
                       <div className="buttons">

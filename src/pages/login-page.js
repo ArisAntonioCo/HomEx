@@ -46,7 +46,7 @@ const [successMessage, setSuccessMessage] = useState(null);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
-    if (user) {
+    if (user && user.email && user.password) {
       dispatch(loginUser(user));
     }
   }, [dispatch]);
@@ -93,8 +93,10 @@ const [successMessage, setSuccessMessage] = useState(null);
                 onChange={handleChange}
               />
             </div>
+            {loading && <CircularProgress />}
+
           </div>
-          {loading && <CircularProgress />}
+          
           {(error || formError) && (
             <Alert severity="error">{error ? "Invalid Credentials" : formError}</Alert>
           )}
@@ -103,7 +105,6 @@ const [successMessage, setSuccessMessage] = useState(null);
           <button className="button1" type="submit">
             <div className="login1">Login</div>
           </button>
-
           <div className="link1">
             <div className="dont-have-an">Don’t have an account?</div>
             <div className="sign-up1" onClick={onSignUpTextClick}>

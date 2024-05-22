@@ -94,7 +94,7 @@ const FoodPage = () => {
 
   return (
     <div className="foodpage">
-            {windowWidth > 768 ? <Sidebar /> : isDrawerOpen && <Drawer />}
+      {windowWidth > 768 ? <Sidebar /> : isDrawerOpen && <Drawer />}
 
       <main className="food-panel">
         <header className="mobile-devices3" onClick={toggleDrawer}>
@@ -168,9 +168,7 @@ const FoodPage = () => {
                 expenses.map((expense) => (
                   <div className="row5" key={expense.expenseId}>
                     <div className="table-cell8">{expense.billMonth}</div>
-                    <div className="table-cell9">
-                      {new Date(expense.datePaid).toISOString().slice(0, 10)}
-                    </div>
+                    <div className="table-cell9">{expense.datePaid} </div>
                     <div className="table-cell10">${expense.billAmount}</div>
                     <div className="table-cell11">
                       <div className="buttons2">

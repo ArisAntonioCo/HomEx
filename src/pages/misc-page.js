@@ -168,8 +168,7 @@ const MiscPage = () => {
                   <div className="row11" key={expense.expenseId}>
                     <div className="table-cell20">{expense.billMonth}</div>
                     <div className="table-cell21">
-                      {new Date(expense.datePaid).toISOString().slice(0, 10)}
-                    </div>
+                    {expense.datePaid}                    </div>
                     <div className="table-cell22">${expense.billAmount}</div>
                     <div className="table-cell23">
                       <div className="buttons5">

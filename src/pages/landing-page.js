@@ -16,7 +16,7 @@ const LandingPage = () => {
 
   // Function to handle click for "About Us" navigation
   const onAboutUsTextClick = useCallback(() => {
-    navigate("/aboutpage");
+    navigate("/about-page");
   }, [navigate]);
 
   // Functions for potential login and signup interactions
@@ -49,7 +49,7 @@ const LandingPage = () => {
               intuitive platform, tracking every expense from electricity to
               maintenance, so you can manage your budget with ease.
             </div>
-            <button className="learnmore">
+            <button className="learnmore" onClick={onAboutUsTextClick}>
               <div className="learn-more">Learn more</div>
             </button>
           </div>

@@ -4,6 +4,9 @@ import LeftContent from "../components/left-content";
 import { useNavigate } from "react-router-dom";
 import { signupUser } from "../Redux/userSlice"; // Import the signupUser action
 import "./signup-page.css";
+import MuiAlert from "@mui/material/Alert";
+import Box from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
 
 const SignupPage = () => {
   const dispatch = useDispatch();
@@ -14,39 +17,63 @@ const SignupPage = () => {
     confirmPassword: "",
     handle: "", // Add this field for the username/handle
   });
+const [loading, setLoading] = useState(false);
+  // Add a state variable for the error message
+  const [errorMessage, setErrorMessage] = useState("");
 
-  // Get loading, error, and authentication status from the Redux store
-  const { loading, error, isAuthenticated } = useSelector(
-    (state) => state.user
-  );
+  // Add a function to handle closing the success alert
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setSuccessMessage("");
+  };
+
+  // Add a function to handle closing the error alert
+  const handleErrorClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setErrorMessage("");
+  };
+
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+
+  // Form validation
+  if (!formData.email || !formData.password || !formData.confirmPassword || !formData.handle) {
+    setErrorMessage("All fields are required.");
+    return;
+  }
+
+  if (formData.password !== formData.confirmPassword) {
+    setErrorMessage("Passwords do not match.");
+    return;
+  }
+
+  // Dispatch the signupUser action
+  const resultAction = await dispatch(signupUser(formData));
+
+  // Check if signup was successful
+  if (signupUser.fulfilled.match(resultAction)) {
+    // Signup successful, navigate to dashboard (or wherever you want)
+    navigate("/login-page", {
+      state: { succMessage: "Sign up successful!" },
+    });
+  } else {
+    // Signup failed, handle the error (e.g., display an error message)
+    console.error("Signup failed:", resultAction.error);
+    setErrorMessage("Signup failed. Please try again.");
+    // You can display the error.email or error.password directly in the UI
+  }
+};
 
   const onLoginTextClick = useCallback(() => {
     navigate("/login-page");
   }, [navigate]);
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      // If user is already authenticated, redirect to dashboard
-      navigate("/dashboard-page");
-    }
-  }, [isAuthenticated, navigate]);
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    // Dispatch the signupUser action
-    const resultAction = await dispatch(signupUser(formData));
-
-    // Check if signup was successful
-    if (signupUser.fulfilled.match(resultAction)) {
-      // Signup successful, navigate to dashboard (or wherever you want)
-      navigate("/login-page");
-    } else {
-      // Signup failed, handle the error (e.g., display an error message)
-      console.error("Signup failed:", resultAction.error);
-      // You can display the error.email or error.password directly in the UI
-    }
-  };
 
   const handleChange = (event) => {
     setFormData({
@@ -62,17 +89,6 @@ const SignupPage = () => {
 
       {/* RIGHT CONTENT */}
       <section className="right-content">
-        {/* Error Messages */}
-        {error && (
-          <div className="error-message">
-            {error.email && <p>{error.email}</p>}
-            {error.password && <p>{error.password}</p>}
-            {error.confirmPassword && <p>{error.confirmPassword}</p>}
-            {error.handle && <p>{error.handle}</p>}
-            {/* ... (add more error cases as needed) ... */}
-          </div>
-        )}
-
         <form className="form" onSubmit={handleSubmit}>
           <div className="h11">
             <h1 className="create-an-account">Create an account</h1>
@@ -122,8 +138,23 @@ const SignupPage = () => {
                 onChange={handleChange}
               />
             </div>
+            {loading && (
+              <Box sx={{ width: "100%" }}>
+                <LinearProgress />
+              </Box>
+            )}
           </div>
-
+          {/* Error Messages */}
+          {errorMessage && (
+            <MuiAlert
+              onClose={handleErrorClose}
+              severity="error"
+              elevation={6}
+              variant="filled"
+            >
+              {errorMessage}
+            </MuiAlert>
+          )}
           {/* SIGN UP BUTTON */}
           <button className="button" type="submit">
             <div className="sign-up">Sign up</div>

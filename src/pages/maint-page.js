@@ -74,6 +74,7 @@ const MaintPage = () => {
       refreshTable();
     }
     setShowDeleteConfirmation(false);
+    
   };
 
   const handleCancelDelete = () => {
@@ -158,9 +159,9 @@ const MaintPage = () => {
                 className="miscicon1"
                 loading="lazy"
                 alt=""
-                src="/miscicon1@2x.png"
-              />
-              <h1 className="miscellaneous7">Miscellaneous</h1>
+                src="/union1@2x.png"
+                />
+              <h1 className="miscellaneous7">Maintenance</h1>
               <button className="total20">
                 <div className="total21">Total $</div>
               </button>
@@ -257,6 +258,7 @@ const MaintPage = () => {
               }}
               expense={selectedExpenseId}
               onSave={handleEditExpense}
+              onSuccess={setSuccessMessage}
             />
           </div>
         )}

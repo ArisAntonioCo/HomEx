@@ -257,6 +257,7 @@ const FoodPage = () => {
             }}
             expense={selectedExpenseId}
             onSave={handleEditExpense}
+            onSuccess={setSuccessMessage}
           />
         </div>
       )}

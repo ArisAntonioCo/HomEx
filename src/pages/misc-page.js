@@ -74,6 +74,7 @@ const MiscPage = () => {
       refreshTable();
     }
     setShowDeleteConfirmation(false);
+    
   };
 
   const handleCancelDelete = () => {
@@ -256,6 +257,7 @@ const MiscPage = () => {
               }}
               expense={selectedExpenseId}
               onSave={handleEditExpense}
+              onSuccess={setSuccessMessage}
             />
           </div>
         )}

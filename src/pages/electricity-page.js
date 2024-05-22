@@ -77,6 +77,7 @@ const ElectricityPage = () => {
       refreshTable();
     }
     setShowDeleteConfirmation(false);
+    
   };
 
   const handleCancelDelete = () => {
@@ -258,6 +259,7 @@ const ElectricityPage = () => {
             }}
             expense={selectedExpenseId}
             onSave={handleEditExpense}
+            onSuccess={setSuccessMessage}
           />
         </div>
       )}

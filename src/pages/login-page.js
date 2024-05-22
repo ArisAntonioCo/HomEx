@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import LeftContent from "../components/left-content";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./login-page.css";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -8,13 +8,32 @@ import { loginUser } from "../Redux/userSlice";
 
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
-
-import Alert from "@mui/material/Alert";
-
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 const LoginPage = () => {
   const dispatch = useDispatch(); // Hook to dispatch Redux actions
+  const location = useLocation();
   const navigate = useNavigate();
   const [formError, setFormError] = useState(null);
+  const succMessage = location.state?.succMessage;
+  const [open, setOpen] = useState(false);
+  const [hasShown, setHasShown] = useState(false);
+
+  // Modify this useEffect
+  useEffect(() => {
+    if (succMessage && !hasShown) {
+      setOpen(true);
+      setHasShown(true);
+    }
+  }, [succMessage, hasShown]);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -65,6 +84,21 @@ const LoginPage = () => {
 
   return (
     <div className="loginpage">
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      >
+        <MuiAlert
+          onClose={handleClose}
+          severity="success"
+          elevation={6}
+          variant="filled"
+        >
+          {succMessage}
+        </MuiAlert>
+      </Snackbar>
       {/* LEFT COMPONENT */}
       <LeftContent />
 

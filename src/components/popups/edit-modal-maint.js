@@ -2,8 +2,28 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { updateMaintenanceExpense } from "../../Redux/maintSlice";
 import "./edit-modal-elec.css";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
-const EditModalMaint = ({ close, expense }) => {
+const EditModalMaint = ({ close, onSuccess, expense }) => {
+  const [message, setMessage] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [hasShown, setHasShown] = useState(false);
+
+  useEffect(() => {
+    if (message && !hasShown) {
+      setOpen(true);
+      setHasShown(true);
+    }
+  }, [message, hasShown]);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
@@ -54,25 +74,42 @@ const EditModalMaint = ({ close, expense }) => {
   }
 }, [expense]);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+ 
+const handleSubmit = async (event) => {
+  event.preventDefault();
 
-    if (validateForm()) {
-      // Convert datePaid to ISO 8601 format before sending to backend
-      const isoDatePaid = new Date(formData.datePaid).toISOString();
-      dispatch(
-        updateMaintenanceExpense({
-          expenseId: formData.expenseId,
-          updatedData: {
-            billMonth: formData.billMonth,
-            datePaid: isoDatePaid,
-            billAmount: formData.billAmount,
-          },
-        })
-      );
-      close(); // Close the modal after submission
+  if (!validateForm()) {
+    setMessage("Please fill in all fields correctly");
+    return;
+  }
+
+  try {
+    const isoDatePaid = new Date(formData.datePaid).toISOString();
+    const resultAction = await dispatch(
+      updateMaintenanceExpense({
+        expenseId: formData.expenseId,
+        updatedData: {
+          billMonth: formData.billMonth,
+          datePaid: isoDatePaid,
+          billAmount: formData.billAmount,
+        },
+      })
+    );
+    // Check if adding the expense was successful
+    if (addMaintenanceExpense.fulfilled.match(resultAction)) {
+      const successMessage = "Maintenance expense edited successfully!";
+      setMessage(successMessage);
+      onSuccess(successMessage); // Call the onSuccess callback
+      close();
+    } else {
+      // Adding the expense failed, handle the error (e.g., display an error message)
+      console.error("Adding expense failed:", resultAction.error.message);
+      setMessage("Failed to edit electricity expense");
     }
-  };
+  } catch (error) {
+    setMessage("An error occurred while editing the expense");
+  }
+};
 
   const handleInputChange = (event) => {
     setFormData({
@@ -87,6 +124,21 @@ const EditModalMaint = ({ close, expense }) => {
 
   return (
     <div className="add-modal">
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      >
+        <MuiAlert
+          onClose={handleClose}
+          severity="error"
+          elevation={6}
+          variant="filled"
+        >
+          {message}
+        </MuiAlert>
+      </Snackbar>
       <div className="container4">
         <form className="form" onSubmit={handleSubmit}>
           {/* Top-frame */}
@@ -139,15 +191,6 @@ const EditModalMaint = ({ close, expense }) => {
               <div className="error-message">{errors.billAmount}</div>
             )}
           </div>
-
-          {/* Error Display */}
-          {Object.keys(errors).length > 0 && (
-            <div className="error-message">
-              {Object.values(errors).map((err) => (
-                <p key={err}>{err}</p>
-              ))}
-            </div>
-          )}
 
           <button className="button2" type="submit">
             <img className="add-icon" alt="" src="/addicon.svg" />

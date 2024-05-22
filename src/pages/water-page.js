@@ -74,6 +74,7 @@ const WaterPage = () => {
       refreshTable();
     }
     setShowDeleteConfirmation(false);
+    
   };
 
   const handleCancelDelete = () => {
@@ -258,6 +259,7 @@ const WaterPage = () => {
             }}
             expense={selectedExpenseId}
             onSave={handleEditExpense}
+            onSuccess={setSuccessMessage}
           />
         </div>
       )}

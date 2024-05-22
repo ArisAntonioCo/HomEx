@@ -68,11 +68,12 @@
   font-weight: 700;
   font-family: Inter;
   text-align: left;
+  min-width: auto;
 }
 .expenses15 {
   color: rgba(52, 52, 52, 0.25);
   display: inline-block;
-  min-width: 124px;
+  min-width: auto;
 }
 .miscellaneous8 {
   color: #343434;

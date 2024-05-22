@@ -131,7 +131,9 @@ const MiscPage = () => {
             <div className="misctotal1">${totalBillAmount}</div>
           </div>
 
-          <div className="container31"> {/* Removed the <form> element */}
+          <div className="container31">
+            {" "}
+            {/* Removed the <form> element */}
             <div className="heading6">
               <div className="h18">
                 <h2 className="expenses15">Expenses/</h2>
@@ -142,11 +144,10 @@ const MiscPage = () => {
                 <div className="add-expense5">Add Expense</div>
               </button>
             </div>
-
             <div className="table5">
               <div className="row10">
                 <div className="header-cell20">
-                  <div className="service-provider5">Name</div>
+                  <div className="service-provider5">Description</div>
                 </div>
                 <div className="header-cell21">
                   <div className="date-paid5">Date Paid</div>
@@ -168,22 +169,26 @@ const MiscPage = () => {
                 expenses.map((expense) => (
                   <div className="row11" key={expense.expenseId}>
                     <div className="table-cell20">{expense.billMonth}</div>
-                    <div className="table-cell21">{new Date(expense.datePaid).toISOString().slice(0,10)}</div>
+                    <div className="table-cell21">
+                      {new Date(expense.datePaid).toISOString().slice(0, 10)}
+                    </div>
                     <div className="table-cell22">${expense.billAmount}</div>
                     <div className="table-cell23">
-                      <button
-                        className="edit-button5"
-                        onClick={() => handleEditClick(expense)}
-                      >
-                        Edit
-                      </button>
+                      <div className="buttons5">
+                        <button
+                          className="edit-button5"
+                          onClick={() => handleEditClick(expense)}
+                        >
+                          <div className="edit5">Edit</div>
+                        </button>
 
-                      <button
-                        className="delete-button5"
-                        onClick={() => handleDeleteClick(expense.expensesId)}
-                      >
-                        Delete
-                      </button>
+                        <button
+                          className="delete-button5"
+                          onClick={() => handleDeleteClick(expense.expensesId)}
+                        >
+                          <div className="delete6">Delete</div>
+                        </button>
+                      </div>
                     </div>
                     <div style={{ display: "none" }}>{expense.expenseId}</div>
                   </div>
@@ -194,28 +199,28 @@ const MiscPage = () => {
         </section>
 
         {showAddModal && (
-        <div className="modal-backdrop">
-          <AddModalMisc
-            close={() => {
-              toggleAddModal();
-              refreshTable();
-            }}
-            onAddExpense={handleAddExpense}
-          />
-        </div>
-      )}
-      {showEditModal && (
-        <div className="modal-backdrop">
-          <EditModalMisc
-            close={() => {
-              toggleEditModal();
-              refreshTable();
-            }}
-            expense={selectedExpenseId}
-            onSave={handleEditExpense}
-          />
-        </div>
-      )}
+          <div className="modal-backdrop">
+            <AddModalMisc
+              close={() => {
+                toggleAddModal();
+                refreshTable();
+              }}
+              onAddExpense={handleAddExpense}
+            />
+          </div>
+        )}
+        {showEditModal && (
+          <div className="modal-backdrop">
+            <EditModalMisc
+              close={() => {
+                toggleEditModal();
+                refreshTable();
+              }}
+              expense={selectedExpenseId}
+              onSave={handleEditExpense}
+            />
+          </div>
+        )}
       </main>
     </div>
   );

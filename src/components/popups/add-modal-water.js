@@ -67,7 +67,6 @@ const AddModalElec = ({ close }) => {
             </div>
           </div>
           <div className="input-container">
-          <div className="input-container">
             <input
               className="item"
               placeholder="Billing Month"
@@ -104,7 +103,6 @@ const AddModalElec = ({ close }) => {
               ))}
             </div>
           )}
-          </div>
         </form>
         <button className="button2" type="submit" onClick={handleSubmit}>
           <img className="add-icon" alt="" src="/addicon.svg" />

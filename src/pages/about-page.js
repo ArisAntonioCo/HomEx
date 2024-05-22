@@ -37,6 +37,22 @@ const AboutPage = () => {
           </h1>
         </div>
       </section>
+      
+      {/* New section for the YouTube video */}
+      <section className="video-section">
+        <div className="video-container">
+          <iframe
+            width="860"
+            height="485"
+            src="https://www.youtube.com/embed/vHlsSp4blVw"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </section>
+
       <Section1 />
       <Footer ref={footerRef} bottomContentFlexWrap="unset" />
     </div>

@@ -1,30 +1,33 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addMiscellaneousExpense } from '../../Redux/miscSlice'; 
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addMiscellaneousExpense } from "../../Redux/miscSlice";
 import "./add-modal-misc.css";
 
 const AddModalElec = ({ close }) => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
-    billMonth: '',
-    datePaid: '',
-    billAmount: '',
+    billMonth: "",
+    datePaid: "",
+    billAmount: "",
   });
   const [errors, setErrors] = useState({});
 
   // Validation Function
   const validateForm = () => {
     const newErrors = {};
-    if (formData.billMonth.trim() === '') {
-      newErrors.billMonth = 'Billing month is required';
+    if (formData.billMonth.trim() === "") {
+      newErrors.billMonth = "Billing month is required";
     }
-    if (formData.datePaid.trim() === '') {
-      newErrors.datePaid = 'Date paid is required';
+    if (formData.datePaid.trim() === "") {
+      newErrors.datePaid = "Date paid is required";
     }
-    if (formData.billAmount.trim() === '') {
-      newErrors.billAmount = 'Amount is required';
-    } else if (isNaN(parseFloat(formData.billAmount)) || parseFloat(formData.billAmount) <= 0) {
-      newErrors.billAmount = 'Amount must be a positive number';
+    if (formData.billAmount.trim() === "") {
+      newErrors.billAmount = "Amount is required";
+    } else if (
+      isNaN(parseFloat(formData.billAmount)) ||
+      parseFloat(formData.billAmount) <= 0
+    ) {
+      newErrors.billAmount = "Amount must be a positive number";
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0; // Return true if form is valid
@@ -51,7 +54,6 @@ const AddModalElec = ({ close }) => {
   const handleExitClick = () => {
     close();
   };
-  
 
   return (
     <div className="add-modal">
@@ -62,11 +64,17 @@ const AddModalElec = ({ close }) => {
               <div className="add-expense2">Add Expense</div>
               <div className="expense">Expense</div>
             </div>
-            <div className="icon" style={{ cursor: 'pointer' }} tabIndex={0} role="button" aria-label="Close" onClick={handleExitClick}>
+            <div
+              className="icon"
+              style={{ cursor: "pointer" }}
+              tabIndex={0}
+              role="button"
+              aria-label="Close"
+              onClick={handleExitClick}
+            >
               <img className="exit-icon" alt="Close modal" src="/exit1.svg" />
             </div>
           </div>
-          <div className="input-container">
           <div className="input-container">
             <input
               className="item"
@@ -104,7 +112,6 @@ const AddModalElec = ({ close }) => {
               ))}
             </div>
           )}
-          </div>
         </form>
         <button className="button2" type="submit" onClick={handleSubmit}>
           <img className="add-icon" alt="" src="/addicon.svg" />

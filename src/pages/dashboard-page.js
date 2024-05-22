@@ -119,8 +119,8 @@ const DashboardPage = () => {
                   src="/electricityicon1@2x.png"
                 />
                 <h1 className="electricity2">Electricity</h1>
-                <div className="total4">
-                  <div className="total5">Total $</div>
+                <div className="total8">
+                  <div className="total9">Total $</div>
                 </div>
               </div>
               {electricityLoading ? (

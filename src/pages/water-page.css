@@ -112,11 +112,10 @@
   font-weight: 700;
   font-family: inherit;
   display: inline-block;
-  min-width: 124px;
+  min-width: auto;
 }
 .water1 {
   color: #343434;
-  min-width: 120px;
 }
 .h1 {
   display: flex;

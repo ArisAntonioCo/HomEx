@@ -105,7 +105,7 @@
   font-weight: 700;
   font-family: inherit;
   display: inline-block;
-  min-width: 124px;
+  min-width: auto;
 }
 .food2 {
   color: #343434;

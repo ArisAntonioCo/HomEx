@@ -74,6 +74,7 @@
   font-weight: 600;
 }
 .text {
+  height: auto;
   align-self: stretch;
   border-radius: 8px;
   background-color: #fff;
@@ -153,6 +154,7 @@
   font-weight: 600;
 }
 .text1 {
+  height: auto;
   align-self: stretch;
   height: 46px;
   border-radius: 8px;
@@ -193,6 +195,7 @@
 
 .options {
   width: 100%;
+  height: auto; /* Let the content determine the height */
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
@@ -231,9 +234,8 @@
   padding: 14px 20px;
 }
 .sidebar {
-  height: 1024px;
+  height: 100vh;
   width: 269px;
-  border-right: 1px solid rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
   flex-direction: column;
   align-items: flex-start;

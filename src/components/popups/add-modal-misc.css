@@ -21,6 +21,12 @@
   justify-content: flex-start;
   gap: var(--gap-11xs);
 }
+.date-input {
+  width: 100%;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  border: none; /* Hide border */
+  font-family: var(--font-inter);
+}
 .exit-icon {
   width: 18px;
   position: relative;

@@ -8,7 +8,7 @@ import {
   fetchWaterExpenses,
   updateWaterExpense,
   deleteWaterExpense,
-  addWaterExpense
+  addWaterExpense,
 } from "../Redux/waterSlice";
 import "./water-page.css";
 
@@ -44,7 +44,7 @@ const WaterPage = () => {
     setSelectedExpenseId(expenseId);
     setShowDeleteConfirmation(true);
   };
-  
+
   const handleConfirmDelete = () => {
     if (selectedExpenseId) {
       dispatch(deleteWaterExpense(selectedExpenseId));
@@ -103,17 +103,24 @@ const WaterPage = () => {
             <img className="menu-icon" loading="lazy" alt="" src="/menu.svg" />
           </div>
         </header>
+
         {showDeleteConfirmation && (
-        <div className="delete-confirmation-modal">
-          <p>Are you sure you want to delete this expense?</p>
-          <button onClick={handleConfirmDelete}>Yes</button>
-          <button onClick={handleCancelDelete}>No</button>
-        </div>
-      )}
+          <div className="delete-confirmation-modal">
+            <p>Are you sure you want to delete this expense?</p>
+            <button onClick={handleConfirmDelete}>Yes</button>
+            <button onClick={handleCancelDelete}>No</button>
+          </div>
+        )}
+
         <section className="container1">
           <div className="watercard">
             <div className="label">
-              <img className="watericon" loading="lazy" alt="" src="/watericon@2x.png" />
+              <img
+                className="watericon"
+                loading="lazy"
+                alt=""
+                src="/watericon@2x.png"
+              />
               <h1 className="water">Water</h1>
               <div className="total">
                 <div className="total1">Total $</div>
@@ -124,12 +131,16 @@ const WaterPage = () => {
 
           <div className="container2">
             <div className="heading">
-              <div className="h1">
+              <div className="h17">
                 <h2 className="expenses">Expenses/</h2>
-                <h2 className="water">Water</h2>
+                <h2 className="water1">Water</h2>
               </div>
               <button className="addexbtn" onClick={toggleAddModal}>
-                <img className="vector-icon" alt="" src="/vector-10.svg" />
+                <img
+                  className="editing-cell-icon"
+                  alt=""
+                  src="/vector-10.svg"
+                />
                 <div className="add-expense">Add Expense</div>
               </button>
             </div>
@@ -137,18 +148,19 @@ const WaterPage = () => {
             <div className="table">
               <div className="row">
                 <div className="header-cell">
-                  <div className="service-provider">Service Provider</div>
+                  <div className="service-provider">Billing Month</div>
                 </div>
-                <div className="header-cell">
+                <div className="header-cell1">
                   <div className="date-paid">Date Paid</div>
                 </div>
-                <div className="header-cell">
+                <div className="header-cell2">
                   <div className="amount">Amount</div>
                 </div>
-                <div className="header-cell">
+                <div className="header-cell3">
                   <div className="action">Action</div>
                 </div>
               </div>
+
               {/* Conditional Rendering for Table Data */}
               {loading ? (
                 <div className="loading-indicator">Loading expenses...</div>
@@ -157,30 +169,33 @@ const WaterPage = () => {
               ) : (
                 // Table Rows (dynamically generated)
                 expenses.map((expense) => (
-                  <div className="row" key={expense.expenseId}>
+                  <div className="row1" key={expense.expenseId}>
                     <div className="table-cell">{expense.billMonth}</div>
-                    <div className="table-cell">{new Date(expense.datePaid).toISOString().slice(0,10)}</div>
-                    <div className="table-cell">${expense.billAmount}</div>
-                    <div className="table-cell">
-                      <button
-                        className="edit-button"
-                        onClick={() => handleEditClick(expense)}
-                      >
-                        Edit
-                      </button>
-                      
-                      <button
-                        className="delete-button"
-                        onClick={() => handleDeleteClick(expense.expensesId)}
-                      >
-                        Delete
-                      </button>
+                    <div className="table-cell1">
+                      {new Date(expense.datePaid).toISOString().slice(0, 10)}
                     </div>
-                    <div style={{display: 'none'}}>{expense.expenseId}</div>
+                    <div className="table-cell2">${expense.billAmount}</div>
+                    <div className="table-cell3">
+                      <div className="buttons">
+                        <button
+                          className="edit-button"
+                          onClick={() => handleEditClick(expense)}
+                        >
+                          <div className="edit">Edit</div>
+                        </button>
+
+                        <button
+                          className="delete-button"
+                          onClick={() => handleDeleteClick(expense.expensesId)}
+                        >
+                          <div className="delete">Delete</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div style={{ display: "none" }}>{expense.expenseId}</div>
                   </div>
                 ))
               )}
-              
             </div>
           </div>
         </section>
@@ -199,13 +214,13 @@ const WaterPage = () => {
       )}
       {showEditModal && (
         <div className="modal-backdrop">
-          <EditModalWater 
+          <EditModalWater
             close={() => {
               toggleEditModal();
               refreshTable();
             }}
             expense={selectedExpenseId}
-            onSave={handleEditExpense} 
+            onSave={handleEditExpense}
           />
         </div>
       )}

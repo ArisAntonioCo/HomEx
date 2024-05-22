@@ -8,6 +8,12 @@
   color: var(--color-darkslategray-100);
   text-align: left;
 }
+.date-input {
+  width: 100%;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  border: none; /* Hide border */
+  font-family: var(--font-inter);
+}
 .expense {
   font-size: var(--font-size-xs);
   font-weight: 300;

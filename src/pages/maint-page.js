@@ -10,7 +10,7 @@ import {
   deleteMaintenanceExpense,
   addMaintenanceExpense,
 } from "../Redux/maintSlice"; // Assuming you have a similar slice for maintenance
-import "./maint-page.css";
+import "./misc-page.css";
 
 const MaintPage = () => {
   const [showAddModal, setShowAddModal] = useState(false);
@@ -92,15 +92,15 @@ const MaintPage = () => {
     };
   }, []);
   return (
-    <div className="maintpage">
+    <div className="miscpage">
       <Sidebar />
       {isDrawerOpen && <Drawer />}
-      
-      <main className="maint-panel">
-        <header className="mobile-devices3" onClick={toggleDrawer}>
-          <div className="container7">
+
+      <main className="misc-panel">
+        <header className="mobile-devices5" onClick={toggleDrawer}>
+          <div className="container13">
             <img
-              className="menu-icon3"
+              className="menu-icon5"
               loading="lazy"
               alt="Menu Icon"
               src="/menu.svg"
@@ -114,48 +114,49 @@ const MaintPage = () => {
             <button onClick={handleCancelDelete}>No</button>
           </div>
         )}
-        <section className="container8">
-          <div className="maintenancecard1">
-            <div className="label8">
+        <section className="container14">
+          <div className="misccard1">
+            <div className="label11">
               <img
-                className="union-icon1"
+                className="miscicon1"
                 loading="lazy"
                 alt=""
-                src="/union1@2x.png"
+                src="/miscicon1@2x.png"
               />
-              <h1 className="maintenance1">Maintenance</h1>
-              <div className="total16">
-                <div className="total17">Total $</div>
-              </div>
-            </div>
-            <div className="maintenancetotal1">${totalBillAmount}</div>
-          </div>
-
-          <div className="container9">
-            <div className="heading2">
-              <div className="h15">
-                <h2 className="expenses2">Expenses/</h2>
-                <h2 className="maintenance2">Maintenance</h2>
-              </div>
-              <button className="addexbtn2" onClick={toggleAddModal}>
-                <img className="vector-icon1" alt="" src="/vector-10.svg" />
-                <div className="add-expense4">Add Expense</div>
+              <h1 className="miscellaneous7">Miscellaneous</h1>
+              <button className="total20">
+                <div className="total21">Total $</div>
               </button>
             </div>
-            
-            <div className="table2">
-              <div className="row4">
-                <div className="header-cell">
-                  <div className="service-provider">Service Provider</div>
+            <div className="misctotal1">${totalBillAmount}</div>
+          </div>
+
+          <div className="container31">
+            {" "}
+            {/* Removed the <form> element */}
+            <div className="heading6">
+              <div className="h18">
+                <h2 className="expenses15">Expenses/</h2>
+                <h2 className="miscellaneous8">Maintenance</h2>
+              </div>
+              <button className="addexbtn5" onClick={toggleAddModal}>
+                <img className="edit-button-icon" alt="" src="/vector-10.svg" />
+                <div className="add-expense5">Add Expense</div>
+              </button>
+            </div>
+            <div className="table5">
+              <div className="row10">
+                <div className="header-cell20">
+                  <div className="service-provider5">Description</div>
                 </div>
-                <div className="header-cell">
-                  <div className="date-paid">Date Paid</div>
+                <div className="header-cell21">
+                  <div className="date-paid5">Date Paid</div>
                 </div>
-                <div className="header-cell">
-                  <div className="amount">Amount</div>
+                <div className="header-cell22">
+                  <div className="amount3">Amount</div>
                 </div>
-                <div className="header-cell">
-                  <div className="action">Action</div>
+                <div className="header-cell23">
+                  <div className="action5">Action</div>
                 </div>
               </div>
               {/* Conditional Rendering for Table Data */}
@@ -166,24 +167,28 @@ const MaintPage = () => {
               ) : (
                 // Table Rows (dynamically generated)
                 expenses.map((expense) => (
-                  <div className="row" key={expense.expenseId}>
-                    <div className="table-cell">{expense.billMonth}</div>
-                    <div className="table-cell">{new Date(expense.datePaid).toISOString().slice(0,10)}</div>
-                    <div className="table-cell">${expense.billAmount}</div>
-                    <div className="table-cell">
-                      <button
-                        className="edit-button"
-                        onClick={() => handleEditClick(expense)}
-                      >
-                        Edit
-                      </button>
+                  <div className="row11" key={expense.expenseId}>
+                    <div className="table-cell20">{expense.billMonth}</div>
+                    <div className="table-cell21">
+                      {new Date(expense.datePaid).toISOString().slice(0, 10)}
+                    </div>
+                    <div className="table-cell22">${expense.billAmount}</div>
+                    <div className="table-cell23">
+                      <div className="buttons5">
+                        <button
+                          className="edit-button5"
+                          onClick={() => handleEditClick(expense)}
+                        >
+                          <div className="edit5">Edit</div>
+                        </button>
 
-                      <button
-                        className="delete-button"
-                        onClick={() => {handleDeleteClick(expense.expensesId)}}
-                      >
-                        Delete
-                      </button>
+                        <button
+                          className="delete-button5"
+                          onClick={() => handleDeleteClick(expense.expensesId)}
+                        >
+                          <div className="delete6">Delete</div>
+                        </button>
+                      </div>
                     </div>
                     <div style={{ display: "none" }}>{expense.expenseId}</div>
                   </div>
@@ -192,31 +197,31 @@ const MaintPage = () => {
             </div>
           </div>
         </section>
-      </main>
 
-      {showAddModal && (
-        <div className="modal-backdrop">
-          <AddModalMaint
-            close={() => {
-              toggleAddModal();
-              refreshTable();
-            }}
-            onAddExpense={handleAddExpense}
-          />
-        </div>
-      )}
-      {showEditModal && (
-        <div className="modal-backdrop">
-          <EditModalMaint
-            close={() => {
-              toggleEditModal();
-              refreshTable();
-            }}
-            expense={selectedExpenseId}
-            onSave={handleEditExpense}
-          />
-        </div>
-      )}
+        {showAddModal && (
+          <div className="modal-backdrop">
+            <AddModalMaint
+              close={() => {
+                toggleAddModal();
+                refreshTable();
+              }}
+              onAddExpense={handleAddExpense}
+            />
+          </div>
+        )}
+        {showEditModal && (
+          <div className="modal-backdrop">
+            <EditModalMaint
+              close={() => {
+                toggleEditModal();
+                refreshTable();
+              }}
+              expense={selectedExpenseId}
+              onSave={handleEditExpense}
+            />
+          </div>
+        )}
+      </main>
     </div>
   );
 };

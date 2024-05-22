@@ -43,6 +43,7 @@
   font-size: 32px;
   color: #fff;
   font-family: Inter;
+  margin-bottom: 48px;
 }
 .aboutpage {
   width: 100%;
@@ -73,4 +74,41 @@
   .section {
     gap: 18px;
   }
+
+
+.video-section {
+  max-width: 100%; 
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px; 
+  background-color: black; 
+}
+
+.video-container {
+  width: 860px;
+  height: 485px;
+  background-color: black; 
+}
+
+/* Media Query for Smaller Screens (Tablets/Phones) */
+@media screen and (max-width: 768px) {
+  .video-container {
+    width: 90%; /* Adjust video width to fit screen */
+    max-width: 700px; /* Limit maximum width on larger tablets */
+  }
+}
+
+/* Media Query for Even Smaller Screens (Phones) */
+@media screen and (max-width: 450px) {
+  .video-container {
+    width: 100%; /* Full width on phones */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .video-section {
+    margin-top: 20px;
+    padding: 20px; 
+  }
+}
+
 }

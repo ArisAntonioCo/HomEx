@@ -8,7 +8,7 @@ import {
   fetchElectricityExpenses,
   updateElectricityExpense,
   deleteElectricityExpense,
-  addElectricityExpense
+  addElectricityExpense,
 } from "../Redux/electricitySlice";
 import "./electricity-page.css";
 
@@ -30,7 +30,7 @@ const ElectricityPage = () => {
   }, [dispatch, refreshKey]);
 
   const handleEditClick = (expense) => {
-    console.log(expense)
+    console.log(expense);
     setSelectedExpenseId(expense);
     toggleEditModal();
   };
@@ -42,11 +42,11 @@ const ElectricityPage = () => {
   };
 
   const handleDeleteClick = (expenseId) => {
-    console.log(expenseId)
+    console.log(expenseId);
     setSelectedExpenseId(expenseId);
     setShowDeleteConfirmation(true); // Show confirmation modal on first click
   };
-  
+
   const handleConfirmDelete = () => {
     if (selectedExpenseId) {
       dispatch(deleteElectricityExpense(selectedExpenseId));
@@ -64,9 +64,9 @@ const ElectricityPage = () => {
     dispatch(addElectricityExpense(newExpense));
     refreshTable();
   };
-const refreshTable = () => {
-  setRefreshKey((oldKey) => oldKey + 1);
-};
+  const refreshTable = () => {
+    setRefreshKey((oldKey) => oldKey + 1);
+  };
   const toggleAddModal = () => {
     setShowAddModal(!showAddModal);
   };
@@ -93,7 +93,6 @@ const refreshTable = () => {
     };
   }, []);
 
-
   return (
     <div className="electricitypage1">
       <Sidebar />
@@ -110,12 +109,12 @@ const refreshTable = () => {
           </div>
         </header>
         {showDeleteConfirmation && (
-        <div className="delete-confirmation-modal">
-          <p>Are you sure you want to delete this expense?</p>
-          <button onClick={handleConfirmDelete}>Yes</button>
-          <button onClick={handleCancelDelete}>No</button>
-        </div>
-      )}
+          <div className="delete-confirmation-modal">
+            <p>Are you sure you want to delete this expense?</p>
+            <button onClick={handleConfirmDelete}>Yes</button>
+            <button onClick={handleCancelDelete}>No</button>
+          </div>
+        )}
         <section className="container16">
           <div className="electricitycard2">
             <div className="label10">
@@ -148,7 +147,7 @@ const refreshTable = () => {
             <div className="table4">
               <div className="row8">
                 <div className="header-cell16">
-                  <div className="service-provider4">Service Provider</div>
+                  <div className="service-provider4">Billing Month</div>
                 </div>
                 <div className="header-cell17">
                   <div className="date-paid4">Date Paid</div>
@@ -170,28 +169,31 @@ const refreshTable = () => {
                 expenses.map((expense) => (
                   <div className="row9" key={expense.expenseId}>
                     <div className="table-cell16">{expense.billMonth}</div>
-                    <div className="table-cell">{new Date(expense.datePaid).toISOString().slice(0,10)}</div>
+                    <div className="table-cell17">
+                      {new Date(expense.datePaid).toISOString().slice(0, 10)}
+                    </div>
                     <div className="table-cell18">${expense.billAmount}</div>
                     <div className="table-cell19">
-                      <button
-                        className="edit-button4"
-                        onClick={(e) => handleEditClick(expense) }
-                      >
-                        Edit
-                      </button>
-                      
-                      <button
-                        className="delete-button4"
-                        onClick={() => handleDeleteClick(expense.expensesId)}
+                      <div className="buttons4">
+                        <button
+                          className="edit-button4"
+                          onClick={(e) => handleEditClick(expense)}
                         >
-                        Delete
-                      </button>
+                          <div className="edit4">Edit</div>
+                        </button>
+
+                        <button
+                          className="delete-button4"
+                          onClick={() => handleDeleteClick(expense.expensesId)}
+                        >
+                          <div className="delete4">Delete</div>
+                        </button>
+                      </div>
                     </div>
-                    <div style={{display: 'none'}}>{expense.expenseId}</div>
+                    <div style={{ display: "none" }}>{expense.expenseId}</div>
                   </div>
                 ))
               )}
-              
             </div>
           </div>
         </section>
@@ -210,13 +212,13 @@ const refreshTable = () => {
       )}
       {showEditModal && (
         <div className="modal-backdrop">
-          <EditModalElec 
+          <EditModalElec
             close={() => {
               toggleEditModal();
               refreshTable();
             }}
             expense={selectedExpenseId}
-            onSave={handleEditExpense} 
+            onSave={handleEditExpense}
           />
         </div>
       )}

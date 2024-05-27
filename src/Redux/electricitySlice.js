@@ -9,19 +9,22 @@ import config from '../config';
 // Fetch all electricity expenses
 export const fetchElectricityExpenses = createAsyncThunk(
   'electricity/fetchElectricityExpenses', 
-  async (_, thunkAPI) => {
+  async ({ startDate, endDate }, thunkAPI) => { 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`${config.apiUrl}/electricity-expenses`, {
-        headers: { Authorization: `Bearer ${token}` } 
-      });
+      const response = await axios.get(
+        `${config.apiUrl}/electricity-expenses`, 
+        { 
+          headers: { Authorization: `Bearer ${token}` },
+          params: { startDate, endDate }
+        }
+      );
       return response.data; 
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data); 
     }
   }
 );
-
 // Add a new electricity expense
 export const addElectricityExpense = createAsyncThunk(
   'electricity/addElectricityExpense',

@@ -9,12 +9,16 @@ import config from '../config';
 // Fetch all food expenses
 export const fetchFoodExpenses = createAsyncThunk(
   'food/fetchFoodExpenses', 
-  async (_, thunkAPI) => {
+  async ({ startDate, endDate }, thunkAPI) => { 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`${config.apiUrl}/food-expenses`, {
-        headers: { Authorization: `Bearer ${token}` } 
-      });
+      const response = await axios.get(
+        `${config.apiUrl}/food-expenses`, 
+        { 
+          headers: { Authorization: `Bearer ${token}` },
+          params: { startDate, endDate }
+        }
+      );
       return response.data; 
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data); 

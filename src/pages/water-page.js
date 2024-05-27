@@ -27,7 +27,8 @@ const WaterPage = () => {
   const [successMessage, setSuccessMessage] = useState(null);
   const [open, setOpen] = useState(false);
   const [hasShown, setHasShown] = useState(false);
-
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   useEffect(() => {
     if (successMessage && !hasShown) {
       setOpen(true);
@@ -46,10 +47,19 @@ const WaterPage = () => {
   const { expenses, totalBillAmount, loading, error } = useSelector(
     (state) => state.water
   );
-  console.log(expenses.billMonth);
+  
   useEffect(() => {
-    dispatch(fetchWaterExpenses());
-  }, [dispatch, refreshKey]);
+    const currentYear = new Date().getFullYear();
+    const defaultStartDate = new Date(currentYear - 100, 0, 1); // 100 years before the current year
+    const defaultEndDate = new Date(currentYear + 100, 11, 31); // 100 years after the current year
+    setStartDate(defaultStartDate);
+    setEndDate(defaultEndDate);
+    dispatch(
+      fetchWaterExpenses({
+        startDate: defaultStartDate,
+        endDate: defaultEndDate,
+      })
+    );  }, [dispatch, refreshKey]);
 
   const handleEditClick = (expense) => {
     setSelectedExpenseId(expense);

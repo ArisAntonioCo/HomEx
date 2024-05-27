@@ -8,19 +8,20 @@ import config from "../config";
 
 // Fetch all miscellaneous expenses
 export const fetchMiscellaneousExpenses = createAsyncThunk(
-  "miscellaneous/fetchMiscellaneousExpenses",
-  async (_, thunkAPI) => {
+  'miscellaneous/fetchMiscellaneousExpenses', 
+  async ({ startDate, endDate }, thunkAPI) => { 
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem('token');
       const response = await axios.get(
-        `${config.apiUrl}/miscellaneous-expenses`,
-        {
+        `${config.apiUrl}/miscellaneous-expenses`, 
+        { 
           headers: { Authorization: `Bearer ${token}` },
+          params: { startDate, endDate }
         }
       );
-      return response.data;
+      return response.data; 
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(error.response.data); 
     }
   }
 );

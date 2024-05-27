@@ -8,16 +8,20 @@ import config from "../config";
 
 // Fetch all water expenses
 export const fetchWaterExpenses = createAsyncThunk(
-  "water/fetchWaterExpenses",
-  async (_, thunkAPI) => {
+  'water/fetchWaterExpenses', 
+  async ({ startDate, endDate }, thunkAPI) => { 
     try {
-      const token = localStorage.getItem("token");
-      const response = await axios.get(`${config.apiUrl}/water-expenses`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      return response.data;
+      const token = localStorage.getItem('token');
+      const response = await axios.get(
+        `${config.apiUrl}/water-expenses`, 
+        { 
+          headers: { Authorization: `Bearer ${token}` },
+          params: { startDate, endDate }
+        }
+      );
+      return response.data; 
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(error.response.data); 
     }
   }
 );

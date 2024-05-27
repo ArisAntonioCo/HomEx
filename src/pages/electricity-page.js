@@ -24,6 +24,8 @@ const ElectricityPage = () => {
   const [refreshKey, setRefreshKey] = useState(0);
   const [selectedExpenseId, setSelectedExpenseId] = useState(null);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
   const [successMessage, setSuccessMessage] = useState(null);
   const [open, setOpen] = useState(false);
@@ -49,8 +51,17 @@ const ElectricityPage = () => {
   );
 
   useEffect(() => {
-    dispatch(fetchElectricityExpenses());
-  }, [dispatch, refreshKey]);
+    const currentYear = new Date().getFullYear();
+    const defaultStartDate = new Date(currentYear - 100, 0, 1); // 100 years before the current year
+    const defaultEndDate = new Date(currentYear + 100, 11, 31); // 100 years after the current year
+    setStartDate(defaultStartDate);
+    setEndDate(defaultEndDate);
+    dispatch(
+      fetchElectricityExpenses({
+        startDate: defaultStartDate,
+        endDate: defaultEndDate,
+      })
+    );  }, [dispatch, refreshKey]);
 
   const handleEditClick = (expense) => {
     console.log(expense);

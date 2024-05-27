@@ -31,6 +31,7 @@ const AddModalElec = ({ close, onSuccess }) => {
       newErrors.billMonth = "Billing month is required";
     }
     if (formData.datePaid.trim() === "") {
+      console.log( formData.datePaid);
       newErrors.datePaid = "Date paid is required";
     }
     if (formData.billAmount.trim() === "") {

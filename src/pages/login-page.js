@@ -10,6 +10,7 @@ import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import Alert from '@mui/material/Alert';
 const LoginPage = () => {
   const dispatch = useDispatch(); // Hook to dispatch Redux actions
   const location = useLocation();

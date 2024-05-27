@@ -9,12 +9,16 @@ import config from '../config';
 // Fetch all maintenance expenses
 export const fetchMaintenanceExpenses = createAsyncThunk(
   'maintenance/fetchMaintenanceExpenses', 
-  async (_, thunkAPI) => {
+  async ({ startDate, endDate }, thunkAPI) => { 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`${config.apiUrl}/maintenance-expenses`, {
-        headers: { Authorization: `Bearer ${token}` } 
-      });
+      const response = await axios.get(
+        `${config.apiUrl}/maintenance-expenses`, 
+        { 
+          headers: { Authorization: `Bearer ${token}` },
+          params: { startDate, endDate }
+        }
+      );
       return response.data; 
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data); 

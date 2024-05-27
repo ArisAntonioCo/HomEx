@@ -4,12 +4,16 @@ import { updateMiscellaneousExpense } from "../../Redux/miscSlice";
 import "./edit-modal-misc.css";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
-
+import ConfirmationDialog from "./confirmationDialogue";
 const EditModalMisc = ({ close, onSuccess, expense }) => {
   const [message, setMessage] = useState(null);
   const [open, setOpen] = useState(false);
   const [hasShown, setHasShown] = useState(false);
+  const [showEditConfirmation, setShowEditConfirmation] = useState(false);
 
+  const handleCancelEdit = () => {
+    setShowEditConfirmation(false);
+  };
   useEffect(() => {
     if (message && !hasShown) {
       setOpen(true);
@@ -74,7 +78,7 @@ const EditModalMisc = ({ close, onSuccess, expense }) => {
   }
 }, [expense]);
 
-const handleSubmit = async (event) => {
+const handleSubmit = (event) => {
   event.preventDefault();
 
   if (!validateForm()) {
@@ -82,6 +86,11 @@ const handleSubmit = async (event) => {
     return;
   }
 
+  // Show the confirmation dialog instead of dispatching the update action immediately
+  setShowEditConfirmation(true);
+};
+
+const handleConfirmEdit = async () => {
   try {
     const isoDatePaid = new Date(formData.datePaid).toISOString();
     const resultAction = await dispatch(
@@ -104,13 +113,15 @@ const handleSubmit = async (event) => {
       close();
     } else {
       console.error("Updating expense failed:", resultAction.error.message);
-      setMessage("Failed to edit misc expense. Please try again."); // More specific error message
+      setMessage("Failed to edit miscellaneous expense. Please try again."); // More specific error message
     }
   } catch (error) {
     setMessage("An error occurred while editing the expense.");
+  } finally {
+    // Close the confirmation dialog whether the update action was successful or not
+    setShowEditConfirmation(false);
   }
 };
-
   const handleInputChange = (event) => {
     setFormData({
       ...formData,
@@ -124,6 +135,15 @@ const handleSubmit = async (event) => {
 
   return (
     <div className="add-modal">
+      {showEditConfirmation && (
+          <ConfirmationDialog
+            mode="edit"
+            title="Edit Confirmation"
+            open={showEditConfirmation}
+            handleCancel={handleCancelEdit}
+            handleConfirm={handleConfirmEdit}
+          />
+        )}
       <Snackbar
         open={open}
         autoHideDuration={6000}

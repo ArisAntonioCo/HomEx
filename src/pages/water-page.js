@@ -13,8 +13,7 @@ import {
 import "./water-page.css";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
-import DeleteConfirmationDialog from '../components/popups/deleteConfirmationDialogue';
-
+import ConfirmationDialog from "../components/popups/confirmationDialogue";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
 const WaterPage = () => {
@@ -47,7 +46,7 @@ const WaterPage = () => {
   const { expenses, totalBillAmount, loading, error } = useSelector(
     (state) => state.water
   );
-  
+
   useEffect(() => {
     const currentYear = new Date().getFullYear();
     const defaultStartDate = new Date(currentYear - 100, 0, 1); // 100 years before the current year
@@ -59,7 +58,8 @@ const WaterPage = () => {
         startDate: defaultStartDate,
         endDate: defaultEndDate,
       })
-    );  }, [dispatch, refreshKey]);
+    );
+  }, [dispatch, refreshKey]);
 
   const handleEditClick = (expense) => {
     setSelectedExpenseId(expense);
@@ -84,7 +84,6 @@ const WaterPage = () => {
       refreshTable();
     }
     setShowDeleteConfirmation(false);
-    
   };
 
   const handleCancelDelete = () => {
@@ -152,10 +151,12 @@ const WaterPage = () => {
         </header>
 
         {showDeleteConfirmation && (
-          <DeleteConfirmationDialog
+          <ConfirmationDialog
+            mode="delete"
+            title="Delete Confirmation"
             open={showDeleteConfirmation}
-            handleCancelDelete={handleCancelDelete}
-            handleConfirmDelete={handleConfirmDelete}
+            handleCancel={handleCancelDelete}
+            handleConfirm={handleConfirmDelete}
           />
         )}
 

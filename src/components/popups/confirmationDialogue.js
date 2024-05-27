@@ -5,15 +5,22 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 
-const DeleteConfirmationDialog = ({
+const ConfirmationDialog = ({
   open,
-  handleCancelDelete,
-  handleConfirmDelete,
+  handleCancel,
+  handleConfirm,
+  mode,
+  title,
 }) => {
+  const message =
+    mode === "delete"
+      ? "Are you sure you want to delete this expense?"
+      : "Are you sure you want to edit this expense?";
+
   return (
     <Dialog
       open={open}
-      onClose={handleCancelDelete}
+      onClose={handleCancel}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
       sx={{
@@ -39,32 +46,32 @@ const DeleteConfirmationDialog = ({
         id="alert-dialog-title"
         sx={{ fontFamily: "var(--font-inter)" }}
       >
-        {"Delete Confirmation"}
+        {title}
       </DialogTitle>
       <DialogContent>
         <DialogContentText
           id="alert-dialog-description"
           sx={{ fontFamily: "var(--font-inter)" }}
         >
-          Are you sure you want to delete this expense?
+          {message}
         </DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button
-          onClick={handleCancelDelete}
+          onClick={handleCancel}
           sx={{
             fontWeight: 500,
             fontSize: "var(--font-size-2xs)",
             color: "white",
             fontFamily: "var(--font-inter)",
             backgroundColor: "darkslategray",
-            marginRight: 1
+            marginRight: 1,
           }}
         >
           No
         </Button>
         <Button
-          onClick={handleConfirmDelete}
+          onClick={handleConfirm}
           autoFocus
           sx={{
             fontWeight: 500,
@@ -72,7 +79,7 @@ const DeleteConfirmationDialog = ({
             color: "white",
             fontFamily: "var(--font-inter)",
             backgroundColor: "#ff5e24",
-            marginLeft: 1
+            marginLeft: 1,
           }}
         >
           Yes
@@ -82,4 +89,4 @@ const DeleteConfirmationDialog = ({
   );
 };
 
-export default DeleteConfirmationDialog;
+export default ConfirmationDialog;

@@ -15,7 +15,7 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
-import DeleteConfirmationDialog from '../components/popups/deleteConfirmationDialogue';
+import ConfirmationDialog from '../components/popups/confirmationDialogue';
 
 const MaintPage = () => {
   const [showAddModal, setShowAddModal] = useState(false);
@@ -156,11 +156,13 @@ const MaintPage = () => {
           </div>
         </header>
         {showDeleteConfirmation && (
-          <DeleteConfirmationDialog
-          open={showDeleteConfirmation}
-          handleCancelDelete={handleCancelDelete}
-          handleConfirmDelete={handleConfirmDelete}
-        />
+          <ConfirmationDialog
+            mode="delete"
+            title="Delete Confirmation"
+            open={showDeleteConfirmation}
+            handleCancel={handleCancelDelete}
+            handleConfirm={handleConfirmDelete}
+          />
         )}
         <section className="container14">
           <div className="misccard1">

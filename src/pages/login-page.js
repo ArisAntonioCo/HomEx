@@ -116,7 +116,7 @@ const LoginPage = () => {
                 className="email"
                 placeholder="Email"
                 type="email"
-                name="email" // Make sure the name matches the backend field
+                name="email" 
                 value={formData.email}
                 onChange={handleChange}
               />
@@ -126,7 +126,7 @@ const LoginPage = () => {
                 className="password"
                 placeholder="Password"
                 type="password"
-                name="password" // Make sure the name matches the backend field
+                name="password" 
                 value={formData.password}
                 onChange={handleChange}
               />

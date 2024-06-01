@@ -101,7 +101,7 @@ const handleSubmit = async (event) => {
                 className="email"
                 placeholder="Email"
                 type="email"
-                name="email" // Make sure the name matches the backend field
+                name="email" 
                 value={formData.email}
                 onChange={handleChange}
               />
@@ -112,7 +112,7 @@ const handleSubmit = async (event) => {
                 className="username"
                 placeholder="Username"
                 type="text"
-                name="handle" // Make sure the name matches the backend field
+                name="handle" 
                 value={formData.handle}
                 onChange={handleChange}
               />
@@ -123,7 +123,7 @@ const handleSubmit = async (event) => {
                 className="password"
                 placeholder="Password"
                 type="password"
-                name="password" // Make sure the name matches the backend field
+                name="password"
                 value={formData.password}
                 onChange={handleChange}
               />
@@ -133,7 +133,7 @@ const handleSubmit = async (event) => {
                 className="password"
                 placeholder="Confirm Password"
                 type="password"
-                name="confirmPassword" // Make sure the name matches the backend field
+                name="confirmPassword" 
                 value={formData.confirmPassword}
                 onChange={handleChange}
               />

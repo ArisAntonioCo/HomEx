@@ -124,7 +124,7 @@ const AddModalElec = ({ close, onSuccess }) => {
               className="item"
               placeholder="Billing Month"
               type="text"
-              name="billMonth" // Add the name attribute for billMonth
+              name="billMonth" 
               value={formData.billMonth}
               onChange={handleInputChange}
             />
@@ -141,7 +141,7 @@ const AddModalElec = ({ close, onSuccess }) => {
             <input
               className="amount4"
               placeholder="Amount"
-              type="number" // Input type should be "number" for billAmount
+              type="number" 
               name="billAmount"
               value={formData.billAmount}
               onChange={handleInputChange}

@@ -217,7 +217,6 @@ const WaterPage = () => {
               ) : error ? (
                 <div className="error-message">Error: {error.message}</div>
               ) : (
-                // Table Rows (dynamically generated)
                 expenses.map((expense) => (
                   <div className="row1" key={expense.expenseId}>
                     <div className="table-cell">{expense.billMonth}</div>

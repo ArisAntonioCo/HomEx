@@ -1,10 +1,9 @@
 import React from "react";
 import Snackbar from "@mui/material/Snackbar";
-import Alert from "@mui/material/Alert"; // Use Alert instead of MuiAlert for MUI v5
-import Slide from "@mui/material/Slide"; // For slide transition effect
-
+import Alert from "@mui/material/Alert"; 
+import Slide from "@mui/material/Slide"; 
 function SlideTransition(props) {
-  return <Slide {...props} direction="up" />; // Slide up animation
+  return <Slide {...props} direction="up" />; 
 }
 
 const ReusableSnackbar = ({ open, message, severity, onClose, autoHideDuration = 6000 }) => {
@@ -13,8 +12,8 @@ const ReusableSnackbar = ({ open, message, severity, onClose, autoHideDuration =
       open={open}
       autoHideDuration={autoHideDuration}
       onClose={onClose}
-      TransitionComponent={SlideTransition} // Add transition effect
-      anchorOrigin={{ vertical: "bottom", horizontal: "center" }} // Center the snackbar
+      TransitionComponent={SlideTransition} 
+      anchorOrigin={{ vertical: "bottom", horizontal: "center" }} 
     >
       <Alert onClose={onClose} severity={severity}>
         {message}

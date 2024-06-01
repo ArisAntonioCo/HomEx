@@ -216,7 +216,6 @@ const FoodPage = () => {
               ) : error ? (
                 <div className="error-message">Error: {error.message}</div>
               ) : (
-                // Table Rows (dynamically generated)
                 expenses.map((expense) => (
                   <div className="row5" key={expense.expenseId}>
                     <div className="table-cell8">{expense.billMonth}</div>

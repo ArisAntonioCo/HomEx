@@ -23,6 +23,21 @@ const DashboardPage = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
+  const [electricityStartDate, setElectricityStartDate] = useState(null);
+  const [electricityEndDate, setElectricityEndDate] = useState(null);
+
+  const [waterStartDate, setWaterStartDate] = useState(null);
+  const [waterEndDate, setWaterEndDate] = useState(null);
+
+  const [foodStartDate, setFoodStartDate] = useState(null);
+  const [foodEndDate, setFoodEndDate] = useState(null);
+
+  const [maintenanceStartDate, setMaintenanceStartDate] = useState(null);
+  const [maintenanceEndDate, setMaintenanceEndDate] = useState(null);
+
+  const [miscellaneousStartDate, setMiscellaneousStartDate] = useState(null);
+  const [miscellaneousEndDate, setMiscellaneousEndDate] = useState(null);
+
   useEffect(() => {
     if (successMessage && !hasShown) {
       setOpen(true);
@@ -67,16 +82,14 @@ const DashboardPage = () => {
     error: miscellaneousError,
   } = useSelector((state) => state.miscellaneous);
 
-  // Improved date input validation and default dates
   useEffect(() => {
     const currentYear = new Date().getFullYear();
     const defaultStartDate = new Date(currentYear, 0, 1);
     const defaultEndDate = new Date(currentYear, 11, 31);
 
-    // Set default dates only if both are initially null
-    if (!startDate && !endDate) {
-      setStartDate(defaultStartDate);
-      setEndDate(defaultEndDate);
+    if (!electricityStartDate && !electricityEndDate) {
+      setElectricityStartDate(defaultStartDate);
+      setElectricityEndDate(defaultEndDate);
       dispatch(
         fetchElectricityExpenses({
           startDate: defaultStartDate,
@@ -86,16 +99,14 @@ const DashboardPage = () => {
     }
   }, [dispatch]);
 
-  // Improved date input validation and default dates
   useEffect(() => {
     const currentYear = new Date().getFullYear();
     const defaultStartDate = new Date(currentYear, 0, 1);
     const defaultEndDate = new Date(currentYear, 11, 31);
 
-    // Set default dates only if both are initially null
-    if (!startDate && !endDate) {
-      setStartDate(defaultStartDate);
-      setEndDate(defaultEndDate);
+    if (!waterStartDate && !waterEndDate) {
+      setWaterStartDate(defaultStartDate);
+      setWaterEndDate(defaultEndDate);
       dispatch(
         fetchWaterExpenses({
           startDate: defaultStartDate,
@@ -105,16 +116,14 @@ const DashboardPage = () => {
     }
   }, [dispatch]);
 
-  // Improved date input validation and default dates
   useEffect(() => {
     const currentYear = new Date().getFullYear();
     const defaultStartDate = new Date(currentYear, 0, 1);
     const defaultEndDate = new Date(currentYear, 11, 31);
 
-    // Set default dates only if both are initially null
-    if (!startDate && !endDate) {
-      setStartDate(defaultStartDate);
-      setEndDate(defaultEndDate);
+    if (!foodStartDate && !foodEndDate) {
+      setFoodStartDate(defaultStartDate);
+      setFoodEndDate(defaultEndDate);
       dispatch(
         fetchFoodExpenses({
           startDate: defaultStartDate,
@@ -124,16 +133,14 @@ const DashboardPage = () => {
     }
   }, [dispatch]);
 
-  // Improved date input validation and default dates
   useEffect(() => {
     const currentYear = new Date().getFullYear();
     const defaultStartDate = new Date(currentYear, 0, 1);
     const defaultEndDate = new Date(currentYear, 11, 31);
 
-    // Set default dates only if both are initially null
-    if (!startDate && !endDate) {
-      setStartDate(defaultStartDate);
-      setEndDate(defaultEndDate);
+    if (!maintenanceStartDate && !maintenanceEndDate) {
+      setMaintenanceStartDate(defaultStartDate);
+      setMaintenanceEndDate(defaultEndDate);
       dispatch(
         fetchMaintenanceExpenses({
           startDate: defaultStartDate,
@@ -143,16 +150,14 @@ const DashboardPage = () => {
     }
   }, [dispatch]);
 
-  // Improved date input validation and default dates
   useEffect(() => {
     const currentYear = new Date().getFullYear();
     const defaultStartDate = new Date(currentYear, 0, 1);
     const defaultEndDate = new Date(currentYear, 11, 31);
 
-    // Set default dates only if both are initially null
-    if (!startDate && !endDate) {
-      setStartDate(defaultStartDate);
-      setEndDate(defaultEndDate);
+    if (!miscellaneousStartDate && !miscellaneousEndDate) {
+      setMiscellaneousStartDate(defaultStartDate);
+      setMiscellaneousEndDate(defaultEndDate);
       dispatch(
         fetchMiscellaneousExpenses({
           startDate: defaultStartDate,
@@ -163,36 +168,67 @@ const DashboardPage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (startDate && endDate) {
-      dispatch(fetchElectricityExpenses({ startDate, endDate }));
+    if (electricityStartDate && electricityEndDate) {
+      dispatch(
+        fetchElectricityExpenses({
+          startDate: electricityStartDate,
+          endDate: electricityEndDate,
+        })
+      );
     }
-    if (startDate && endDate) {
-      dispatch(fetchWaterExpenses({ startDate, endDate }));
+    if (waterStartDate && waterEndDate) {
+      dispatch(
+        fetchWaterExpenses({ startDate: waterStartDate, endDate: waterEndDate })
+      );
     }
-    if (startDate && endDate) {
-      dispatch(fetchFoodExpenses({ startDate, endDate }));
+    if (foodStartDate && foodEndDate) {
+      dispatch(
+        fetchFoodExpenses({ startDate: foodStartDate, endDate: foodEndDate })
+      );
     }
-    if (startDate && endDate) {
-      dispatch(fetchMaintenanceExpenses({ startDate, endDate }));
+    if (maintenanceStartDate && maintenanceEndDate) {
+      dispatch(
+        fetchMaintenanceExpenses({
+          startDate: maintenanceStartDate,
+          endDate: maintenanceEndDate,
+        })
+      );
     }
-    if (startDate && endDate) {
-      dispatch(fetchMiscellaneousExpenses({ startDate, endDate }));
+    if (miscellaneousStartDate && miscellaneousEndDate) {
+      dispatch(
+        fetchMiscellaneousExpenses({
+          startDate: miscellaneousStartDate,
+          endDate: miscellaneousEndDate,
+        })
+      );
     }
-  }, [dispatch, startDate, endDate]);
+  }, [
+    dispatch,
+    electricityStartDate,
+    electricityEndDate,
+    waterStartDate,
+    waterEndDate,
+    foodStartDate,
+    foodEndDate,
+    maintenanceStartDate,
+    maintenanceEndDate,
+    miscellaneousStartDate,
+    miscellaneousEndDate,
+  ]);
 
   const calculateTotalExpenses = () => {
     let total = 0;
 
     // Convert totals to numbers, using 0 as the default if not a number
     const elecTotal = parseFloat(electricityTotal) || 0;
-    const watTotal = parseFloat(waterTotal) || 0; // Changed variable name
-    const fdTotal = parseFloat(foodTotal) || 0; // Changed variable name
-    const maintTotal = parseFloat(maintenanceTotal) || 0; // Changed variable name
-    const miscTotal = parseFloat(miscellaneousTotal) || 0; // Changed variable name
+    const watTotal = parseFloat(waterTotal) || 0; 
+    const fdTotal = parseFloat(foodTotal) || 0; 
+    const maintTotal = parseFloat(maintenanceTotal) || 0; 
+    const miscTotal = parseFloat(miscellaneousTotal) || 0; 
 
     total = elecTotal + watTotal + fdTotal + maintTotal + miscTotal;
 
-    return total.toFixed(2); // Now total is guaranteed to be a number
+    return total.toFixed(2); 
   };
 
   const toggleDrawer = () => {
@@ -294,17 +330,20 @@ const DashboardPage = () => {
               <div className="date-inputs">
                 <input
                   type="date"
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
+                  value={electricityStartDate}
+                  onChange={(e) => setElectricityStartDate(e.target.value)}
                 />
+                
                 <input
                   type="date"
-                  value={endDate}
+                  value={electricityEndDate}
                   onChange={(e) => {
-                    if (new Date(e.target.value) < new Date(startDate)) {
+                    if (
+                      new Date(e.target.value) < new Date(electricityStartDate)
+                    ) {
                       alert("End date cannot be before start date");
                     } else {
-                      setEndDate(e.target.value);
+                      setElectricityEndDate(e.target.value);
                     }
                   }}
                 />
@@ -345,17 +384,17 @@ const DashboardPage = () => {
               <div className="date-inputs">
                 <input
                   type="date"
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
+                  value={waterStartDate}
+                  onChange={(e) => setWaterStartDate(e.target.value)}
                 />
                 <input
                   type="date"
-                  value={endDate}
+                  value={waterEndDate}
                   onChange={(e) => {
-                    if (new Date(e.target.value) < new Date(startDate)) {
+                    if (new Date(e.target.value) < new Date(waterStartDate)) {
                       alert("End date cannot be before start date");
                     } else {
-                      setEndDate(e.target.value);
+                      setWaterEndDate(e.target.value);
                     }
                   }}
                 />
@@ -394,17 +433,17 @@ const DashboardPage = () => {
               <div className="date-inputs">
                 <input
                   type="date"
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
+                  value={foodStartDate}
+                  onChange={(e) => setFoodStartDate(e.target.value)}
                 />
                 <input
                   type="date"
-                  value={endDate}
+                  value={foodEndDate}
                   onChange={(e) => {
-                    if (new Date(e.target.value) < new Date(startDate)) {
+                    if (new Date(e.target.value) < new Date(foodStartDate)) {
                       alert("End date cannot be before start date");
                     } else {
-                      setEndDate(e.target.value);
+                      setFoodEndDate(e.target.value);
                     }
                   }}
                 />
@@ -445,17 +484,19 @@ const DashboardPage = () => {
               <div className="date-inputs">
                 <input
                   type="date"
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
+                  value={maintenanceStartDate}
+                  onChange={(e) => setMaintenanceStartDate(e.target.value)}
                 />
                 <input
                   type="date"
-                  value={endDate}
+                  value={maintenanceEndDate}
                   onChange={(e) => {
-                    if (new Date(e.target.value) < new Date(startDate)) {
+                    if (
+                      new Date(e.target.value) < new Date(maintenanceStartDate)
+                    ) {
                       alert("End date cannot be before start date");
                     } else {
-                      setEndDate(e.target.value);
+                      setMaintenanceEndDate(e.target.value);
                     }
                   }}
                 />
@@ -496,17 +537,20 @@ const DashboardPage = () => {
               <div className="date-inputs">
                 <input
                   type="date"
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
+                  value={miscellaneousStartDate}
+                  onChange={(e) => setMiscellaneousStartDate(e.target.value)}
                 />
                 <input
                   type="date"
-                  value={endDate}
+                  value={miscellaneousEndDate}
                   onChange={(e) => {
-                    if (new Date(e.target.value) < new Date(startDate)) {
+                    if (
+                      new Date(e.target.value) <
+                      new Date(miscellaneousStartDate)
+                    ) {
                       alert("End date cannot be before start date");
                     } else {
-                      setEndDate(e.target.value);
+                      setMiscellaneousEndDate(e.target.value);
                     }
                   }}
                 />

@@ -36,7 +36,6 @@ const EditModalFood = ({ close, onSuccess, expense }) => {
     datePaid: expense.datePaid,
     billAmount: expense.billAmount,
     expenseId: expense.expensesId,
-    // Add other properties of expense here if needed
   });
 
   console.log(formData);
@@ -113,7 +112,7 @@ const handleConfirmEdit = async () => {
       close();
     } else {
       console.error("Updating expense failed:", resultAction.error.message);
-      setMessage("Failed to edit food expense. Please try again."); // More specific error message
+      setMessage("Failed to edit food expense. Please try again."); 
     }
   } catch (error) {
     setMessage("An error occurred while editing the expense.");

@@ -4,8 +4,8 @@
   position: relative;
 }
 .dashboard-panel {
-  position: relative; /* Establish a stacking context */
-  z-index: 1; /* Ensure the dashboard is below the sidebar */
+  position: relative; 
+  z-index: 1; 
 }
 .container6,
 .mobile-devices2 {

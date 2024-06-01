@@ -50,6 +50,10 @@ const Footer = forwardRef(({ bottomContentFlexWrap }, ref) => {
                 {" "}
                 FAQ
               </Link>
+              <Link className="about-us2" to="/privacy-policy">
+                {" "}
+                Privacy Policy
+              </Link>
             </div>
           </div>
 

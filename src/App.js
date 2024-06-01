@@ -18,6 +18,7 @@ import FoodPage from "./pages/food-page";
 import MaintPage from "./pages/maint-page";
 import MiscPage from "./pages/misc-page";
 import ElectricityPage from "./pages/electricity-page";
+import PrivacyPolicy from "./pages/privacy-page";
 
 function App() {
   const action = useNavigationType();
@@ -108,6 +109,7 @@ function App() {
       <Route path="/electricity-page" element={<ElectricityPage />} />
       <Route path="/dashboard-page" element={<DashboardPage />} />
       <Route path="/food-page" element={<FoodPage />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/maint-page" element={<MaintPage />} />
       <Route path="/misc-page" element={<MiscPage />} />
     </Routes>

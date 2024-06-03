@@ -3,10 +3,6 @@
   width: 16px;
   position: relative;
 }
-.dashboard-panel {
-  position: relative; 
-  z-index: 1; 
-}
 .container6,
 .mobile-devices2 {
   justify-content: flex-start;
@@ -78,12 +74,12 @@
   position: relative;
   object-fit: contain;
 }
-.electricity2,
+.employee2,
 .total5 {
   position: relative;
   display: inline-block;
 }
-.electricity2 {
+.employee2 {
   margin: 0;
   flex: 1;
   font-size: inherit;
@@ -120,7 +116,7 @@
   justify-content: flex-start;
   gap: 20px;
 }
-.electricitytotal1 {
+.employeetotal1 {
   position: relative;
   font-size: 40px;
   font-weight: 800;
@@ -128,7 +124,7 @@
   min-width: 108px;
   white-space: nowrap;
 }
-.electricitycard1 {
+.employeecard1 {
   flex: 1;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
   border-radius: 24px;
@@ -151,11 +147,11 @@
   object-fit: contain;
 }
 .total7,
-.water2 {
+.dept2 {
   position: relative;
   display: inline-block;
 }
-.water2 {
+.dept2 {
   margin: 0;
   flex: 1;
   font-size: inherit;
@@ -200,7 +196,7 @@
   justify-content: flex-start;
   gap: 20px;
 }
-.watertotal1 {
+.depttotal1 {
   position: relative;
   font-size: 40px;
   font-weight: 800;
@@ -208,7 +204,7 @@
   min-width: 108px;
   white-space: nowrap;
 }
-.watercard1 {
+.deptcard1 {
   flex: 1;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
   border-radius: 24px;
@@ -230,12 +226,12 @@
   position: relative;
   object-fit: contain;
 }
-.food,
+.job,
 .total9 {
   position: relative;
   display: inline-block;
 }
-.food {
+.job {
   margin: 0;
   flex: 1;
   font-size: inherit;
@@ -272,7 +268,7 @@
   justify-content: flex-start;
   gap: 20px;
 }
-.foodtotal {
+.jobtotal {
   position: relative;
   font-size: 40px;
   font-weight: 800;
@@ -280,7 +276,7 @@
   min-width: 108px;
   white-space: nowrap;
 }
-.foodcard {
+.jobcard {
   flex: 1;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
   border-radius: 24px;
@@ -311,12 +307,12 @@
   position: relative;
   object-fit: contain;
 }
-.maintenance,
+.payroll,
 .total11 {
   position: relative;
   display: inline-block;
 }
-.maintenance {
+.payroll {
   margin: 0;
   flex: 1;
   font-size: inherit;
@@ -355,7 +351,7 @@
   gap: 20px;
   max-width: 100%;
 }
-.maintenancetotal {
+.payrolltotal {
   position: relative;
   font-size: 40px;
   font-weight: 800;
@@ -363,7 +359,7 @@
   min-width: 108px;
   white-space: nowrap;
 }
-.maintenancecard {
+.payrollcard {
   flex: 1;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
   border-radius: 24px;
@@ -379,26 +375,9 @@
   min-height: 269px;
   max-width: 100%;
 }
-.miscicon {
-  height: 30px;
-  width: 31.3px;
-  position: relative;
-  object-fit: contain;
-}
-.miscellaneous,
-.total13 {
-  position: relative;
-  display: inline-block;
-}
-.miscellaneous {
-  margin: 0;
-  flex: 1;
-  font-size: inherit;
-  font-weight: 600;
-  font-family: inherit;
-  min-width: 175px;
-  max-width: 100%;
-}
+
+
+
 .total13 {
   font-weight: 500;
   min-width: 33px;
@@ -429,30 +408,8 @@
   gap: 20px;
   max-width: 100%;
 }
-.misctotal {
-  position: relative;
-  font-size: 40px;
-  font-weight: 800;
-  display: inline-block;
-  min-width: 108px;
-  white-space: nowrap;
-}
-.misccard {
-  flex: 1;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
-  border-radius: 24px;
-  background-color: #fff;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding: 30px;
-  box-sizing: border-box;
-  min-width: 422px;
-  min-height: 269px;
-  max-width: 100%;
-}
+
+
 .middlecardcontainer {
   align-self: stretch;
   display: flex;
@@ -534,7 +491,6 @@
   gap: 20px;
   flex-shrink: 0;
   font-size: 32px;
-  color: #343434;
 }
 .dashboard-panel {
   flex: 1;
@@ -544,12 +500,12 @@
   gap: 19px;
   text-align: left;
   font-size: 40px;
-  color: #000;
+  color: #131313;
   font-family: Inter;
 }
 .dashboardpage {
   width: 100%;
-  height: 1024px;
+  height: 100%;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -570,16 +526,15 @@
   }
 }
 @media screen and (max-width: 1275px) {
-  .electricitycard1,
-  .foodcard,
-  .watercard1 {
+  .employeecard1,
+  .jobcard,
+  .deptcard1 {
     min-height: auto;
   }
   .topcardcontainer {
     flex-wrap: wrap;
   }
-  .maintenancecard,
-  .misccard {
+  .payrollcard{
     min-height: auto;
   }
   .label7,
@@ -591,16 +546,15 @@
   .mobile-devices2 {
     display: flex;
   }
-  .electricitycard1,
-  .foodcard,
-  .watercard1 {
+  .employeecard1,
+  .jobcard,
+  .deptcard1 {
     min-height: auto;
   }
   .topcardcontainer {
     flex-wrap: wrap;
   }
-  .maintenancecard,
-  .misccard {
+  .payrollcard{
     min-height: auto;
   }
   .label7,
@@ -624,38 +578,38 @@
   .dashboard {
     font-size: 32px;
   }
-  .electricity2 {
+  .employee2 {
     font-size: 26px;
   }
-  .electricitytotal1 {
+  .employeetotal1 {
     font-size: 32px;
   }
-  .electricitycard1 {
+  .employeecard1 {
     flex: 1;
   }
-  .water2 {
+  .dept2 {
     font-size: 26px;
   }
-  .watertotal1 {
+  .depttotal1 {
     font-size: 32px;
   }
-  .watercard1 {
+  .deptcard1 {
     flex: 1;
   }
-  .food {
+  .job {
     font-size: 26px;
   }
-  .foodtotal {
+  .jobtotal {
     font-size: 32px;
   }
-  .foodcard {
+  .jobcard {
     flex: 1;
   }
-  .maintenance {
+  .payroll {
     font-size: 26px;
   }
   .label5,
-  .maintenancetotal {
+  .payrolltotal {
     align-self: stretch;
     width: auto;
   }
@@ -665,26 +619,18 @@
     align-items: center;
     justify-content: space-between;
   }
-  .maintenancetotal {
+  .payrolltotal {
     font-size: 32px;
     flex: 1;
   }
-  .maintenancecard {
+  .payrollcard {
     flex: 1;
-  }
-  .miscellaneous {
-    font-size: 26px;
   }
   .label6 {
     flex-wrap: wrap;
     gap: 20px;
   }
-  .misctotal {
-    font-size: 32px;
-  }
-  .misccard {
-    flex: 1;
-  }
+
   .middlecardcontainer {
     align-self: stretch;
     width: auto;
@@ -707,48 +653,41 @@
   .dashboard {
     font-size: 32px;
   }
-  .electricity2 {
+  .employee2 {
     font-size: 26px;
   }
-  .electricitytotal1 {
+  .employeetotal1 {
     font-size: 32px;
   }
-  .water2 {
+  .dept2 {
     font-size: 26px;
   }
-  .watertotal1 {
+  .depttotal1 {
     font-size: 32px;
   }
-  .food {
+  .job {
     font-size: 26px;
   }
-  .foodtotal {
+  .jobtotal {
     font-size: 32px;
   }
-  .maintenance {
+  .payroll {
     font-size: 26px;
   }
   .label5 {
     flex-wrap: wrap;
   }
-  .maintenancetotal {
+  .payrolltotal {
     font-size: 32px;
   }
-  .maintenancecard {
+  .payrollcard {
     min-width: 100%;
   }
-  .miscellaneous {
-    font-size: 26px;
-  }
+
   .label6 {
     flex-wrap: wrap;
   }
-  .misctotal {
-    font-size: 32px;
-  }
-  .misccard {
-    min-width: 100%;
-  }
+
   .total-expenses {
     font-size: 26px;
   }
@@ -765,13 +704,13 @@
   .dashboard {
     font-size: 24px;
   }
-  .electricity2 {
+  .employee2 {
     font-size: 19px;
   }
   .label2 {
     flex-wrap: wrap;
   }
-  .electricitytotal1 {
+  .employeetotal1 {
     font-size: 24px;
   }
   .water2 {
@@ -783,25 +722,19 @@
   .watertotal1 {
     font-size: 24px;
   }
-  .food {
+  .job {
     font-size: 19px;
   }
   .label4 {
     flex-wrap: wrap;
   }
-  .foodtotal {
+  .jobtotal {
     font-size: 24px;
   }
-  .maintenance {
+  .payroll {
     font-size: 19px;
   }
-  .maintenancetotal {
-    font-size: 24px;
-  }
-  .miscellaneous {
-    font-size: 19px;
-  }
-  .misctotal {
+  .payrolltotal {
     font-size: 24px;
   }
   .total-expenses {

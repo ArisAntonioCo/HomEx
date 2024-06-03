@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addElectricityExpense } from "../../Redux/electricitySlice";
+import { addEmployee } from "../../Redux/employeeSlice";
 import "./add-modal-elec.css";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
@@ -57,31 +57,39 @@ const AddModalElec = ({ close, onSuccess }) => {
   try {
     const isoDatePaid = new Date(formData.datePaid).toISOString();
     const resultAction = await dispatch(
-      addElectricityExpense({ ...formData, datePaid: isoDatePaid })
+      addEmployee({ ...formData, datePaid: isoDatePaid })
     );
 
-    // Check if adding the expense was successful
-    if (addElectricityExpense.fulfilled.match(resultAction)) {
-      const successMessage = "Electricity expense added successfully!";
+    // Check if adding the  was successful
+    if (addEmployee.fulfilled.match(resultAction)) {
+      const successMessage = "Employee added successfully!";
       setMessage(successMessage);
-      setMessage("Electricity expense added successfully!");
+      setMessage("Employee added successfully!");
       onSuccess(successMessage); // Call the onSuccess callback
       close();
     } else {
-      // Adding the expense failed, handle the error (e.g., display an error message)
-      console.error("Adding expense failed:", resultAction.error.message);
-      setMessage("Failed to add electricity expense");
+      // Adding the  failed, handle the error (e.g., display an error message)
+      console.error("Adding failed:", resultAction.error.message);
+      setMessage("Failed to add employee");
     }
   } catch (error) {
-    setMessage("An error occurred while adding the expense");
+    setMessage("An error occurred while adding the employee");
   }
 };
 
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
-    billMonth: "",
-    datePaid: "",
-    billAmount: "",
+    f_name: '',
+    l_name: '',
+    birthdate: '',
+    address: '',
+    deptId: '',
+    jobId: '',
+    hireDate: '',
+    salary: '',
+    phone: '',
+    email: '',
+    addedBy: ''
   });
 
   const handleInputChange = (event) => {
@@ -116,8 +124,8 @@ const AddModalElec = ({ close, onSuccess }) => {
         <form className="form">
           <div className="top-frame">
             <div className="h1">
-              <div className="add-expense2">Add Expense</div>
-              <div className="expense">Electricity</div>
+              <div className="add-2">Add Expense</div>
+              <div className="">Employee</div>
             </div>
 
             <div
@@ -135,10 +143,10 @@ const AddModalElec = ({ close, onSuccess }) => {
           <div className="input-container">
             <input
               className="item"
-              placeholder="Billing Month"
+              placeholder="First Name"
               type="text"
               name="billMonth" 
-              value={formData.billMonth}
+              value={formData.f_name}
               onChange={handleInputChange}
             />
 
@@ -165,7 +173,7 @@ const AddModalElec = ({ close, onSuccess }) => {
         </form>
         <button className="button2" type="submit" onClick={handleSubmit}>
           <img className="add-icon" alt="" src="/addicon.svg" />
-          <div className="add-expense3">Add Expense</div>
+          <div className="add-3">Add Employee</div>
         </button>
       </div>
     </div>

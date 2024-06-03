@@ -14,8 +14,8 @@ const ConfirmationDialog = ({
 }) => {
   const message =
     mode === "delete"
-      ? "Are you sure you want to delete this expense?"
-      : "Are you sure you want to edit this expense?";
+      ? "Are you sure you want to delete this record?"
+      : "Are you sure you want to edit this record?";
 
   return (
     <Dialog

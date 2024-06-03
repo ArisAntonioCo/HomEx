@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getUserData } from "../Redux/userSlice";
+import { logoutUser, getUserData } from "../Redux/userSlice";
 import "./navbar.css";
 
 const Navbar = ({ scrollToContact }) => {
@@ -15,7 +15,7 @@ const Navbar = ({ scrollToContact }) => {
   const onLogoClick = useCallback(() => navigate("/"), [navigate]);
   const onLoginTextClick = useCallback(() => navigate("/login-page"), [navigate]);
   const onButtonClick = useCallback(() => navigate("/signup-page"), [navigate]);
-  const onDashboardClick = useCallback(() => navigate("/dashboard-page"), [navigate]); // NEW
+  const onDashboardClick = useCallback(() => navigate("/dashboard"), [navigate]); // NEW
 
   // Authentication Check (useEffect for initial rendering)
   useEffect(() => {
@@ -25,20 +25,20 @@ const Navbar = ({ scrollToContact }) => {
     }
   }, [dispatch]);
 
+  const handleLogout = useCallback(() => {
+    dispatch(logoutUser());
+    navigate("/login-page");
+  }, [dispatch, navigate]);
+
   return (
     <header className="navbar">
       <div className="container20">
         <div className="left-frame" onClick={onLogoClick}>
-          <img className="vector-icon14" alt="" src="/vector.svg" />
+          <img className="vector-icon14" alt="" src="/leeplaza.png" />
         </div>
 
         <nav className="links">
-          <Link className="about-us1" to="/about-page">About us</Link>
-
-          <div className="contact" onClick={scrollToContact} style={{ cursor: "pointer" }}>Contact</div>
-
-          <Link className="faq" to="/faq-page">FAQ</Link>
-          
+          {/* Removed links */}
           {isAuthenticated && ( // Only show if logged in
             <Link className="contact" to="/dashboard-page">Dashboard</Link> 
           )}
@@ -50,7 +50,7 @@ const Navbar = ({ scrollToContact }) => {
             <div>Loading...</div>
           ) : isAuthenticated && handle ? (
             <>
-              <b className="login2" onClick={onDashboardClick}>Welcome back, {handle}</b>
+              <b className="signout" onClick={handleLogout}>Sign Out</b>
             </>
           ) : (
             <>

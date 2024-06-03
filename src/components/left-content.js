@@ -18,19 +18,17 @@ const LeftContent = () => {
               className="logo-icon1"
               loading="lazy"
               alt=""
-              src="/logo1.svg"
+              src="/leeplaza1.png"
             />
           </div>
         </div>
         <div className="text2">
-          <h1 className="start-tracking-expenses-container">
-            <p className="start-tracking">Start Tracking</p>
-            <p className="expenses-with-us">Expenses with us</p>
+          <h1 className="employee-container">
+            <p className="start-tracking">Start Managing</p>
+            <p className="employee-with-us">our employees <br/> effortlessly</p>
           </h1>
           <div className="effortlessly-stay-in1">
-            Effortlessly stay in control of your household finances with our
-            intuitive platform, tracking every expense from electricity to
-            maintenance, so you can manage your budget with ease.
+          Welcome back! Simplify your workday with our innovative Employee Management System. Log in to streamline your tasks and boost productivity effortlessly.
           </div>
         </div>
         <div className="copyright">

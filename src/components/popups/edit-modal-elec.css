@@ -21,12 +21,6 @@
   justify-content: flex-start;
   gap: var(--gap-11xs);
 }
-.date-input {
-  width: 100%;
-  box-sizing: border-box; 
-  border: none;
-  font-family: var(--font-inter);
-}
 .exit-icon {
   width: 18px;
   position: relative;

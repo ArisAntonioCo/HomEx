@@ -97,7 +97,7 @@
   min-height: 200px;
   max-width: 100%;
 }
-.electricity4,
+.employee4,
 .expenses4 {
   margin: 0;
   position: relative;
@@ -105,9 +105,9 @@
   font-weight: 700;
   font-family: inherit;
   display: inline-block;
-  min-width: auto;
+  min-width: 124px;
 }
-.electricity4 {
+.employee4 {
   color: #343434;
   min-width: 120px;
 }
@@ -143,14 +143,14 @@
   cursor: pointer;
   border: 0;
   padding: 10px 17px;
-  background-color: #fb440a;
+  background-color: #21167E;
   border-radius: 12px;
   justify-content: center;
   gap: 10px;
   white-space: nowrap;
 }
 .addexbtn4:hover {
-  background-color: #ff5e24;
+  background-color: #291f84;
 }
 .heading4 {
   align-self: stretch;
@@ -394,7 +394,7 @@
   color: rgba(52, 52, 52, 0.25);
 }
 .container16,
-.electricity-panel1 {
+.employee-panel1 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -409,7 +409,7 @@
   color: #343434;
   font-family: Inter;
 }
-.electricity-panel1 {
+.employee-panel1 {
   flex: 1;
   background-color: #f6f6f6;
   overflow: hidden;
@@ -418,7 +418,7 @@
   gap: 20px;
   max-width: calc(100% - 269px);
 }
-.electricitypage1 {
+.employeepage1 {
   width: 100%;
   position: relative;
   background-color: #f6f6f6;
@@ -439,13 +439,13 @@
   .electricitytotal2 {
     font-size: 32px;
   }
-  .electricity-panel1 {
+  .employee-panel1 {
     padding-top: 32px;
     padding-bottom: 32px;
     box-sizing: border-box;
     max-width: 100%;
   }
-  .electricitypage1 {
+  .employeepage1 {
     box-sizing: border-box;
   }
 }
@@ -461,11 +461,11 @@
   .electricitytotal2 {
     font-size: 24px;
   }
-  .electricity4,
+  .employee4,
   .expenses4 {
     font-size: 19px;
   }
-  .electricity-panel1 {
+  .employee-panel1 {
     padding-top: 21px;
     padding-bottom: 21px;
     box-sizing: border-box;

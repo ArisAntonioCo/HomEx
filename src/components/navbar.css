@@ -49,7 +49,7 @@
   max-width: 100%;
   text-align: left;
   font-size: 16px;
-  color: #02362d;
+  color: #21167E;
   font-family: Inter;
 }
 .login2,
@@ -65,11 +65,25 @@
   font-size: 16px;
   font-weight: 600;
   font-family: Inter;
-  color: #02362d;
+  color: #21167E;
   text-align: left;
   min-width: 59px;
   white-space: nowrap;
 }
+
+.signout {
+  cursor: pointer;
+  border: 1.5px solid #02362d;
+  background-color: transparent;
+  flex: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
 .signup {
   cursor: pointer;
   border: 1.5px solid #02362d;
@@ -121,7 +135,7 @@
   position: sticky;
   text-align: left;
   font-size: 16px;
-  color: #02362d;
+  color: #21167E;
   font-family: Inter;
 }
 @media screen and (max-width: 1275px) {

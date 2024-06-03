@@ -1,10 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./userSlice";
-import electricityReducer from "./electricitySlice";
-import waterReducer from "./waterSlice";
-import foodReducer from "./foodSlice";
-import maintenanceReducer from "./maintSlice";
-import miscellaneousReducer from "./miscSlice";
+import employeeReducer from "./employeeSlice";
+import departmentReducer from "./departmentsSlice";
+import jobTitleReducer from "./jobtitlesSlice";
+import payrollReducer from "./payrollSlice"; // Import the payroll reducer
 
 import {
   persistStore,
@@ -20,18 +19,19 @@ import storage from "redux-persist/lib/storage";
 import { combineReducers } from 'redux';
 
 const persistConfig = {
-  key: 'root',
-  storage,
-  whitelist: ['userAuth'],
+  key: "root",
+  storage,
+  whitelist: ["user.isAuthenticated", "user.credentials.handle"],
 };
+
 const rootReducer = combineReducers({
   user: userReducer,
-  electricity: electricityReducer,
-  water: waterReducer,
-  food: foodReducer,
-  maintenance: maintenanceReducer,
-  miscellaneous: miscellaneousReducer,
+  employee: employeeReducer,
+  department: departmentReducer,
+  jobTitle: jobTitleReducer,
+  payroll: payrollReducer, // Add the payroll reducer
 });
+
 const persistedReducer = persistReducer(persistConfig, rootReducer); 
 
 export const store = configureStore({

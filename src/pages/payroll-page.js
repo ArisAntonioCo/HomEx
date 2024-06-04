@@ -8,7 +8,7 @@ import {
   updatePayroll,
   deletePayroll,
   addPayroll,
-} from "../Redux/payrollSlice"; // Assuming you have a similar slice for payroll
+} from "../Redux/payrollSlice"; 
 import "./payroll-page.css";
 
 const PayrollPage = () => {

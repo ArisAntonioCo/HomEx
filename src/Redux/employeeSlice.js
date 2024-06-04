@@ -93,7 +93,7 @@ const employeeSlice = createSlice({
     employees: [],
     totalEmployees: 0,
     departmentCounts: {},
-    jobTitleCounts: {},
+    departmentEmployeeCounts: {},
     loading: false,
     error: null,
   },
@@ -112,7 +112,7 @@ const employeeSlice = createSlice({
         state.employees = action.payload.employees;
         state.totalEmployees = action.payload.totalEmployees;
         state.departmentCounts = action.payload.departmentCounts;
-        state.jobTitleCounts = action.payload.jobTitleCounts;
+        state.departmentEmployeeCounts = action.payload.departmentEmployeeCounts;
       })
       .addCase(fetchEmployees.rejected, (state, action) => {
         state.loading = false;

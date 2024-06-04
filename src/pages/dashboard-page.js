@@ -2,61 +2,31 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "../components/sidebar";
 import "./dashboard-page.css";
-
+import DepartmentCountsChart from '../components/DepartmentCountsChart';
+import JobTitlesCountsChart from "../components/JobTitlesCountsChart";
+import EmployeeHireDateChart from "../components/EmployeeChart";
 //Redux Imports
 import { fetchEmployees } from "../Redux/employeeSlice"; //employee
-import { fetchDepartments } from "../Redux/departmentsSlice"; //department
-import { fetchJobTitles } from "../Redux/jobtitlesSlice"; //jobTitle
-import { fetchAllPayrolls } from "../Redux/payrollSlice"; //payroll
 
 const DashboardPage = () => {
 
   const dispatch = useDispatch();
 
-  // Use selectors for each expense category
-  const {
-    totalBillAmount: employeeTotal,
-    loading: employeeLoading,
-    error: employeeError,
-  } = useSelector((state) => state.employee); //employee
-  const {
-    totalBillAmount: deptTotal,
-    loading: deptLoading,
-    error: departmentsError,
-  } = useSelector((state) => state.departments); //department
-  const {
-    totalBillAmount: jobTotal,
-    loading: jobLoading,
-    error: jobError,
-  } = useSelector((state) => state.payroll); //jobTitle
-  const {
-    totalBillAmount: payrollTotal,
-    loading: payrollLoading,
-    error: payrollError,
-  } = useSelector((state) => state.jobtitlesenance); //payroll
+const {
+  employees: employeeData,
+  totalEmployees: employeeCount,
+  departmentCounts: deptJobEmployeeCounts,
+  departmentEmployeeCounts: employeeDepartmentCounts,
+  
+} = useSelector((state) => state.employee); //employee
 
   useEffect(() => {
-
     // Fetch data for all expense categories
-    dispatch(fetchEmployees()); //fetchEmployee
-    dispatch(fetchDepartments()); //fetchDepartment
-    dispatch(fetchAllPayrolls()); //fetchJobTitle
-    dispatch(fetchJobTitles()); //fetchPayroll
-
+    dispatch(fetchEmployees()); 
+    console.log(employeeDepartmentCounts),
+    console.log(deptJobEmployeeCounts) 
   }, [dispatch]);
 
-  const calculateTotalExpenses = () => {
-    let total = 0;
-    
-    // Convert totals to numbers, using 0 as the default if not a number
-    const empTotal = parseFloat(employeeTotal) || 0;
-    const depTotal = parseFloat(deptTotal) || 0; 
-    const jbTotal = parseFloat(jobTotal) || 0; 
-    const prTotal = parseFloat(payrollTotal) || 0; 
-    total = empTotal + depTotal + jbTotal + prTotal;
-
-    return total.toFixed(2); // Now total is guaranteed to be a number
-};
 
 
 
@@ -73,7 +43,7 @@ const DashboardPage = () => {
           </div>
           <div className="p">
             <div className="track-and-manage">
-              Track and manage your home expenses
+              Track and manage your employees
             </div>
           </div>
         </div>
@@ -83,96 +53,38 @@ const DashboardPage = () => {
              {/* EMPLOYEE CARD */}
             <div className="employeecard1">
               <div className="label2">
-                <h1 className="employee2">Employee</h1>
-                <div className="total4">
-                  <div className="total5">Total $</div>
-                </div>
+                <h1 className="employee2">Employees</h1>
               </div>
-              {employeeLoading ? (
-                <div className="employeetotal1">Loading...</div>
-              ) : employeeError ? (
-                <div className="employeetotal1">
-                  Error: {employeeError.message}
-                </div>
-              ) : (
-                <div className="employeetotal1">${employeeTotal}</div>
-              )}
-            </div>
-
-             {/* DEPARTMENT CARD */}
-            <div className="deptcard1">
-              <div className="label3">
-                <h1 className="dept2">Department</h1>
-                <div className="total6">
-                  <div className="total7">Total $</div>
-                </div>
-              </div>
-              {deptLoading ? (
-                <div className="depttotal1">Loading...</div>
-              ) : departmentsError ? (
-                <div className="depttotal1">Error: {departmentsError.message}</div>
-              ) : (
-                <div className="depttotal1">${deptTotal}</div>
-              )}
+              
+                <EmployeeHireDateChart employees={employeeData}/>
             </div>
 
              {/* JOB TITLE CARD */}
             <div className="jobcard">
               <div className="label4">
-                <h1 className="job">Job Title</h1>
-                <div className="total8">
-                  <div className="total9">Total $</div>
-                </div>
+                <h1 className="job">Departments</h1>
+
               </div>
-              {jobLoading ? (
-                <div className="jobtotal">Loading...</div>
-              ) : jobError ? (
-                <div className="jobtotal">Error: {jobError.message}</div>
-              ) : (
-                <div className="jobtotal">${jobTotal}</div>
-              )}
+              <DepartmentCountsChart departmentEmployeeCounts={employeeDepartmentCounts} />
+
             </div>
           </div>
 
 
           <div className="middlecardcontainer">
 
-            {/* PAYROLL CARD */}
             <div className="payrollcard">
               <div className="label5">
-                <h1 className="payroll">Payroll</h1>
-                <div className="total10">
-                  <div className="total11">Total $</div>
-                </div>
+                <h1 className="payroll">Jobs per department</h1>
+    
               </div>
-              {payrollLoading ? (
-                <div className="payrolltotal">Loading...</div>
-              ) : payrollError ? (
-                <div className="payrolltotal">
-                  Error: {payrollError.message}
-                </div>
-              ) : (
-                <div className="payrolltotal">${payrollTotal}</div>
-              )}
+              <JobTitlesCountsChart departmentCounts={deptJobEmployeeCounts} />
+
             </div>
           </div>
 
 
-          <div className="bottomcardcontainer">
-            <div className="totalexpensescard">
-              <div className="label7">
-                <h1 className="total-expenses">Total Expenses</h1>
-                <img
-                  className="expensesicon"
-                  loading="lazy"
-                  alt=""
-                  src="/expensesicon@2x.png"
-                />
-              </div>
-
-              <div className="expensestotal">${calculateTotalExpenses()}</div>
-            </div>
-          </div>
+          
         </div>
       </main>
     </div>

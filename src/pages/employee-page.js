@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "../components/sidebar";
-import AddModalElec from "../components/popups/add-modal-elec";
-import EditModalElec from "../components/popups/edit-modal-elec";
 import {
   fetchEmployees,
   updateEmployee,
@@ -10,19 +8,21 @@ import {
   addEmployee,
 } from "../Redux/employeeSlice";
 import "./employee-page.css";
-import Snackbar from "@mui/material/Snackbar";
-import MuiAlert from "@mui/material/Alert";
+
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
 import ConfirmationDialog from "../components/popups/confirmationDialogue";
-
+import AddEmployeeModal from "../components/popups/addEmployeeModal";
+import EditEmployeeModal from "../components/popups/editEmployeeModal";
+import { fetchJobTitles } from "../Redux/jobtitlesSlice";
+import { fetchDepartments } from "../Redux/departmentsSlice";
+import ReusableSnackbar from "./../components/popups/reusableSnackbar";
 const EmployeePage = () => {
-  const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
   const [selectedId, setSelectedId] = useState(null);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-
+  
   const [successMessage, setSuccessMessage] = useState(null);
   const [open, setOpen] = useState(false);
   const [hasShown, setHasShown] = useState(false);
@@ -43,15 +43,20 @@ const EmployeePage = () => {
   };
 
   const dispatch = useDispatch();
+  const jobTitles = useSelector((state) => state.jobTitle);
+  const departments = useSelector((state) => state.department);
   const { employees, loading, error } = useSelector((state) => state.employee);
   useEffect(() => {
     dispatch(fetchEmployees());
+    dispatch(fetchJobTitles());
+    dispatch(fetchDepartments());
   }, [dispatch, refreshKey]);
 
-  const handleEditClick = (expense) => {
-    console.log(expense);
-    setSelectedId(expense);
-    toggleEditModal();
+  const handleEditClick = (employee) => {
+    console.log(employee);
+    setSelectedId(employee);
+    refreshTable();
+    openEditModal();
   };
 
   const handleEdit = (updated) => {
@@ -68,9 +73,10 @@ const EmployeePage = () => {
 
   const handleConfirmDelete = () => {
     if (selectedId) {
-      dispatch(deleteEmployee(selectedId));
+      dispatch(deleteEmployee(selectedId)).then(() => {
+        refreshTable();
+      });
       setSelectedId(null);
-      refreshTable();
     }
     setShowDeleteConfirmation(false);
   };
@@ -79,21 +85,21 @@ const EmployeePage = () => {
     setShowDeleteConfirmation(false);
   };
 
-  const handleAdd = (newEmp) => {
-    dispatch(addEmployee(newEmp));
-    refreshTable();
-  };
   const refreshTable = () => {
     setRefreshKey((oldKey) => oldKey + 1);
   };
-  const toggleAddModal = () => {
-    setShowAddModal(!showAddModal);
+
+  const openEditModal = () => {
+    setShowEditModal(true);
   };
 
-  const toggleEditModal = () => {
-    setShowEditModal(!showEditModal);
+  const closeEditModal = () => {
+    setShowEditModal(false);
   };
 
+  const selectedEmployee = employees.find(
+    (employee) => employee.employee_id === selectedId
+  );
   return (
     <div className="employeepage1">
       <Sidebar />
@@ -109,21 +115,13 @@ const EmployeePage = () => {
           />
         )}
         {successMessage && (
-          <Snackbar
+          <ReusableSnackbar
             open={open}
-            autoHideDuration={6000}
+            message={successMessage}
+            severity="success"
             onClose={handleClose}
             anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-          >
-            <MuiAlert
-              onClose={handleClose}
-              severity="success"
-              elevation={6}
-              variant="filled"
-            >
-              {successMessage}
-            </MuiAlert>
-          </Snackbar>
+          />
         )}
         <section className="container16">
           <div className="container17">
@@ -132,13 +130,17 @@ const EmployeePage = () => {
                 <h2 className="expenses4">Manage/</h2>
                 <h2 className="employee4">Employee</h2>
               </div>
-              <button className="addexbtn4" onClick={toggleAddModal}>
+              <AddEmployeeModal
+                onSuccess={setSuccessMessage}
+                jobTitles={jobTitles}
+                departments={departments}
+              >
                 <img className="vector-icon3" alt="" src="/vector-10.svg" />
                 <div className="add-expense4">Add Employee</div>
-              </button>
+              </AddEmployeeModal>
             </div>
 
-            <div className="table4">
+            <div className="table5">
               <div className="row8">
                 <div className="header-cell16">
                   <div className="service-provider4">empId</div>
@@ -180,7 +182,8 @@ const EmployeePage = () => {
                   <div className="action4">Action</div>
                 </div>
               </div>
-
+            </div>
+            <div className="table4">
               {/* Conditional Rendering for Table Data */}
               {loading ? (
                 <Box sx={{ width: "100%" }}>
@@ -195,17 +198,15 @@ const EmployeePage = () => {
                     <div className="table-cell16">{employee.emp_id}</div>
                     <div className="table-cell16">{employee.first_name}</div>
                     <div className="table-cell16">{employee.last_name}</div>
-                    <div className="table-cell">
-                      {new Date(employee.date_of_birth)
-                        .toISOString()
-                        .slice(0, 10)}
-                    </div>
+                    <div className="table-cell">{employee.date_of_birth}</div>
                     <div className="table-cell18">{employee.address}</div>
-                    <div className="table-cell18">{employee.department_id}</div>
-                    <div className="table-cell18">{employee.job_title_id}</div>
-                    <div className="table-cell">
-                      {new Date(employee.hire_date).toISOString().slice(0, 10)}
+                    <div className="table-cell18">
+                      {employee.department_name}
                     </div>
+                    <div className="table-cell18">
+                      {employee.job_title_name}
+                    </div>
+                    <div className="table-cell">{employee.hire_date}</div>
                     <div className="table-cell18">${employee.salary}</div>
                     <div className="table-cell18">{employee.phone_number}</div>
                     <div className="table-cell18">{employee.email}</div>
@@ -236,31 +237,23 @@ const EmployeePage = () => {
         </section>
       </main>
 
-      {showAddModal && (
-        <div className="modal-backdrop">
-          <AddModalElec
-            close={() => {
-              toggleAddModal();
-              refreshTable();
-            }}
-            onAdd={handleAdd}
-            onSuccess={setSuccessMessage}
-          />
-        </div>
-      )}
-      {showEditModal && (
-        <div className="modal-backdrop">
-          <EditModalElec
-            close={() => {
-              toggleEditModal();
-              refreshTable();
-            }}
-            employees={selectedId}
-            onSave={handleEdit}
-            onSuccess={setSuccessMessage}
-          />
-        </div>
-      )}
+      {showEditModal && selectedId && (
+  <div className="modal-backdrop">
+    <EditEmployeeModal
+    jobTitles={jobTitles}
+    departments={departments}
+      close={() => {
+        toggleEditModal();
+        refreshTable();
+      }}
+      employee={selectedId} // Pass the selected employee data
+      onSave={handleEdit}
+      onSuccess={setSuccessMessage}
+      open={openEditModal} // Pass the showEditModal state as a prop
+      handleClose={closeEditModal} // Pass the closeEditModal function as a prop
+    />
+  </div>
+)}
     </div>
   );
 };

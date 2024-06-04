@@ -15,11 +15,11 @@ const DeptPage = () => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
-  const [selectedExpenseId, setSelectedExpenseId] = useState(null);
+  const [selectedDeptId, setSelectedExpenseId] = useState(null);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
   const dispatch = useDispatch();
-  const { expenses, totalBillAmount, loading, error } = useSelector(
+  const { departments, totalBillAmount, loading, error } = useSelector(
     (state) => state.departments
   );
 
@@ -27,25 +27,25 @@ const DeptPage = () => {
     dispatch(fetchDepartments());
   }, [dispatch, refreshKey]);
 
-  const handleEditClick = (expense) => {
-    setSelectedExpenseId(expense);
+  const handleEditClick = (department) => {
+    setSelectedExpenseId(department);
     toggleEditModal();
   };
 
-  const handleEditExpense = (updatedExpense) => {
-    dispatch(updateDepartment(updatedExpense));
+  const handleEditExpense = (updatedDepartment) => {
+    dispatch(updateDepartment(updatedDepartment));
     setSelectedExpenseId(null);
     refreshTable();
   };
 
-  const handleDeleteClick = (expenseId) => {
-    setSelectedExpenseId(expenseId);
+  const handleDeleteClick = (deptId) => {
+    setSelectedExpenseId(deptId);
     setShowDeleteConfirmation(true);
   };
   
   const handleConfirmDelete = () => {
-    if (selectedExpenseId) {
-      dispatch(deleteDepartment(selectedExpenseId));
+    if (selectedDeptId) {
+      dispatch(deleteDepartment(selectedDeptId));
       setSelectedExpenseId(null);
       refreshTable();
     }
@@ -118,27 +118,27 @@ const DeptPage = () => {
                 <div className="error-message">Error: {error.message}</div>
               ) : (
                 // Table Rows (dynamically generated)
-                expenses.map((expense) => (
-                  <div className="row" key={expense.expenseId}>
-                    <div className="table-cell">{expense.billMonth}</div>
-                    <div className="table-cell">{new Date(expense.datePaid).toISOString().slice(0,10)}</div>
-                    <div className="table-cell">${expense.billAmount}</div>
+                departments.map((department) => (
+                  <div className="row" key={department.deptId}>
+                    <div className="table-cell">{department.billMonth}</div>
+                    <div className="table-cell">{new Date(department.datePaid).toISOString().slice(0,10)}</div>
+                    <div className="table-cell">${department.billAmount}</div>
                     <div className="table-cell">
                       <button
                         className="edit-button"
-                        onClick={() => handleEditClick(expense)}
+                        onClick={() => handleEditClick(department)}
                       >
                         Edit
                       </button>
                       
                       <button
                         className="delete-button"
-                        onClick={() => handleDeleteClick(expense.expensesId)}
+                        onClick={() => handleDeleteClick(department.departmentsId)}
                       >
                         Delete
                       </button>
                     </div>
-                    <div style={{display: 'none'}}>{expense.expenseId}</div>
+                    <div style={{display: 'none'}}>{department.deptId}</div>
                   </div>
                 ))
               )}
@@ -166,7 +166,7 @@ const DeptPage = () => {
               toggleEditModal();
               refreshTable();
             }}
-            expense={selectedExpenseId}
+            department={selectedDeptId}
             onSave={handleEditExpense} 
           />
         </div>

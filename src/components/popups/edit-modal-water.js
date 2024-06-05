@@ -1,9 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { updateEmployee } from "../../Redux/employeeSlice";
+import { updateWaterExpense } from "../../Redux/waterSlice";
 import "./edit-modal-elec.css";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+import ConfirmationDialog from "./confirmationDialogue";
+const EditModalWater = ({ close, onSuccess, expense }) => {
+  const [message, setMessage] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [hasShown, setHasShown] = useState(false);
+  const [showEditConfirmation, setShowEditConfirmation] = useState(false);
 
-const EditModalElec = ({ close, expense }) => {
+  const handleCancelEdit = () => {
+    setShowEditConfirmation(false);
+  };
+  useEffect(() => {
+    if (message && !hasShown) {
+      setOpen(true);
+      setHasShown(true);
+    }
+  }, [message, hasShown]);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
@@ -54,11 +78,9 @@ const EditModalElec = ({ close, expense }) => {
   }
 }, [expense]);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+const handleSubmit = (event) => {
+  event.preventDefault();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   if (!validateForm()) {
     setMessage("Please fill in all fields correctly");
     return;
@@ -72,7 +94,7 @@ const handleConfirmEdit = async () => {
   try {
     const isoDatePaid = new Date(formData.datePaid).toISOString();
     const resultAction = await dispatch(
-      updateElectricityExpense({
+      updateWaterExpense({
         expenseId: formData.expenseId,
         updatedData: {
           billMonth: formData.billMonth,
@@ -83,73 +105,23 @@ const handleConfirmEdit = async () => {
     );
 
     // Check if updating the expense was successful
-    if (updateElectricityExpense.fulfilled.match(resultAction)) { 
-      // Correctly check against updateElectricityExpense
-      const successMessage = "Electricity expense edited successfully!";
-      setMessage(successMessage);
-      onSuccess(successMessage); 
-      close();
-    } else {
-      console.error("Updating expense failed:", resultAction.error.message);
-      setMessage("Failed to edit electricity expense. Please try again."); 
-=======
-=======
->>>>>>> d86695749f1592ecb5e6934461861d77784237a7
-    if (validateForm()) {
-      // Convert datePaid to ISO 8601 format before sending to backend
-      const isoDatePaid = new Date(formData.datePaid).toISOString();
-      dispatch(
-        updateEmployee({
-          expenseId: formData.expenseId,
-          updatedData: {
-            billMonth: formData.billMonth,
-            datePaid: isoDatePaid,
-            billAmount: formData.billAmount,
-          },
-        })
-      );
-      close(); // Close the modal after submission
-<<<<<<< HEAD
->>>>>>> adc8184046447058ddfa1b96ae95afcc9016a608
-=======
-=======
-  if (!validateForm()) {
-    setMessage("Please fill in all fields correctly");
-    return;
-  }
-
-  // Show the confirmation dialog instead of dispatching the update action immediately
-  setShowEditConfirmation(true);
-};
-
-const handleConfirmEdit = async () => {
-  try {
-    const isoDatePaid = new Date(formData.datePaid).toISOString();
-    const resultAction = await dispatch(
-      updateElectricityExpense({
-        expenseId: formData.expenseId,
-        updatedData: {
-          billMonth: formData.billMonth,
-          datePaid: isoDatePaid,
-          billAmount: formData.billAmount,
-        },
-      })
-    );
-
-    // Check if updating the expense was successful
-    if (updateElectricityExpense.fulfilled.match(resultAction)) { 
-      // Correctly check against updateElectricityExpense
-      const successMessage = "Electricity expense edited successfully!";
+    if (updateWaterExpense.fulfilled.match(resultAction)) { 
+      // Correctly check against updateWaterExpense
+      const successMessage = "Water expense edited successfully!";
       setMessage(successMessage);
       onSuccess(successMessage); // Call the onSuccess callback
       close();
     } else {
       console.error("Updating expense failed:", resultAction.error.message);
-      setMessage("Failed to edit electricity expense. Please try again."); // More specific error message
->>>>>>> parent of 9c41cd3 (clean codesss)
->>>>>>> d86695749f1592ecb5e6934461861d77784237a7
+      setMessage("Failed to edit water expense. Please try again."); // More specific error message
     }
-  };
+  } catch (error) {
+    setMessage("An error occurred while editing the expense.");
+  } finally {
+    // Close the confirmation dialog whether the update action was successful or not
+    setShowEditConfirmation(false);
+  }
+};
 
   const handleInputChange = (event) => {
     setFormData({
@@ -159,18 +131,42 @@ const handleConfirmEdit = async () => {
   };
 
   const handleExitClick = () => {
-    close(); // Call the close function passed from EmployeePage
+    close(); // Call the close function passed from WaterPage
   };
 
   return (
     <div className="add-modal">
+      {showEditConfirmation && (
+          <ConfirmationDialog
+            mode="edit"
+            title="Edit Confirmation"
+            open={showEditConfirmation}
+            handleCancel={handleCancelEdit}
+            handleConfirm={handleConfirmEdit}
+          />
+        )}
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      >
+        <MuiAlert
+          onClose={handleClose}
+          severity="error"
+          elevation={6}
+          variant="filled"
+        >
+          {message}
+        </MuiAlert>
+      </Snackbar>
       <div className="container4">
         <form className="form" onSubmit={handleSubmit}>
           {/* Top-frame */}
           <div className="top-frame">
             <div className="h1">
-              <div className="add-expense2">Edit </div>
-              <div className="expense"></div>
+              <div className="add-expense2">Edit Expense</div>
+              <div className="expense">Water</div>
             </div>
             <div
               className="icon"
@@ -236,4 +232,4 @@ const handleConfirmEdit = async () => {
   );
 };
 
-export default EditModalElec;
+export default EditModalWater;

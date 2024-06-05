@@ -1,5 +1,6 @@
-.add-expense2,
-.expense {
+.add-expense4,
+.expense1 {
+  margin: 0;
   align-self: stretch;
   position: relative;
   font-size: var(--font-size-5xl);
@@ -8,125 +9,123 @@
   color: var(--color-darkslategray-100);
   text-align: left;
 }
-.expense {
+.expense1 {
   font-size: var(--font-size-xs);
   font-weight: 300;
   color: var(--color-gray);
 }
-
-
-.exit-icon {
-  width: 18px;
-  position: relative;
-  height: 14px;
-}
-.icon,
-.item,
-.top-frame {
-  display: flex;
-  align-items: center;
-}
-.icon {
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.item,
-.top-frame {
-  align-self: stretch;
-  flex-direction: row;
-}
-
-.top-frame {
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.item {
-  border: 1px solid var(--color-darkslategray-300);
-  outline: 0;
-  font-weight: 500;
-  font-family: var(--font-inter);
-  font-size: var(--font-size-2xs);
-  background-color: transparent;
-  border-radius: var(--br-5xs);
-  box-sizing: border-box;
-  overflow: hidden;
-  flex-shrink: 0;
-  justify-content: flex-start;
-  padding: var(--padding-3xs);
-  color:  black;
-}
-
-
-.date-time-picker {
-  align-self: stretch;
+.h11 {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-11xs);
 }
-
 .date-input {
   width: 100%;
   box-sizing: border-box; /* Include padding and border in element's total width and height */
   border: none; /* Hide border */
   font-family: var(--font-inter);
 }
-.date4 {
+.exit-icon1 {
+  width: 18px;
+  position: relative;
+  height: 14px;
+  object-fit: cover;
+}
+.icon1,
+.item1,
+.top-frame1 {
+  display: flex;
+  align-items: center;
+}
+.icon1 {
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.item1,
+.top-frame1 {
+  align-self: stretch;
+  flex-direction: row;
+}
+.top-frame1 {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.item1 {
+  border: 1px solid var(--color-darkslategray-300);
+  outline: 0;
+  font-weight: 500;
+  font-family: var(--font-inter);
+  font-size: var(--font-size-2xs);
+  background-color: transparent;
+  border-radius: var(--br-5xs);
+  box-sizing: border-box;
+  height: 47px;
+  overflow: hidden;
+  flex-shrink: 0;
+  justify-content: flex-start;
+  padding: var(--padding-3xs);
+  color: var(--color-darkslategray-200);
+}
+.date-time-picker1 {
+  align-self: stretch;
+  flex: 1;
+}
+.date5 {
   border-radius: var(--br-5xs);
   border: 1px solid var(--color-darkslategray-300);
   box-sizing: border-box;
+  height: 47px;
   overflow: hidden;
   flex-shrink: 0;
   flex-direction: row;
   justify-content: flex-start;
   padding: var(--padding-3xs);
 }
-.amount4,
-.date4,
-.form,
-.input-container {
+.amount5,
+.date5,
+.form1,
+.input-container1 {
   align-self: stretch;
   display: flex;
   align-items: center;
 }
-
-.amount4 {
+.amount5 {
   border: 1px solid var(--color-darkslategray-300);
   outline: 0;
-  font-weight: 300;
+  font-weight: 500;
   font-family: var(--font-inter);
   font-size: var(--font-size-2xs);
   background-color: transparent;
   border-radius: var(--br-5xs);
   box-sizing: border-box;
+  height: 47px;
   overflow: hidden;
   flex-shrink: 0;
+  flex-direction: row;
   justify-content: flex-start;
-  padding: 16px 10px 16px 10px;
-  color: black;
+  padding: var(--padding-3xs);
+  color: var(--color-darkslategray-200);
 }
-
-.amount4::placeholder{
-  font-weight: 500;
-}
-
-
-.form,
-.input-container {
+.form1,
+.input-container1 {
   flex-direction: column;
   justify-content: center;
   gap: var(--gap-6xl);
 }
-.form {
+.form1 {
   margin: 0;
   align-items: flex-start;
   justify-content: flex-start;
 }
-.add-icon {
+.vector-icon3 {
   width: 16px;
   position: relative;
   height: 16px;
 }
-.add-expense3 {
+.add-expense5 {
   position: relative;
   font-size: var(--font-size-mini);
   font-weight: 500;
@@ -134,32 +133,24 @@
   color: var(--color-white);
   text-align: left;
 }
-.button2,
-.container4 {
+.button3,
+.container5 {
+  align-self: stretch;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.button2 {
+.button3 {
   cursor: pointer;
   border: 0;
-  padding: var(--padding-mini) var(--padding-xl);
+  padding: var(--padding-mini) var(--padding-3xs);
   background-color: var(--color-orangered);
-  width: 100%;
-  height: 48px;
   border-radius: var(--br-5xs);
-  flex-shrink: 0;
   flex-direction: row;
-  box-sizing: border-box;
   gap: var(--gap-3xs);
 }
-
-.button2:hover {
-  background-color: #ff5e24;
-}
-.container4 {
-  align-self: stretch;
+.container5 {
   flex: 1;
   border-radius: var(--br-base);
   background-color: var(--color-white);
@@ -167,10 +158,10 @@
   padding: var(--padding-38xl);
   gap: var(--gap-11xl);
 }
-.add-modal {
+.edit-modal {
   width: 400px;
-  height: 450px;
   max-width: 100%;
+  height: 450px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;

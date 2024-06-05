@@ -217,6 +217,7 @@ const MaintPage = () => {
               ) : error ? (
                 <div className="error-message">Error: {error.message}</div>
               ) : (
+                // Table Rows (dynamically generated)
                 expenses.map((expense) => (
                   <div className="row11" key={expense.expenseId}>
                     <div className="table-cell20">{expense.billMonth}</div>

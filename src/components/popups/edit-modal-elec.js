@@ -110,7 +110,7 @@ const handleConfirmEdit = async () => {
       // Correctly check against updateElectricityExpense
       const successMessage = "Electricity expense edited successfully!";
       setMessage(successMessage);
-      onSuccess(successMessage); // Call the onSuccess callback
+      onSuccess(successMessage); 
       close();
     } else {
       console.error("Updating expense failed:", resultAction.error.message);

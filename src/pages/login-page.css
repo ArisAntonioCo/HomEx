@@ -1,0 +1,245 @@
+.enter-your-details1,
+.login-to-your {
+  position: relative;
+  font-family: Inter;
+  color: #011b16;
+}
+.login-to-your {
+  margin: 0;
+  align-self: stretch;
+  font-size: 40px;
+  font-weight: 700;
+  text-align: left;
+}
+.enter-your-details1 {
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  font-weight: 300;
+  text-align: center;
+}
+.h12 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+}
+.email1 {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  font-family: Inter;
+  font-size: 14px;
+  background-color: transparent;
+  height: 17px;
+  flex: 1;
+  position: relative;
+  color: #819b96;
+  text-align: left;
+  display: inline-block;
+  min-width: 250px;
+  max-width: 100%;
+  padding: 0;
+}
+.inputbox3 {
+  align-self: stretch;
+  border-radius: 8px;
+  border: 1px solid #011b16;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 8px 9px 35px;
+  max-width: 100%;
+}
+.password1 {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  font-family: Inter;
+  font-size: 14px;
+  background-color: transparent;
+  height: 17px;
+  flex: 1;
+  position: relative;
+  color: #819b96;
+  text-align: left;
+  display: inline-block;
+  min-width: 250px;
+  max-width: 100%;
+  padding: 0;
+}
+.inputbox4,
+.inputs1 {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  max-width: 100%;
+}
+.inputbox4 {
+  border-radius: 8px;
+  border: 1px solid #011b16;
+  box-sizing: border-box;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 8px 9px 35px;
+}
+.inputs1 {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 19px;
+}
+.login1 {
+  flex: 1;
+  position: relative;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: Inter;
+  color: #fff;
+  text-align: center;
+  display: inline-block;
+  max-width: 100%;
+}
+.button1 {
+  cursor: pointer;
+  border: 0;
+  padding: 24px;
+  background-color: #fb440a;
+  align-self: stretch;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.button1:hover {
+  background-color: #ff5e24;
+}
+.dont-have-an {
+  width: auto;
+  position: relative;
+  font-size: 14px;
+  font-family: Inter;
+  color: #011b16;
+  text-align: left;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.link1,
+.sign-up1 {
+  align-self: stretch;
+}
+.sign-up1 {
+  flex: 1;
+  position: relative;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: Inter;
+  color: #fb440a;
+  text-align: center;
+  display: inline-block;
+  min-width: 53px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.link1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 510px 0 0;
+  gap: 5px;
+}
+.form1,
+.loginpage,
+.right-content1 {
+  display: flex;
+  align-items: flex-start;
+}
+.form1 {
+  margin: 0;
+  align-self: stretch;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  max-width: 100%;
+}
+.loginpage,
+.right-content1 {
+  background-color: #fff;
+  overflow: hidden;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+.right-content1 {
+  flex: 1;
+  flex-direction: column;
+  padding: 344px 100px;
+  min-width: 373px;
+  max-width: 100%;
+  margin-left: -2px;
+}
+.loginpage {
+  width: 100%;
+  position: relative;
+  flex-direction: row;
+  padding: 0 2px 0 0;
+  line-height: normal;
+  letter-spacing: normal;
+}
+@media screen and (max-width: 925px) {
+  .login-to-your {
+    font-size: 32px;
+  }
+  .sign-up1 {
+    text-align: left;
+    flex: 1;
+    min-width: 10;
+  }
+  .link1 {
+    align-items: center;
+    justify-content: flex-start;
+    padding-right: 255px;
+    box-sizing: border-box;
+  }
+  .form1,
+  .right-content1 {
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .right-content1 {
+    justify-content: flex-start;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 224px;
+    box-sizing: border-box;
+    flex: unset;
+    align-self: stretch;
+  }
+  .loginpage {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 450px) {
+  .login-to-your {
+    font-size: 24px;
+  }
+  .link1,
+  .right-content1 {
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+  .right-content1 {
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 146px;
+  }
+}

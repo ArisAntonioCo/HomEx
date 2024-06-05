@@ -1,0 +1,404 @@
+.track-expenses-effortlessly {
+  margin: 0;
+  align-self: stretch;
+  position: relative;
+  font-size: inherit;
+  letter-spacing: -0.01em;
+  font-weight: 800;
+  font-family: inherit;
+}
+.modules-to-monitor,
+.our-platforms-intuitive {
+  margin: 0;
+}
+.our-platforms-intuitive-container {
+  align-self: stretch;
+  position: relative;
+  font-size: 12px;
+  letter-spacing: -0.01em;
+}
+.b,
+.subheading {
+  align-self: stretch;
+}
+.subheading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 54px 72px;
+  gap: 15px;
+}
+.b {
+  position: relative;
+}
+.create,
+.expenses6 {
+  margin: 0;
+}
+.create-expenses {
+  margin: 0;
+  align-self: stretch;
+  position: relative;
+  font-size: 32px;
+  font-weight: 700;
+  font-family: inherit;
+  color: #fff;
+}
+.top-content {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 159px;
+}
+.quickly-input-your {
+  height: 63px;
+  flex: 1;
+  position: relative;
+  font-weight: 500;
+  display: inline-block;
+}
+.bottom-content {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 5px 0;
+  font-size: 14px;
+  color: #fff;
+}
+.card1,
+.container21 {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container21 {
+  align-self: stretch;
+  justify-content: flex-start;
+  padding: 12px 0;
+  gap: 10px;
+}
+.card1 {
+  height: 328px;
+  width: 306px;
+  border-radius: 20px;
+  background: linear-gradient(150.19deg, #01120f, #7d2205);
+  flex-shrink: 0;
+  justify-content: center;
+  padding: 31px 34px;
+  box-sizing: border-box;
+  min-width: 122px;
+}
+.b1 {
+  align-self: stretch;
+  position: relative;
+}
+.expenses7,
+.read {
+  margin: 0;
+}
+.read-expenses {
+  margin: 0;
+  align-self: stretch;
+  position: relative;
+  font-size: 32px;
+  font-weight: 700;
+  font-family: inherit;
+  color: #fff;
+}
+.top-content1 {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.easily-review-your {
+  height: 63px;
+  flex: 1;
+  position: relative;
+  font-weight: 500;
+  display: inline-block;
+}
+.bottom-content1,
+.card2,
+.container22 {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.bottom-content1 {
+  align-self: stretch;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 5px 0;
+  font-size: 14px;
+  color: #fff;
+}
+.card2,
+.container22 {
+  flex-direction: column;
+}
+.container22 {
+  align-self: stretch;
+  justify-content: flex-start;
+  padding: 12px 0;
+  gap: 10px;
+}
+.card2 {
+  height: 328px;
+  width: 306px;
+  border-radius: 20px;
+  background: linear-gradient(150.19deg, #01120f, #7d2205);
+  flex-shrink: 0;
+  justify-content: center;
+  padding: 31px 34px;
+  box-sizing: border-box;
+  min-width: 122px;
+}
+.b2 {
+  align-self: stretch;
+  position: relative;
+}
+.expenses8,
+.update {
+  margin: 0;
+}
+.update-expenses {
+  margin: 0;
+  align-self: stretch;
+  position: relative;
+  font-size: 32px;
+  font-weight: 700;
+  font-family: inherit;
+  color: #fff;
+}
+.top-content2 {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.seamlessly-modify-and {
+  height: 63px;
+  flex: 1;
+  position: relative;
+  font-weight: 500;
+  display: inline-block;
+}
+.bottom-content2,
+.card3,
+.container23 {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.bottom-content2 {
+  align-self: stretch;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 5px 0;
+  font-size: 14px;
+  color: #fff;
+}
+.card3,
+.container23 {
+  flex-direction: column;
+}
+.container23 {
+  align-self: stretch;
+  justify-content: flex-start;
+  padding: 12px 0;
+  gap: 10px;
+}
+.card3 {
+  height: 328px;
+  width: 306px;
+  border-radius: 20px;
+  background: linear-gradient(150.19deg, #01120f, #7d2205);
+  flex-shrink: 0;
+  justify-content: center;
+  padding: 31px 34px;
+  box-sizing: border-box;
+  min-width: 122px;
+}
+.b3 {
+  align-self: stretch;
+  position: relative;
+}
+.delete5,
+.expenses9 {
+  margin: 0;
+}
+.delete-expenses {
+  margin: 0;
+  align-self: stretch;
+  position: relative;
+  font-size: 32px;
+  font-weight: 700;
+  font-family: inherit;
+  color: #fff;
+}
+.top-content3 {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.effortlessly-remove-outdated {
+  height: 63px;
+  flex: 1;
+  position: relative;
+  font-weight: 500;
+  display: inline-block;
+}
+.bottom-content3,
+.container24 {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.bottom-content3 {
+  flex-direction: row;
+  padding: 5px 0;
+  font-size: 14px;
+  color: #fff;
+}
+.container24 {
+  flex-direction: column;
+  padding: 12px 0;
+  gap: 10px;
+}
+.card4,
+.cards,
+.section3 {
+  display: flex;
+  justify-content: center;
+}
+.card4 {
+  height: 328px;
+  width: 306px;
+  border-radius: 20px;
+  background: linear-gradient(150.19deg, #01120f, #7d2205);
+  overflow: hidden;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: center;
+  padding: 31px 34px;
+  box-sizing: border-box;
+  min-width: 122px;
+}
+.cards,
+.section3 {
+  align-self: stretch;
+}
+.cards {
+  overflow: hidden;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px 22.7px;
+  text-align: left;
+  font-size: 64px;
+  color: #fc6333;
+}
+.section3 {
+  background-color: #fff;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 51px 0;
+  gap: 15px;
+  text-align: center;
+  font-size: 48px;
+  color: #02362d;
+  font-family: Inter;
+}
+@media screen and (max-width: 750px) {
+  .track-expenses-effortlessly {
+    font-size: 38px;
+  }
+  .subheading {
+    padding-left: 36px;
+    padding-right: 36px;
+    box-sizing: border-box;
+  }
+  .b {
+    font-size: 51px;
+  }
+  .create-expenses {
+    font-size: 26px;
+  }
+  .b1 {
+    font-size: 51px;
+  }
+  .read-expenses {
+    font-size: 26px;
+  }
+  .b2 {
+    font-size: 51px;
+  }
+  .update-expenses {
+    font-size: 26px;
+  }
+  .b3 {
+    font-size: 51px;
+  }
+  .delete-expenses {
+    font-size: 26px;
+  }
+  .cards,
+  .section3 {
+    box-sizing: border-box;
+  }
+  .cards {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+  .section3 {
+    padding-top: 33px;
+    padding-bottom: 33px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .track-expenses-effortlessly {
+    font-size: 29px;
+  }
+  .b {
+    font-size: 38px;
+  }
+  .create-expenses {
+    font-size: 19px;
+  }
+  .b1 {
+    font-size: 38px;
+  }
+  .read-expenses {
+    font-size: 19px;
+  }
+  .b2 {
+    font-size: 38px;
+  }
+  .update-expenses {
+    font-size: 19px;
+  }
+  .b3 {
+    font-size: 38px;
+  }
+  .delete-expenses {
+    font-size: 19px;
+  }
+}

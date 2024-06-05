@@ -1,0 +1,145 @@
+.vector-icon14 {
+  height: 32px;
+  width: 120px;
+  position: relative;
+  flex-shrink: 0;
+}
+.left-frame {
+  cursor: pointer;
+  height: 26px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  box-sizing: border-box;
+}
+.about-us1,
+.contact,
+.faq {
+  text-decoration: none;
+  position: relative;
+  font-weight: 700;
+  color: inherit;
+  display: inline-block;
+}
+.about-us1 {
+  cursor: pointer;
+  min-width: 71px;
+  white-space: nowrap;
+}
+.contact,
+.faq {
+  min-width: 63px;
+}
+.faq {
+  cursor: pointer;
+  min-width: 32px;
+}
+.links {
+  margin: 0;
+  width: 985px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  gap: 30px;
+  max-width: 100%;
+  text-align: left;
+  font-size: 16px;
+  color: #02362d;
+  font-family: Inter;
+}
+.login2,
+.sign-up2 {
+  position: relative;
+  display: inline-block;
+}
+.login2 {
+  min-width: 44px;
+  cursor: pointer;
+}
+.sign-up2 {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: Inter;
+  color: #02362d;
+  text-align: left;
+  min-width: 59px;
+  white-space: nowrap;
+}
+.signup {
+  cursor: pointer;
+  border: 1.5px solid #02362d;
+  padding: 8px 18px;
+  background-color: transparent;
+  flex: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.button3:hover {
+  background-color: rgba(54, 105, 97, 0.09);
+  border: 1.5px solid #366961;
+  box-sizing: border-box;
+}
+.container20,
+.navbar,
+.right-frame {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.right-frame {
+  width: 173px;
+  justify-content: center;
+  gap: 30px;
+}
+.container20,
+.navbar {
+  max-width: 100%;
+}
+.container20 {
+  flex: 1;
+  justify-content: space-between;
+  gap: 0;
+  row-gap: 20px;
+}
+.navbar {
+  align-self: stretch;
+  background-color: #fff;
+  justify-content: center;
+  padding: 34px 93px;
+  box-sizing: border-box;
+  top: 0;
+  z-index: 99;
+  position: sticky;
+  text-align: left;
+  font-size: 16px;
+  color: #02362d;
+  font-family: Inter;
+}
+@media screen and (max-width: 1275px) {
+  .links {
+    display: none;
+  }
+}
+@media screen and (max-width: 750px) {
+  .navbar {
+    padding-left: 46px;
+    padding-right: 46px;
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 450px) {
+  .navbar {
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+}

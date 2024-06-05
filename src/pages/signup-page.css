@@ -140,7 +140,7 @@
   cursor: pointer;
   border: 0;
   padding: 24px;
-  background-color: #fb440a;
+  background-color: #21167E;
   align-self: stretch;
   border-radius: 8px;
   overflow: hidden;
@@ -152,7 +152,7 @@
   max-width: 100%;
 }
 .button:hover {
-  background-color: #ff5e24;
+  background-color: #21167E;
 }
 .already-have-an,
 .login {
@@ -167,7 +167,7 @@
 }
 .login {
   font-weight: 600;
-  color: #fb440a;
+  color: #21167E;
   display: inline-block;
   min-width: 38px;
   cursor: pointer;
@@ -202,7 +202,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 250px 30px;
+  padding: 302.5px 100px;
   min-width: 373px;
   max-width: 100%;
   margin-left: -2px;

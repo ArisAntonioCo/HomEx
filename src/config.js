@@ -1,5 +1,5 @@
 const config = {
-    apiUrl: 'https://asia-east2-homex-dd7bb.cloudfunctions.net/api',
+    apiUrl: 'https://asia-east2-lpemployee.cloudfunctions.net/api',
   };
   
   export default config;

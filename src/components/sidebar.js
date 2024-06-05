@@ -1,27 +1,10 @@
-import React, { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "./sidebar.css";
-import { useSelector, useDispatch } from "react-redux";
-import { logoutUser, getUserData } from "../Redux/userSlice";
 
 const Sidebar = () => {
   const navigate = useNavigate();
-  const handle = useSelector((state) => state.user.credentials?.handle);
-
-  const dispatch = useDispatch();
-
-  // Authentication Check (useEffect for initial rendering)
-  useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-    if (storedToken) {
-      dispatch(getUserData(storedToken));
-    }
-  }, [dispatch]);
-
-  const handleLogout = useCallback(() => {
-    dispatch(logoutUser());
-    navigate("/login-page");
-  }, [dispatch, navigate]);
+  
 
   const onNavlinksContainerClick = useCallback(() => {
     navigate("/");
@@ -32,39 +15,30 @@ const Sidebar = () => {
   }, [navigate]);
 
   const onNavlinksContainer2Click = useCallback(() => {
-    navigate("/electricity-page");
+    navigate("/employee-page");
   }, [navigate]);
 
   const onNavlinksContainer3Click = useCallback(() => {
-    navigate("/water-page");
+    navigate("/dept-page");
   }, [navigate]);
 
   const onNavlinksContainer4Click = useCallback(() => {
-    navigate("/food-page");
+    navigate("/job-page");
   }, [navigate]);
 
   const onNavlinksContainer5Click = useCallback(() => {
-    navigate("/maint-page");
-  }, [navigate]);
-
-  const onNavlinksContainer6Click = useCallback(() => {
-    navigate("/misc-page");
-  }, [navigate]);
-
-  const onNavlinksContainer7Click = useCallback(() => {
-    navigate("/about-page");
+    navigate("/payroll-page");
   }, [navigate]);
 
 
   return (
-
     <div className="sidebar">
-      <div className="logo"  onClick={onNavlinksContainerClick} style={{ cursor: "pointer" }}>
+      <div className="logo">
       <img
             className="vector-icon14"
             loading="lazy"
             alt=""
-            src="/vector.svg"
+            src="/leeplaza.png"
           />
       </div>
       <div className="options">
@@ -82,25 +56,25 @@ const Sidebar = () => {
         </div>
 
         <div className="text">
-          <div className="expenses5">EXPENSES</div>
+          <div className="manage5">MANAGE</div>
         </div>
 
-        {/* ELECTRICITY BUTTON */}
+        {/* Employee BUTTON */}
         <div className="navlinks" onClick={onNavlinksContainer2Click}>
-          <img className="vector-icon6" alt="" src="/vector-2@2x.png" />
-          <div className="electricity5">Electricity</div>
+          <img className="vector-icon6" alt="" src="/Employee.png" />
+          <div className="employee5">Employees</div>
         </div>
 
         {/* WATER BUTTON */}
         <div className="navlinks" onClick={onNavlinksContainer3Click}>
-          <img className="vector-icon7" alt="" src="/vector-3@2x.png" />
-          <div className="water3">Water</div>
+          <img className="vector-icon7" alt="" src="/Department.png" />
+          <div className="dept3">Departments</div>
         </div>
 
         {/* FOOD BUTTON */}
         <div className="navlinks" onClick={onNavlinksContainer4Click}>
-          <img className="vector-icon8" alt="" src="/vector-4@2x.png" />
-          <div className="food3">Food</div>
+          <img className="vector-icon8" alt="" src="/JobTitle.png" />
+          <div className="job3">Job Titles</div>
         </div>
 
         {/* MAINTENANCE BUTTON*/}
@@ -109,36 +83,15 @@ const Sidebar = () => {
             className="vector-icon9"
             loading="lazy"
             alt=""
-            src="/vector-5.svg"
+            src="/Payroll.png"
           />
-          <div className="maintenance3">Maintenance</div>
+          <div className="payroll3">Payroll</div>
         </div>
 
-        {/* MISC BUTTON */}
-        <div className="navlinks" onClick={onNavlinksContainer6Click}>
-          <img
-            className="vector-icon10"
-            loading="lazy"
-            alt=""
-            src="/vector-6@2x.png"
-          />
-          <div className="miscellaneous1">Miscellaneous</div>
-        </div>
-
-        <div className="text1">
-          <div className="information">INFORMATION</div>
-        </div>
-
-        {/* ABOUT BUTTON*/}
-        <div className="navlinks" onClick={onNavlinksContainer7Click}>
-          <img className="vector-icon11" alt="" src="/vector-7@2x.png" />
-          <div className="about">About</div>
-        </div>
-        
       </div>
 
       {/* SIGN OUT BUTTON */}
-      <div className="navlinks" onClick={handleLogout}>
+      <div className="navlinks">
         <div className="container18">
           <img className="vector-icon13" alt="" src="/vector-9@2x.png" />
           <div className="sign-out">Sign out</div>

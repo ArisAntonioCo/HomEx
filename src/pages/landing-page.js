@@ -40,18 +40,16 @@ const LandingPage = () => {
         <div className="left-content">
           <div className="text-wrapper">
             <h1 className="stay-on-top-container">
-              <p className="stay-on-top">Stay on top of your</p>
-              <p className="home-expenses">home expenses</p>
-              <p className="effortlessly">effortlessly</p>
+              <p className="stay-on-top">For Lee Super Plaza,</p>
+              <p className="home-employee">manage our employees</p>
+              <p className="effortlessly">efficiently</p>
             </h1>
             <div className="effortlessly-stay-in">
-              Effortlessly stay in control of your household finances with our
-              intuitive platform, tracking every expense from electricity to
-              maintenance, so you can manage your budget with ease.
+            Elevate your workplace with our innovative Employee Management System! Experience a user-friendly platform designed to boost productivity and foster collaboration. Join the future of employee management today!
             </div>
-            <button className="learnmore" onClick={onAboutUsTextClick}>
-              <div className="learn-more">Learn more</div>
-            </button>
+            <button className="learnmore" onClick={() => window.location.href='https://www.leeplazashopping.com/lee-super-plaza.html'}>
+    <div className="learn-more">Learn more</div>
+</button>
           </div>
         </div>
       </section>

@@ -109,7 +109,7 @@
   cursor: pointer;
   border: 0;
   padding: 24px;
-  background-color: #fb440a;
+  background-color: #21167E;
   align-self: stretch;
   border-radius: 8px;
   overflow: hidden;
@@ -121,10 +121,10 @@
   max-width: 100%;
 }
 .button1:hover {
-  background-color: #ff5e24;
+  background-color: #21167E ;
 }
 .dont-have-an {
-  width: auto;
+  width: 155px;
   position: relative;
   font-size: 14px;
   font-family: Inter;
@@ -143,7 +143,7 @@
   font-size: 14px;
   font-weight: 600;
   font-family: Inter;
-  color: #fb440a;
+  color: #21167E ;
   text-align: center;
   display: inline-block;
   min-width: 53px;
@@ -242,4 +242,29 @@
     padding-right: 25px;
     padding-bottom: 146px;
   }
+
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px; 
+}
+
+.spinner-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  border-top-color: #333; 
+  animation: spin 1s linear infinite; 
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-message {
+  color: red;
+}
 }

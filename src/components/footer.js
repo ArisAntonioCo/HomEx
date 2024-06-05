@@ -9,77 +9,55 @@ const Footer = forwardRef(({ bottomContentFlexWrap }, ref) => {
       flexWrap: bottomContentFlexWrap,
     };
   }, [bottomContentFlexWrap]);
+
   return (
     <footer className="footer" ref={ref}>
       <div className="container25">
         <div className="top-content4">
           <div className="logo2">
-            <Link to="/">
-              <img
-                className="logo-icon2"
-                loading="lazy"
-                alt=""
-                src="/logo1.svg"
-              />
-            </Link>
+            <img
+              className="logo-icon2"
+              loading="lazy"
+              alt=""
+              src="/leeplaza1.png"
+            /> <br/>
             <div className="our-platforms-intuitive-container1">
               <p className="our-platforms-intuitive1">
-                Our platform's intuitive tabs for electricity, food, water,
-                miscellaneous, and maintenance streamline expense tracking.
-                Easily navigate through
+              Our platform's intuitive tabs streamline employee records management, offering a seamless way to organize and access all necessary information. With user-friendly navigation, you can effortlessly track and manage every aspect of your workforce. 
               </p>
               <p className="modules-to-monitor1">
-                modules to monitor every aspect of your household spending,
-                ensuring you stay in control effortlessly.
+              Simplify your administrative tasks and enhance productivity with our comprehensive employee records management solution.
               </p>
             </div>
           </div>
 
           <div className="navigation">
-            <h3 className="navigation1">Navigation</h3>
+            <h3 className="navigation1">Address</h3>
             <div className="nav">
-              <Link className="about-us2" to="/about-page">
-                {" "}
-                About us
-              </Link>
-              <Link className="contact1" to="/">
-                {" "}
-                Contact
-              </Link>
-              <Link className="faq1" to="/faq-page">
-                {" "}
-                FAQ
-              </Link>
-              <Link className="about-us2" to="/privacy-policy">
-                {" "}
-                Privacy Policy
-              </Link>
+            Perdices Corner, San Jose St. <br />
+Dumaguete City, 6200
+Negros Oriental, Philippines
             </div>
           </div>
 
           <div className="contact2">
-            <h3 className="contact-us1">Contact Us</h3> <br />
+            <h3 className="contact-us1">Contact Us</h3> <br/>
             <div className="content">
-              <div className="div4">
-                {" "}
-                <b>Mobile</b>{" "}
-              </div>
+            <div className="div4"> <b>Mobile</b> </div>
               <div className="div">+93 976 166 9274 </div>
               <div className="div1">+93 956 557 7370</div>
-              <div className="div2">+93 929 743 7986</div> <br />
-              <div className="div5">
-                <b>Email</b>{" "}
-              </div>
-              <div className="emailgmailcom">cfnprojects@gmail.com</div>
+              <div className="div2">+93 929 743 7986</div> <br/>
+              <div className="div5"><b>Email</b> </div>
+              <div className="emailgmailcom">ccsLeePlaza@gmail.com</div>
             </div>
           </div>
         </div>
         <div className="bottom-content4" style={bottomContentStyle}>
           <div className="copyright1">
-            Copyright©2024 Co, Faburada, Nato All Rights Reserved
+            Copyright©2024 Co, Faburada, Nato, Aguel, Baco. All Rights Reserved
           </div>
           <div className="silliman-university">
-            <div className="silliman-university1">Silliman University</div>
+            <div className="silliman-university1">School Project Purposes Only.</div>
           </div>
         </div>
       </div>

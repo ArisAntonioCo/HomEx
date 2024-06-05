@@ -1,34 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { updateElectricityExpense } from "../../Redux/electricitySlice";
+import { updateEmployee } from "../../Redux/employeeSlice";
 import "./edit-modal-elec.css";
-import Snackbar from "@mui/material/Snackbar";
-import MuiAlert from "@mui/material/Alert";
-import ConfirmationDialog from "./confirmationDialogue";
-const EditModalElec = ({ close, onSuccess, expense }) => {
-  const [message, setMessage] = useState(null);
-  const [open, setOpen] = useState(false);
-  const [hasShown, setHasShown] = useState(false);
-  const [showEditConfirmation, setShowEditConfirmation] = useState(false);
 
-  const handleCancelEdit = () => {
-    setShowEditConfirmation(false);
-  };
-
-  useEffect(() => {
-    if (message && !hasShown) {
-      setOpen(true);
-      setHasShown(true);
-    }
-  }, [message, hasShown]);
-
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpen(false);
-  };
+const EditModalElec = ({ close, expense }) => {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
@@ -36,7 +11,7 @@ const EditModalElec = ({ close, onSuccess, expense }) => {
     datePaid: expense.datePaid,
     billAmount: expense.billAmount,
     expenseId: expense.expensesId,
-    
+    // Add other properties of expense here if needed
   });
 
   console.log(formData);
@@ -79,9 +54,10 @@ const EditModalElec = ({ close, onSuccess, expense }) => {
   }
 }, [expense]);
 
-const handleSubmit = (event) => {
-  event.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
+<<<<<<< HEAD
   if (!validateForm()) {
     setMessage("Please fill in all fields correctly");
     return;
@@ -115,14 +91,24 @@ const handleConfirmEdit = async () => {
     } else {
       console.error("Updating expense failed:", resultAction.error.message);
       setMessage("Failed to edit electricity expense. Please try again."); 
+=======
+    if (validateForm()) {
+      // Convert datePaid to ISO 8601 format before sending to backend
+      const isoDatePaid = new Date(formData.datePaid).toISOString();
+      dispatch(
+        updateEmployee({
+          expenseId: formData.expenseId,
+          updatedData: {
+            billMonth: formData.billMonth,
+            datePaid: isoDatePaid,
+            billAmount: formData.billAmount,
+          },
+        })
+      );
+      close(); // Close the modal after submission
+>>>>>>> adc8184046447058ddfa1b96ae95afcc9016a608
     }
-  } catch (error) {
-    setMessage("An error occurred while editing the expense.");
-  } finally {
-    // Close the confirmation dialog whether the update action was successful or not
-    setShowEditConfirmation(false);
-  }
-};
+  };
 
   const handleInputChange = (event) => {
     setFormData({
@@ -132,42 +118,18 @@ const handleConfirmEdit = async () => {
   };
 
   const handleExitClick = () => {
-    close(); // Call the close function passed from ElectricityPage
+    close(); // Call the close function passed from EmployeePage
   };
 
   return (
     <div className="add-modal">
-      {showEditConfirmation && (
-          <ConfirmationDialog
-            mode="edit"
-            title="Edit Confirmation"
-            open={showEditConfirmation}
-            handleCancel={handleCancelEdit}
-            handleConfirm={handleConfirmEdit}
-          />
-        )}
-      <Snackbar
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-      >
-        <MuiAlert
-          onClose={handleClose}
-          severity="error"
-          elevation={6}
-          variant="filled"
-        >
-          {message}
-        </MuiAlert>
-      </Snackbar>
       <div className="container4">
         <form className="form" onSubmit={handleSubmit}>
           {/* Top-frame */}
           <div className="top-frame">
             <div className="h1">
-              <div className="add-expense2">Edit Expense</div>
-              <div className="expense">Electricity</div>
+              <div className="add-expense2">Edit </div>
+              <div className="expense"></div>
             </div>
             <div
               className="icon"

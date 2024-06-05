@@ -153,6 +153,7 @@
   align-self: stretch;
   display: flex;
   max-width: 100%;
+  
 }
 .bottom-content4 {
   flex-direction: row;
@@ -172,7 +173,7 @@
   gap: 10px;
 }
 .footer {
-  background-color: #01120f;
+  background-color: #0d0b20;
   overflow: hidden;
   justify-content: center;
   padding: 40px 93px;

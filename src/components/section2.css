@@ -1,4 +1,7 @@
-.track-expenses-effortlessly {
+
+
+.track-employee-effortlessly {
+  color: #01120f;
   margin: 0;
   align-self: stretch;
   position: relative;
@@ -33,10 +36,10 @@
   position: relative;
 }
 .create,
-.expenses6 {
+.employee6 {
   margin: 0;
 }
-.create-expenses {
+.create-employee {
   margin: 0;
   align-self: stretch;
   position: relative;
@@ -89,7 +92,6 @@
   height: 328px;
   width: 306px;
   border-radius: 20px;
-  background: linear-gradient(150.19deg, #01120f, #7d2205);
   flex-shrink: 0;
   justify-content: center;
   padding: 31px 34px;
@@ -100,11 +102,11 @@
   align-self: stretch;
   position: relative;
 }
-.expenses7,
+.employee7,
 .read {
   margin: 0;
 }
-.read-expenses {
+.read-employee {
   margin: 0;
   align-self: stretch;
   position: relative;
@@ -168,11 +170,11 @@
   align-self: stretch;
   position: relative;
 }
-.expenses8,
+.employee8,
 .update {
   margin: 0;
 }
-.update-expenses {
+.update-employee {
   margin: 0;
   align-self: stretch;
   position: relative;
@@ -225,7 +227,6 @@
   height: 328px;
   width: 306px;
   border-radius: 20px;
-  background: linear-gradient(150.19deg, #01120f, #7d2205);
   flex-shrink: 0;
   justify-content: center;
   padding: 31px 34px;
@@ -237,10 +238,10 @@
   position: relative;
 }
 .delete5,
-.expenses9 {
+.employee9 {
   margin: 0;
 }
-.delete-expenses {
+.delete-employee {
   margin: 0;
   align-self: stretch;
   position: relative;
@@ -293,7 +294,6 @@
   height: 328px;
   width: 306px;
   border-radius: 20px;
-  background: linear-gradient(150.19deg, #01120f, #7d2205);
   overflow: hidden;
   flex-shrink: 0;
   flex-direction: column;
@@ -314,7 +314,7 @@
   gap: 24px 22.7px;
   text-align: left;
   font-size: 64px;
-  color: #fc6333;
+  color: white;
 }
 .section3 {
   background-color: #fff;
@@ -327,8 +327,14 @@
   color: #02362d;
   font-family: Inter;
 }
+.card1,
+.card2,
+.card3,
+.card4 {
+  background: linear-gradient(150.19deg, #000000, #21167E); 
+}
 @media screen and (max-width: 750px) {
-  .track-expenses-effortlessly {
+  .track-employee-effortlessly {
     font-size: 38px;
   }
   .subheading {
@@ -339,25 +345,25 @@
   .b {
     font-size: 51px;
   }
-  .create-expenses {
+  .create-employee {
     font-size: 26px;
   }
   .b1 {
     font-size: 51px;
   }
-  .read-expenses {
+  .read-employee {
     font-size: 26px;
   }
   .b2 {
     font-size: 51px;
   }
-  .update-expenses {
+  .update-employee {
     font-size: 26px;
   }
   .b3 {
     font-size: 51px;
   }
-  .delete-expenses {
+  .delete-employee {
     font-size: 26px;
   }
   .cards,
@@ -374,31 +380,31 @@
   }
 }
 @media screen and (max-width: 450px) {
-  .track-expenses-effortlessly {
+  .track-employee-effortlessly {
     font-size: 29px;
   }
   .b {
     font-size: 38px;
   }
-  .create-expenses {
+  .create-employee {
     font-size: 19px;
   }
   .b1 {
     font-size: 38px;
   }
-  .read-expenses {
+  .read-employee {
     font-size: 19px;
   }
   .b2 {
     font-size: 38px;
   }
-  .update-expenses {
+  .update-employee {
     font-size: 19px;
   }
   .b3 {
     font-size: 38px;
   }
-  .delete-expenses {
+  .delete-employee {
     font-size: 19px;
   }
 }

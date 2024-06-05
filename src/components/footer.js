@@ -34,9 +34,24 @@ const Footer = forwardRef(({ bottomContentFlexWrap }, ref) => {
           <div className="navigation">
             <h3 className="navigation1">Address</h3>
             <div className="nav">
+<<<<<<< HEAD
             Perdices Corner, San Jose St. <br />
 Dumaguete City, 6200
 Negros Oriental, Philippines
+=======
+              <Link className="about-us2" to="/about-page">
+                {" "}
+                About us
+              </Link>
+              <Link className="contact1" to="/">
+                {" "}
+                Contact
+              </Link>
+              <Link className="faq1" to="/faq-page">
+                {" "}
+                FAQ
+              </Link>
+>>>>>>> parent of 3feeb60 (added date ranges and cleaned up code)
             </div>
           </div>
 

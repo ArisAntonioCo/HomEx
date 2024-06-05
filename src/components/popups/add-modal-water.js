@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { addEmployee } from "../../Redux/employeeSlice";
-import "./add-modal-elec.css";
+import { useDispatch } from 'react-redux';
+import { addWaterExpense } from '../../Redux/waterSlice'; 
+import "./add-modal-water.css";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
-
 const AddModalElec = ({ close, onSuccess }) => {
   const [message, setMessage] = useState(null);
   const [open, setOpen] = useState(false);
@@ -24,73 +23,61 @@ const AddModalElec = ({ close, onSuccess }) => {
 
     setOpen(false);
   };
+  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    billMonth: '',
+    datePaid: '',
+    billAmount: '',
+  });
+  const [errors, setErrors] = useState({});
 
+  // Validation Function
   const validateForm = () => {
     const newErrors = {};
-    if (formData.billMonth.trim() === "") {
-      newErrors.billMonth = "Billing month is required";
+    if (formData.billMonth.trim() === '') {
+      newErrors.billMonth = 'Billing month is required';
     }
-    if (formData.datePaid.trim() === "") {
-      console.log( formData.datePaid);
-      newErrors.datePaid = "Date paid is required";
+    if (formData.datePaid.trim() === '') {
+      newErrors.datePaid = 'Date paid is required';
     }
-    if (formData.billAmount.trim() === "") {
-      newErrors.billAmount = "Amount is required";
-    } else if (
-      isNaN(parseFloat(formData.billAmount)) ||
-      parseFloat(formData.billAmount) <= 0
-    ) {
-      newErrors.billAmount = "Amount must be a positive number";
+    if (formData.billAmount.trim() === '') {
+      newErrors.billAmount = 'Amount is required';
+    } else if (isNaN(parseFloat(formData.billAmount)) || parseFloat(formData.billAmount) <= 0) {
+      newErrors.billAmount = 'Amount must be a positive number';
     }
-
-    return Object.keys(newErrors).length === 0;
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Return true if form is valid
   };
 
   const handleSubmit = async (event) => {
-  event.preventDefault();
-
-  if (!validateForm()) {
-    setMessage("Please fill in all fields correctly");
-    return;
-  }
-
-  try {
-    const isoDatePaid = new Date(formData.datePaid).toISOString();
-    const resultAction = await dispatch(
-      addEmployee({ ...formData, datePaid: isoDatePaid })
-    );
-
-    // Check if adding the  was successful
-    if (addEmployee.fulfilled.match(resultAction)) {
-      const successMessage = "Employee added successfully!";
-      setMessage(successMessage);
-      setMessage("Employee added successfully!");
-      onSuccess(successMessage); // Call the onSuccess callback
-      close();
-    } else {
-      // Adding the  failed, handle the error (e.g., display an error message)
-      console.error("Adding failed:", resultAction.error.message);
-      setMessage("Failed to add employee");
+    event.preventDefault();
+  
+    if (!validateForm()) {
+      setMessage("Please fill in all fields correctly");
+      return;
     }
-  } catch (error) {
-    setMessage("An error occurred while adding the employee");
-  }
-};
-
-  const dispatch = useDispatch();
-  const [formData, setFormData] = useState({
-    f_name: '',
-    l_name: '',
-    birthdate: '',
-    address: '',
-    deptId: '',
-    jobId: '',
-    hireDate: '',
-    salary: '',
-    phone: '',
-    email: '',
-    addedBy: ''
-  });
+  
+    try {
+      const isoDatePaid = new Date(formData.datePaid).toISOString();
+      const resultAction = await dispatch(
+        addWaterExpense({ ...formData, datePaid: isoDatePaid })
+      );
+  
+      // Check if adding the expense was successful
+      if (addWaterExpense.fulfilled.match(resultAction)) {
+        const successMessage = "Water expense added successfully!";
+        setMessage(successMessage);
+        onSuccess(successMessage); // Call the onSuccess callback
+        close();
+      } else {
+        // Adding the expense failed, handle the error (e.g., display an error message)
+        console.error("Adding expense failed:", resultAction.error.message);
+        setMessage("Failed to add electricity expense");
+      }
+    } catch (error) {
+      setMessage("An error occurred while adding the expense");
+    }
+  };
 
   const handleInputChange = (event) => {
     setFormData({
@@ -102,6 +89,7 @@ const AddModalElec = ({ close, onSuccess }) => {
   const handleExitClick = () => {
     close();
   };
+  
 
   return (
     <div className="add-modal">
@@ -124,37 +112,22 @@ const AddModalElec = ({ close, onSuccess }) => {
         <form className="form">
           <div className="top-frame">
             <div className="h1">
-              <div className="add-2">Add Expense</div>
-              <div className="">Employee</div>
+              <div className="add-expense2">Add Expense</div>
+              <div className="expense">Water</div>
             </div>
-
-            <div
-              className="icon"
-              style={{ cursor: "pointer" }}
-              tabIndex={0}
-              role="button"
-              aria-label="Close"
-              onClick={handleExitClick}
-            >
+            <div className="icon" style={{ cursor: 'pointer' }} tabIndex={0} role="button" aria-label="Close" onClick={handleExitClick}>
               <img className="exit-icon" alt="Close modal" src="/exit1.svg" />
             </div>
           </div>
-
           <div className="input-container">
             <input
               className="item"
-              placeholder="First Name"
+              placeholder="Billing Month"
               type="text"
-<<<<<<< HEAD
-              name="billMonth" 
-              value={formData.f_name}
-=======
               name="billMonth" // Add the name attribute for billMonth
               value={formData.billMonth}
->>>>>>> parent of 9c41cd3 (clean codesss)
               onChange={handleInputChange}
             />
-
             <div className="date4">
               <input
                 type="date"
@@ -165,7 +138,6 @@ const AddModalElec = ({ close, onSuccess }) => {
                 placeholder="Enter date paid"
               />
             </div>
-
             <input
               className="amount4"
               placeholder="Amount"
@@ -175,10 +147,11 @@ const AddModalElec = ({ close, onSuccess }) => {
               onChange={handleInputChange}
             />
           </div>
+
         </form>
         <button className="button2" type="submit" onClick={handleSubmit}>
           <img className="add-icon" alt="" src="/addicon.svg" />
-          <div className="add-3">Add Employee</div>
+          <div className="add-expense3">Add Expense</div>
         </button>
       </div>
     </div>

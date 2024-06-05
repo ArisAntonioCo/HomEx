@@ -3,6 +3,13 @@
   width: 16px;
   position: relative;
 }
+<<<<<<< HEAD
+=======
+.dashboard-panel {
+  position: relative; /* Establish a stacking context */
+  z-index: 1; /* Ensure the dashboard is below the sidebar */
+}
+>>>>>>> parent of 9c41cd3 (clean codesss)
 .container6,
 .mobile-devices2 {
   justify-content: flex-start;

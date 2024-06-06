@@ -171,10 +171,10 @@ const WaterPage = () => {
               />
               <h1 className="water">Water</h1>
               <div className="total">
-                <div className="total1">Total $</div>
+                <div className="total1">Total PHP</div>
               </div>
             </div>
-            <div className="watertotal">${totalBillAmount}</div>
+            <div className="watertotal">PHP{totalBillAmount}</div>
           </div>
 
           <div className="container2">
@@ -222,7 +222,7 @@ const WaterPage = () => {
                   <div className="row1" key={expense.expenseId}>
                     <div className="table-cell">{expense.billMonth}</div>
                     <div className="table-cell1">{expense.datePaid} </div>
-                    <div className="table-cell2">${expense.billAmount}</div>
+                    <div className="table-cell2">PHP{expense.billAmount}</div>
                     <div className="table-cell3">
                       <div className="buttons">
                         <button

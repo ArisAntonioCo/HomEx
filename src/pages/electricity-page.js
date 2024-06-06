@@ -178,10 +178,10 @@ const ElectricityPage = () => {
               />
               <h1 className="electricity3">Electricity</h1>
               <div className="total18">
-                <div className="total19">Total $</div>
+                <div className="total19">Total PHP</div>
               </div>
             </div>
-            <div className="electricitytotal2">${totalBillAmount}</div>
+            <div className="electricitytotal2">PHP{totalBillAmount}</div>
           </div>
 
           <div className="container17">
@@ -224,7 +224,7 @@ const ElectricityPage = () => {
                   <div className="row9" key={expense.expenseId}>
                     <div className="table-cell16">{expense.billMonth}</div>
                     <div className="table-cell17">{expense.datePaid}</div>
-                    <div className="table-cell18">${expense.billAmount}</div>
+                    <div className="table-cell18">PHP{expense.billAmount}</div>
                     <div className="table-cell19">
                       <div className="buttons4">
                         <button

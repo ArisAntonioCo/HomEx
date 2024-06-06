@@ -175,10 +175,10 @@ const FoodPage = () => {
               />
               <h1 className="food1">Food</h1>
               <div className="total14">
-                <div className="total15">Total $</div>
+                <div className="total15">Total PHP</div>
               </div>
             </div>
-            <div className="foodtotal1">${totalBillAmount}</div>
+            <div className="foodtotal1">PHP{totalBillAmount}</div>
           </div>
 
           <div className="container9">
@@ -221,7 +221,7 @@ const FoodPage = () => {
                   <div className="row5" key={expense.expenseId}>
                     <div className="table-cell8">{expense.billMonth}</div>
                     <div className="table-cell9">{expense.datePaid} </div>
-                    <div className="table-cell10">${expense.billAmount}</div>
+                    <div className="table-cell10">PHP{expense.billAmount}</div>
                     <div className="table-cell11">
                       <div className="buttons2">
                         <button

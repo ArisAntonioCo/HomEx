@@ -175,10 +175,10 @@ const MaintPage = () => {
                 />
               <h1 className="miscellaneous7">Maintenance</h1>
               <button className="total20">
-                <div className="total21">Total $</div>
+                <div className="total21">Total PHP</div>
               </button>
             </div>
-            <div className="misctotal1">${totalBillAmount}</div>
+            <div className="misctotal1">PHP{totalBillAmount}</div>
           </div>
 
           <div className="container31">
@@ -223,7 +223,7 @@ const MaintPage = () => {
                     <div className="table-cell20">{expense.billMonth}</div>
                     <div className="table-cell21">
                     {expense.datePaid}                    </div>
-                    <div className="table-cell22">${expense.billAmount}</div>
+                    <div className="table-cell22">PHP{expense.billAmount}</div>
                     <div className="table-cell23">
                       <div className="buttons5">
                         <button

@@ -288,7 +288,7 @@ const DashboardPage = () => {
                   Electricity
                 </h1>{" "}
                 <div className="total8">
-                  <div className="total9">Total PHP</div>
+                  <div className="total9">Total ₱</div>
                 </div>
               </div>
               <div className="date-inputs">
@@ -320,7 +320,7 @@ const DashboardPage = () => {
                   Error: {electricityError.message}
                 </div>
               ) : (
-                <div className="electricitytotal1">PHP{electricityTotal}</div>
+                <div className="electricitytotal1">₱{electricityTotal}</div>
               )}
             </div>
             <div className="watercard1">
@@ -339,7 +339,7 @@ const DashboardPage = () => {
                   Water
                 </h1>{" "}
                 <div className="total6">
-                  <div className="total7">Total PHP</div>
+                  <div className="total7">Total ₱</div>
                 </div>
               </div>
               <div className="date-inputs">
@@ -369,7 +369,7 @@ const DashboardPage = () => {
               ) : waterError ? (
                 <div className="watertotal1">Error: {waterError.message}</div>
               ) : (
-                <div className="watertotal1">PHP{waterTotal}</div>
+                <div className="watertotal1">₱{waterTotal}</div>
               )}
             </div>
             <div className="foodcard">
@@ -388,7 +388,7 @@ const DashboardPage = () => {
                   Food
                 </h1>{" "}
                 <div className="total8">
-                  <div className="total9">Total PHP</div>
+                  <div className="total9">Total ₱</div>
                 </div>
               </div>
               <div className="date-inputs">
@@ -418,7 +418,7 @@ const DashboardPage = () => {
               ) : foodError ? (
                 <div className="foodtotal">Error: {foodError.message}</div>
               ) : (
-                <div className="foodtotal">PHP{foodTotal}</div>
+                <div className="foodtotal">₱{foodTotal}</div>
               )}
             </div>
           </div>
@@ -439,7 +439,7 @@ const DashboardPage = () => {
                   Maintenance
                 </h1>{" "}
                 <div className="total10">
-                  <div className="total11">Total PHP</div>
+                  <div className="total11">Total ₱</div>
                 </div>
               </div>
               <div className="date-inputs">
@@ -471,7 +471,7 @@ const DashboardPage = () => {
                   Error: {maintenanceError.message}
                 </div>
               ) : (
-                <div className="maintenancetotal">PHP{maintenanceTotal}</div>
+                <div className="maintenancetotal">₱{maintenanceTotal}</div>
               )}
             </div>
             <div className="misccard">
@@ -490,7 +490,7 @@ const DashboardPage = () => {
                   Miscellaneous
                 </h1>{" "}
                 <div className="total12">
-                  <div className="total13">Total PHP</div>
+                  <div className="total13">Total ₱</div>
                 </div>
               </div>
               <div className="date-inputs">
@@ -522,7 +522,7 @@ const DashboardPage = () => {
                   Error: {miscellaneousError.message}
                 </div>
               ) : (
-                <div className="misctotal">PHP{miscellaneousTotal}</div>
+                <div className="misctotal">₱{miscellaneousTotal}</div>
               )}
             </div>
           </div>
@@ -538,7 +538,7 @@ const DashboardPage = () => {
                 />
               </div>
 
-              <div className="expensestotal">PHP{calculateTotalExpenses()}</div>
+              <div className="expensestotal">₱{calculateTotalExpenses()}</div>
             </div>
           </div>
         </div>

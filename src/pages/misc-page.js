@@ -174,10 +174,10 @@ const MiscPage = () => {
               />
               <h1 className="miscellaneous7">Miscellaneous</h1>
               <button className="total20">
-                <div className="total21">Total PHP</div>
+                <div className="total21">Total ₱ </div>
               </button>
             </div>
-            <div className="misctotal1">PHP{totalBillAmount}</div>
+            <div className="misctotal1">₱ {totalBillAmount}</div>
           </div>
 
           <div className="container31">
@@ -222,7 +222,7 @@ const MiscPage = () => {
                     <div className="table-cell20">{expense.billMonth}</div>
                     <div className="table-cell21">
                     {expense.datePaid}                    </div>
-                    <div className="table-cell22">PHP{expense.billAmount}</div>
+                    <div className="table-cell22">₱ {expense.billAmount}</div>
                     <div className="table-cell23">
                       <div className="buttons5">
                         <button

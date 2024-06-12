@@ -1,31 +1,38 @@
-import { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
-import Navbar from "../components/navbar";
-import Section2 from "../components/section2";
-import Footer from "../components/footer";
-import "./landing-page.css";
+import React, { useCallback, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/navbar';
+import Section2 from '../components/section2';
+import Footer from '../components/footer';
+import './landing-page.css';
 
 const LandingPage = () => {
   const navigate = useNavigate();
+  const footerRef = useRef(null);  // Reference for the footer component
 
+  // Function to scroll to the footer section smoothly
+  const scrollToContact = useCallback(() => {
+    footerRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, []);
+
+  // Function to handle click for "About Us" navigation
   const onAboutUsTextClick = useCallback(() => {
-    navigate("/aboutpage");
+    navigate("/about-page");
   }, [navigate]);
 
+  // Functions for potential login and signup interactions
   const onLoginTextClick = useCallback(() => {
-    // Please sync "Login Page" to the project
-  }, []);
+    navigate("/login-page");
+  }, [navigate]);
 
   const onButtonClick = useCallback(() => {
-    // Please sync "Signup Page" to the project
-  }, []);
+    navigate("/signup-page");
+  }, [navigate]);
 
   return (
     <div className="landingpage">
       <Navbar
-        aboutUsHref="/aboutpage"
+        scrollToContact={scrollToContact}
         onAboutUsTextClick={onAboutUsTextClick}
-        fAQHref="/faqpage"
         onLoginTextClick={onLoginTextClick}
         onButtonClick={onButtonClick}
       />
@@ -33,8 +40,8 @@ const LandingPage = () => {
         <div className="left-content">
           <div className="text-wrapper">
             <h1 className="stay-on-top-container">
-              <p className="stay-on-top">{`Stay on top of your `}</p>
-              <p className="home-expenses">{`home expenses `}</p>
+              <p className="stay-on-top">Stay on top of your</p>
+              <p className="home-expenses">home expenses</p>
               <p className="effortlessly">effortlessly</p>
             </h1>
             <div className="effortlessly-stay-in">
@@ -42,14 +49,14 @@ const LandingPage = () => {
               intuitive platform, tracking every expense from electricity to
               maintenance, so you can manage your budget with ease.
             </div>
-            <button className="button2">
+            <button className="learnmore" onClick={onAboutUsTextClick}>
               <div className="learn-more">Learn more</div>
             </button>
           </div>
         </div>
       </section>
       <Section2 />
-      <Footer />
+      <Footer ref={footerRef} />
     </div>
   );
 };

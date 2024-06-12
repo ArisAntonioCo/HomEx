@@ -1,10 +1,27 @@
-import { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./sidebar.css";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutUser, getUserData } from "../Redux/userSlice";
 
 const Sidebar = () => {
   const navigate = useNavigate();
-  
+  const handle = useSelector((state) => state.user.credentials?.handle);
+
+  const dispatch = useDispatch();
+
+  // Authentication Check (useEffect for initial rendering)
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      dispatch(getUserData(storedToken));
+    }
+  }, [dispatch]);
+
+  const handleLogout = useCallback(() => {
+    dispatch(logoutUser());
+    navigate("/login-page");
+  }, [dispatch, navigate]);
 
   const onNavlinksContainerClick = useCallback(() => {
     navigate("/");
@@ -38,13 +55,11 @@ const Sidebar = () => {
     navigate("/about-page");
   }, [navigate]);
 
-  const onNavlinksContainer8Click = useCallback(() => {
-    navigate("/");
-  }, [navigate]);
 
   return (
+
     <div className="sidebar">
-      <div className="logo">
+      <div className="logo"  onClick={onNavlinksContainerClick} style={{ cursor: "pointer" }}>
       <img
             className="vector-icon14"
             loading="lazy"
@@ -119,17 +134,11 @@ const Sidebar = () => {
           <img className="vector-icon11" alt="" src="/vector-7@2x.png" />
           <div className="about">About</div>
         </div>
-
-        {/* CONTACT BUTTON */}
-        <div className="navlinks">
-          <img className="vector-icon12" alt="" src="/vector-8@2x.png" />
-          <div className="contact-us">Contact us</div>
-        </div>
         
       </div>
 
       {/* SIGN OUT BUTTON */}
-      <div className="navlinks">
+      <div className="navlinks" onClick={handleLogout}>
         <div className="container18">
           <img className="vector-icon13" alt="" src="/vector-9@2x.png" />
           <div className="sign-out">Sign out</div>

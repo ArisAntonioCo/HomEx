@@ -68,11 +68,12 @@
   font-weight: 700;
   font-family: Inter;
   text-align: left;
+  min-width: auto;
 }
 .expenses15 {
   color: rgba(52, 52, 52, 0.25);
   display: inline-block;
-  min-width: 124px;
+  min-width: auto;
 }
 .miscellaneous8 {
   color: #343434;
@@ -166,7 +167,7 @@
   padding: 18px 24px;
   white-space: nowrap;
 }
-.amount5 {
+.amount3 {
   flex: 1;
   position: relative;
   font-size: 16px;
@@ -359,6 +360,7 @@
   align-self: stretch;
   display: flex;
   justify-content: flex-start;
+  font-family: Inter;
 }
 .row11 {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -507,8 +509,6 @@
     max-width: 100%;
   }
   .miscpage {
-    padding-left: 20px;
-    padding-right: 20px;
     box-sizing: border-box;
   }
 }

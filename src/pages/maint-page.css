@@ -133,7 +133,7 @@
   width: 16px;
   position: relative;
 }
-.add-expense3 {
+.add-expense6 {
   position: relative;
   font-size: 15px;
   font-weight: 600;
@@ -486,8 +486,6 @@
     max-width: 100%;
   }
   .maintpage {
-    padding-left: 20px;
-    padding-right: 20px;
     box-sizing: border-box;
   }
 }

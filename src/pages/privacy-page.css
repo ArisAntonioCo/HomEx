@@ -1,0 +1,10 @@
+.faqpage {
+  width: 100%;
+  position: relative;
+  background-color: white;
+  display: flex;
+  align-items: right;
+  justify-content: flex-start;
+  letter-spacing: normal;
+  line-height: normal;
+}

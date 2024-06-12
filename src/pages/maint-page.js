@@ -1,103 +1,279 @@
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "../components/sidebar";
-import "./maint-page.css";
+import Drawer from "../components/drawer";
+import AddModalMaint from "../components/popups/add-modal-maint";
+import EditModalMaint from "../components/popups/edit-modal-maint";
+import {
+  fetchMaintenanceExpenses,
+  updateMaintenanceExpense,
+  deleteMaintenanceExpense,
+  addMaintenanceExpense,
+} from "../Redux/maintSlice"; // Assuming you have a similar slice for maintenance
+import "./misc-page.css";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+import Box from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
+import ConfirmationDialog from '../components/popups/confirmationDialogue';
 
 const MaintPage = () => {
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
+  const [selectedExpenseId, setSelectedExpenseId] = useState(null);
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [hasShown, setHasShown] = useState(false);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  useEffect(() => {
+    if (successMessage && !hasShown) {
+      setOpen(true);
+      setHasShown(true);
+    }
+  }, [successMessage, hasShown]);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+  const dispatch = useDispatch();
+  const { expenses, totalBillAmount, loading, error } = useSelector(
+    (state) => state.maintenance // Access data from maintenance slice
+  );
+
+  useEffect(() => {
+    const currentYear = new Date().getFullYear();
+    const defaultStartDate = new Date(currentYear - 100, 0, 1); // 100 years before the current year
+    const defaultEndDate = new Date(currentYear + 100, 11, 31); // 100 years after the current year
+    setStartDate(defaultStartDate);
+    setEndDate(defaultEndDate);
+    dispatch(
+      fetchMaintenanceExpenses({
+        startDate: defaultStartDate,
+        endDate: defaultEndDate,
+      })
+    );  }, [dispatch, refreshKey]);
+
+  const handleEditClick = (expense) => {
+    setSelectedExpenseId(expense);
+    toggleEditModal();
+  };
+
+  const handleEditExpense = (updatedExpense) => {
+    dispatch(updateMaintenanceExpense(updatedExpense));
+    setSelectedExpenseId(null);
+    refreshTable();
+  };
+
+  const handleDeleteClick = (expenseId) => {
+    setSelectedExpenseId(expenseId);
+    setShowDeleteConfirmation(true);
+  };
+
+  const handleConfirmDelete = () => {
+    if (selectedExpenseId) {
+      dispatch(deleteMaintenanceExpense(selectedExpenseId));
+      setSelectedExpenseId(null);
+      refreshTable();
+    }
+    setShowDeleteConfirmation(false);
+    
+  };
+
+  const handleCancelDelete = () => {
+    setShowDeleteConfirmation(false);
+  };
+
+  const handleAddExpense = (newExpense) => {
+    dispatch(addMaintenanceExpense(newExpense));
+    refreshTable();
+  };
+
+  const refreshTable = () => {
+    setRefreshKey((oldKey) => oldKey + 1);
+  };
+  const toggleAddModal = () => {
+    setShowAddModal(!showAddModal);
+  };
+
+  const toggleEditModal = () => {
+    setShowEditModal(!showEditModal);
+  };
+
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
-    <div className="maintpage">
+    <div className="miscpage">
+            {windowWidth > 768 ? <Sidebar /> : isDrawerOpen && <Drawer />}
 
-      <Sidebar />
-      
-      {/* MAINTENANCE PANEL*/}
-      <main className="maint-panel">
-        <div className="mobile-devices4">
-          <div className="container10">
-            <img className="menu-icon4" loading="lazy" alt="" src="/menu.svg" />
+            {successMessage && (
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        >
+          <MuiAlert
+            onClose={handleClose}
+            severity="success"
+            elevation={6}
+            variant="filled"
+          >
+            {successMessage}
+          </MuiAlert>
+        </Snackbar>
+      )}
+      <main className="misc-panel">
+        <header className="mobile-devices5" onClick={toggleDrawer}>
+          <div className="container13">
+            <img
+              className="menu-icon5"
+              loading="lazy"
+              alt="Menu Icon"
+              src="/menu.svg"
+            />
           </div>
-        </div>
-
-        {/* MAINTENANCE CARD*/}
-        <section className="container11">
-          <div className="maintenancecard1">
-            <div className="label9">
+        </header>
+        {showDeleteConfirmation && (
+          <ConfirmationDialog
+            mode="delete"
+            title="Delete Confirmation"
+            open={showDeleteConfirmation}
+            handleCancel={handleCancelDelete}
+            handleConfirm={handleConfirmDelete}
+          />
+        )}
+        <section className="container14">
+          <div className="misccard1">
+            <div className="label11">
               <img
-                className="union-icon1"
+                className="miscicon1"
                 loading="lazy"
                 alt=""
                 src="/union1@2x.png"
-              />
-              <h1 className="maintenance1">Maintenance</h1>
-              <button className="total16">
-                <div className="total17">Total $</div>
+                />
+              <h1 className="miscellaneous7">Maintenance</h1>
+              <button className="total20">
+                <div className="total21">Total ₱ </div>
               </button>
             </div>
-            {/* MAINTENANCE TOTAL PROPERTY*/}
-            <div className="maintenancetotal1">$999</div>
+            <div className="misctotal1">₱ {totalBillAmount}</div>
           </div>
-          <form className="container12">
-            <div className="heading3">
-              <div className="h16">
-                <h2 className="expenses3">Expenses/</h2>
-                <h2 className="maintenance2">Maintenance</h2>
-              </div>
 
-              {/* ADD POPUP BUTTON */}
-              <button className="addexbtn3">
-                <img className="vector-icon2" alt="" src="/vector-10.svg" />
-                <div className="add-expense3">Add Expense</div>
+          <div className="container31">
+            {" "}
+            {/* Removed the <form> element */}
+            <div className="heading6">
+              <div className="h18">
+                <h2 className="expenses15">Expenses/</h2>
+                <h2 className="miscellaneous8">Maintenance</h2>
+              </div>
+              <button className="addexbtn5" onClick={toggleAddModal}>
+                <img className="edit-button-icon" alt="" src="/vector-10.svg" />
+                <div className="add-expense5">Add Expense</div>
               </button>
             </div>
-
-            {/* TABLE CONTAINER */}
-            <div className="table3">
-
-               {/* TABLE HEADER */}
-              <div className="row6">
-                <div className="header-cell12">
-                  <div className="service-provider3">Service Provider</div>
+            <div className="table5">
+              <div className="row10">
+                <div className="header-cell20">
+                  <div className="service-provider5">Description</div>
                 </div>
-                <div className="header-cell13">
-                  <div className="date-paid3">Date Paid</div>
+                <div className="header-cell21">
+                  <div className="date-paid5">Date Paid</div>
                 </div>
-                <div className="header-cell14">
+                <div className="header-cell22">
                   <div className="amount3">Amount</div>
                 </div>
-                <div className="header-cell15">
-                  <div className="action3">Action</div>
+                <div className="header-cell23">
+                  <div className="action5">Action</div>
                 </div>
               </div>
-              
-              {/* TABLE ROW 
-                  Sample Data lng ni
-                  Pwede ra i copy ag classes sa pag add para consistent ag UI
-              */}
-              <div className="row7">
-                <div className="table-cell12">
-                  <div className="noreco3">Noreco</div>
-                </div>
-                <div className="table-cell13">
-                  <div className="sample-date3">Sample Date</div>
-                </div>
-                <div className="table-cell14">
-                  <div className="p-100003">P 10,000</div>
-                </div>
-                <div className="table-cell15">
-                   {/* EDIT POPUP BUTTON */}
-                  <div className="buttons3">
-                    <button className="edit-button3">
-                      <div className="edit3">Edit</div>
-                    </button>
-                     {/* DELETE  BUTTON */}
-                    <button className="delete-button3">
-                      <div className="delete3">Delete</div>
-                    </button>
+              {/* Conditional Rendering for Table Data */}
+              {loading ? (
+                <Box sx={{ width: "100%" }}>
+                <LinearProgress />
+              </Box>
+              ) : error ? (
+                <div className="error-message">Error: {error.message}</div>
+              ) : (
+                // Table Rows (dynamically generated)
+                expenses.map((expense) => (
+                  <div className="row11" key={expense.expenseId}>
+                    <div className="table-cell20">{expense.billMonth}</div>
+                    <div className="table-cell21">
+                    {expense.datePaid}                    </div>
+                    <div className="table-cell22">₱ {expense.billAmount}</div>
+                    <div className="table-cell23">
+                      <div className="buttons5">
+                        <button
+                          className="edit-button5"
+                          onClick={() => handleEditClick(expense)}
+                        >
+                          <div className="edit5">Edit</div>
+                        </button>
+
+                        <button
+                          className="delete-button5"
+                          onClick={() => handleDeleteClick(expense.expensesId)}
+                        >
+                          <div className="delete6">Delete</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div style={{ display: "none" }}>{expense.expenseId}</div>
                   </div>
-                </div>
-              </div>
-              {/* END TABLE ROW
-              */}
+                ))
+              )}
             </div>
-          </form>
+          </div>
         </section>
+
+        {showAddModal && (
+          <div className="modal-backdrop">
+            <AddModalMaint
+              close={() => {
+                toggleAddModal();
+                refreshTable();
+              }}
+              onAddExpense={handleAddExpense}
+            onSuccess={setSuccessMessage}
+            />
+          </div>
+        )}
+        {showEditModal && (
+          <div className="modal-backdrop">
+            <EditModalMaint
+              close={() => {
+                toggleEditModal();
+                refreshTable();
+              }}
+              expense={selectedExpenseId}
+              onSave={handleEditExpense}
+              onSuccess={setSuccessMessage}
+            />
+          </div>
+        )}
       </main>
     </div>
   );

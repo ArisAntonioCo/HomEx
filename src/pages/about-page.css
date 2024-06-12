@@ -43,6 +43,7 @@
   font-size: 32px;
   color: #fff;
   font-family: Inter;
+  margin-bottom: 48px;
 }
 .aboutpage {
   width: 100%;
@@ -72,5 +73,51 @@
   }
   .section {
     gap: 18px;
+  }
+}
+
+.video-section {
+  position: relative;
+  width: 100%;
+  max-width: 1400px; 
+  height: 0;
+  padding-bottom: 56.25%; 
+  overflow: hidden;
+}
+
+.video-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 768px) {
+  .video-container {
+    max-width: none; /* Remove the maximum width for larger screens */
+  }
+}
+/* Media Query for Smaller Screens (Tablets) */
+@media screen and (max-width: 768px) {
+  .video-wrapper {
+    max-width: 600px; /* Adjusted maximum width for tablets */
+  }
+}
+
+/* Media Query for Even Smaller Screens (Phones) */
+@media screen and (max-width: 450px) {
+  .video-wrapper {
+    max-width: 100%; /* Full width for small screens */
+  }
+
+  .video-section {
+    margin-top: 20px;
   }
 }

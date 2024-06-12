@@ -3,6 +3,10 @@
   width: 16px;
   position: relative;
 }
+.dashboard-panel {
+  position: relative; /* Establish a stacking context */
+  z-index: 1; /* Ensure the dashboard is below the sidebar */
+}
 .container6,
 .mobile-devices2 {
   justify-content: flex-start;
